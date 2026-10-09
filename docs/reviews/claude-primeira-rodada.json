@@ -1,0 +1,55 @@
+{
+  "id": 8,
+  "reviewed_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
+  "publication_sha": "b8f0fdc123556fe4c94d0c6791e8394d0ff96154",
+  "verdict": "changes_requested",
+  "summary": "revisao-video: aprovar com peça obrigatória pendente dá 409 com bloqueios. Versão nova numa peça obrigatória desfaz a aprovação e a restaura depois. Aprovar uma versão antiga dá 409 stale_version. O comentário fica preso à versão. As peças exigidas são dado da campanha. Há porém um P2, que conferi pelo coordenador no código e no contrato: depois da primeira aprovação, uma peça que a campanha não pediu passa a bloquear a entrega.",
+  "tests": [
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "result": "22/22"
+    },
+    {
+      "command": "sha1 de blob vs diff",
+      "exit_code": 0,
+      "result": "10/11 MATCH; README só na nota de IA (83-85)"
+    },
+    {
+      "command": "node probe.mjs http://127.0.0.1:3008",
+      "exit_code": 0,
+      "result": "45 verificações; o bloco 4 reproduz o P2"
+    },
+    {
+      "command": "demo-copy.mjs",
+      "exit_code": 0,
+      "result": "16 requisições com os mesmos status de docs/evidence/demo.txt"
+    },
+    {
+      "command": "diff docs/enunciado.txt contrato-oficial.txt",
+      "exit_code": 0,
+      "result": "idênticos"
+    }
+  ],
+  "findings": [
+    {
+      "priority": "P2",
+      "file": "src/domain.js",
+      "line": 66,
+      "title": "Peça não exigida pela campanha bloqueia a aprovação após a primeira aprovação",
+      "details": "approvalBlockers (src/domain.js:66-72) adiciona 'replacement_unapproved' para peças em reviewRequiredAfterApproval que estão fora de requiredPieces. addVersion (linha 192) inclui nesse conjunto qualquer peça que receba versão depois da aprovação, até mesmo a primeira inclusão. Isso viola as regras explícitas 'Peça que a campanha não pediu não bloqueia' e 'Campanha só de vídeo não exige roteiro', e faz o status depender do histórico. test/domain.test.js:92-115 fixa esse comportamento, e README:69-71 o declara como interpretação, o que não afasta o texto do contrato.",
+      "reproduction": "Campanha {requiredPieces:['video']}. D1: script v1, video v1 aprovado, approve dá 200 approved. D2: video v1 aprovado, approve dá 200; depois POST script v1 dá 201; POST /deliveries/D2/approve dá 409 (probe.mjs, bloco 4)",
+      "expected": "D2 continua approved como D1 (mesmo estado de peças; a campanha só exige vídeo)",
+      "actual": "D2 fica em production com blockers [{piece:'script',reason:'replacement_unapproved'}]; approve dá 409 approval_blocked"
+    }
+  ],
+  "limits": [
+    "Sem git e sem rede: SHA por blobs e recibo local.",
+    "flow.gif só teve o formato conferido.",
+    "Os pareceres anteriores registraram essa interpretação como nota não bloqueante; aqui ela foi reclassificada como P2 pelo texto do contrato, o que o coordenador confirmou."
+  ],
+  "approval_basis": "Não aprovado por causa do P2 aberto (src/domain.js:66-72/192). Os demais critérios foram reproduzidos. Para aprovar: peças fora de requiredPieces nunca devem bloquear (limitar a invalidação pós-aprovação às peças exigidas).",
+  "model": "claude-opus-5-5",
+  "review_kind": "initial_subagent_review",
+  "superseded_by": "7cf5c6343987f501f45f760984dbc2e126adb06e"
+}

@@ -1,0 +1,101 @@
+{
+  "id": 8,
+  "reviewed_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+  "publication_sha": "38b0293293b2e87d1caabfe88c235f203ffd06f6",
+  "verdict": "approved",
+  "summary": "revisao-video (delta): o P2 da rodada 1 está corrigido. approvalBlockers (src/domain.js:58-66) considera só a versão atual de cada peça em campaign.requiredPieces, e o status é 'approved' apenas quando a aprovação foi concedida e não há bloqueios (src/domain.js:108-111). O conjunto histórico reviewRequiredAfterApproval saiu. Uma peça opcional incluída ou substituída antes ou depois da aprovação, ou durante uma suspensão, não muda o status, os bloqueios nem o approvedAt. Regras mantidas: versão nova obrigatória suspende a aprovação até a atual ser aprovada; várias obrigatórias pendentes precisam todas ser aprovadas; versão antiga ou intermediária dá 409 stale_version; comentário fica na versão e no segundo de origem; aprovar com peça obrigatória ausente ou pendente dá 409 com cada bloqueio. O README (linhas 66-73) descreve a política nova, e os testes (test/domain.test.js:63-216) fixam o comportamento corrigido.",
+  "tests": [
+    {
+      "command": "diff contrato-oficial.txt docs/enunciado.txt",
+      "exit_code": 0,
+      "result": "idênticos (subagente)"
+    },
+    {
+      "command": "sha1 de blob vs linhas index de delta-apos-claude.diff",
+      "exit_code": 0,
+      "result": "9/19 MATCH, incluindo src/domain.js 22d97f3, test/domain.test.js 6287ff4 e test/http.test.js 6affceb. As 10 divergências são docs e evidências: o delta registra o commit de código 7cf5 e a cópia é a publicação 38b0 (subagente)"
+    },
+    {
+      "command": "npm test (subagente, antes de criar scratch/oldrepo)",
+      "exit_code": 0,
+      "result": "27 testes, 27 aprovados, 0 falhas"
+    },
+    {
+      "command": "node --test --test-reporter=spec test/domain.test.js test/http.test.js (coordenador)",
+      "exit_code": 0,
+      "result": "27 testes, 27 aprovados, 0 falhas"
+    },
+    {
+      "command": "npm test (coordenador, depois das sondagens)",
+      "exit_code": 1,
+      "result": "54 testes, 46 aprovados, 8 falhas. As 8 falhas vêm todas de scratch/oldrepo/test/domain.test.js, a cópia de controle com o domínio antigo que a descoberta padrão do node --test incluiu. Não é falha da entrega."
+    },
+    {
+      "command": "node scratch/probe-http.mjs (subagente; PORT=0, porta 56139, PID 37700)",
+      "exit_code": 0,
+      "result": "60/60. Blocos: P2 antigo com D1 e D2 no mesmo estado; só vídeo com opcionais antes e depois; roteiro e vídeo exigidos com suspensão e restauração; opcional comentada e nunca aprovada; mudança de ordem; 21 entradas inválidas sem criar versão"
+    },
+    {
+      "command": "node scratch/fuzz-domain.mjs 1 | 12345 | 987654 (subagente)",
+      "exit_code": 0,
+      "result": "cerca de 275 mil verificações por semente contra um oráculo independente, nas 15 combinações de campanha; 0 falhas"
+    },
+    {
+      "command": "node scratch/p2-old-vs-new.mjs (subagente; domínio antigo reconstruído, blob 8ce7918)",
+      "exit_code": 0,
+      "result": "antigo: 409 approval_blocked replacement_unapproved; atual: 200 approved, blockers []"
+    },
+    {
+      "command": "node --test em scratch/oldrepo (testes atuais contra o domínio antigo; subagente)",
+      "exit_code": 1,
+      "result": "27 testes, 19 aprovados, 8 falhas, igual a docs/evidence/pecas-opcionais-red.txt (vermelho esperado)"
+    },
+    {
+      "command": "node scratch/coord/p2.mjs (coordenador; PORT=0, PID 37972 encerrado em finally)",
+      "exit_code": 0,
+      "result": "10/10. Campanha só de vídeo: approve 200, script v1 201, GET approved com blockers [], novo approve 200 (antes 409). Vídeo v2 suspende para production, v1 dá 409 stale_version e aprovar a v2 restaura approved. Campanha com roteiro e vídeo: approve sem peças dá 409 com 2 bloqueios required_piece_missing, e o roteiro obrigatório v2 suspende para production."
+    },
+    {
+      "command": "sha256 dos 45 arquivos existentes antes e depois (subagente)",
+      "exit_code": 0,
+      "result": "45/45 inalterados; só foi criado scratch/"
+    }
+  ],
+  "findings": [
+    {
+      "priority": "P3",
+      "file": "docs/evidence/conty-recibo.json",
+      "line": 6,
+      "title": "A nota enviada à Conty ainda descreve a política anterior de peças opcionais",
+      "details": "O main_text do recibo diz que, depois da primeira aprovação, qualquer versão nova exige revisão antes de restaurá-la, e cita 22 testes. O código, o README (linhas 66-73) e os testes refletem a política nova (opcionais nunca bloqueiam) e são 27 testes. O próprio repositório reconhece a defasagem em docs/correcao-pecas-opcionais.md:7 e docs/verificacao-final.md:22. É uma sugestão para um eventual reenvio e não bloqueia.",
+      "reproduction": "grep -o '22 testes\\|qualquer versão nova[^\"]*' docs/evidence/conty-recibo.json",
+      "expected": "Nota coerente com a política atual e com os 27 testes",
+      "actual": "'...qualquer versão nova exige revisão antes de restaurá-la. 22 testes...'"
+    }
+  ],
+  "limits": [
+    "Sem git e sem rede: os SHAs foram conferidos só por blob contra o delta (domain.js e os dois arquivos de teste batem). Os commits 7cf5 e 38b0 e o recibo online não foram verificados diretamente.",
+    "Os 10 arquivos de docs e evidências que divergem do index do delta foram tratados como evidência da publicação, sem outra fonte para conferir.",
+    "flow.gif e os .jpg não foram inspecionados quadro a quadro; npm run demo não foi executado nesta rodada.",
+    "O contrato não tem endpoint de reprovação, então 'opcional reprovada' foi testada como vídeo opcional comentado e nunca aprovado.",
+    "Pareceres anteriores (docs/reviews e rodada 1) foram usados como contexto, não como prova.",
+    "Efeito colateral das sondagens: scratch/oldrepo faz o `npm test` desta cópia varrer testes de controle propositalmente vermelhos. Para reproduzir a suíte oficial, rode-a sem scratch/ ou passe os arquivos test/*.test.js explicitamente."
+  ],
+  "approval_basis": "O P2 está corrigido em src/domain.js:58-66 e :184-186, com a falha reproduzida no código antigo e a correção no atual, por HTTP real (subagente e coordenador) e por fuzz com oráculo. Os demais critérios do enunciado continuam reproduzidos, a suíte oficial passa 27/27 e a declaração de IA está no README. Não há P0-P2 aberto; o único achado é P3.",
+  "review_provenance": {
+    "round": 3,
+    "session_id": "ee1a10b3-0030-45ae-ae99-24df71abad66",
+    "review_file": "revisoes/claude-opus55-delta08/parecer.json",
+    "review_sha256": "cf2ec1b605eb62d7ee1d26b85fa563b8de4b7a5921b89ad6e2dd2b3e24e02305",
+    "previous_adjustment": "revisao-video: aprovar com peça obrigatória pendente dá 409 com bloqueios. Versão nova numa peça obrigatória desfaz a aprovação e a restaura depois. Aprovar uma versão antiga dá 409 stale_version. O comentário fica preso à versão. As peças exigidas são dado da campanha. Há porém um P2, que conferi pelo coordenador no código e no contrato: depois da primeira aprovação, uma peça que a campanha não pediu passa a bloquear a entrega."
+  },
+  "model": "claude-opus-5-5",
+  "review_kind": "independent_subagent_review",
+  "reviewed_after_conty_registration": true,
+  "coordinator_documentation_followup": {
+    "file": "docs/correcao-pecas-opcionais.md",
+    "status": "updated_after_review",
+    "executable_code_unchanged": true,
+    "note": "O coordenador atualizou o estado das revisões/capturas após a aprovação real. O parecer e seus achados foram preservados; não se alega nova revisão do modelo sobre esta edição documental."
+  }
+}

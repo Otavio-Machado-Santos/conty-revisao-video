@@ -1,0 +1,13 @@
+{
+  "name": "conty-revisao-video",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "API de aprovação de peças por versão e comentários de vídeo",
+  "engines": { "node": "22.x" },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test --test-reporter=spec",
+    "demo": "node docs/demo.mjs"
+  }
+}

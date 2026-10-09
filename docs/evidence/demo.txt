@@ -1,0 +1,22 @@
+
+> conty-revisao-video@1.0.0 demo
+> node docs/demo.mjs
+
+201 Campanha exige vídeo e legenda
+201 Entrega em produção
+409 Aprovação bloqueada pelas peças ausentes
+201 Vídeo versão 1
+201 Comentário no segundo 12.5 da versão 1
+200 Aprovar versão 1 do vídeo
+201 Legenda versão 1
+200 Aprovar legenda
+200 Entrega aprovada
+201 Vídeo versão 2 substitui a primeira
+200 Aprovação suspensa automaticamente
+409 Aprovação antiga não aprova a versão atual
+200 Comentário permanece na versão 1
+200 Versão 2 não herda comentários
+200 Aprovar versão 2
+200 Aprovação restaurada e histórico preservado
+Evidência real: /Users/flowbix_redfinger/XiaomiMiMoProjects/conty challenge/projetos/conty-revisao-video/docs/evidence/http-flow.json
+Entrega: http://127.0.0.1:3008/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40

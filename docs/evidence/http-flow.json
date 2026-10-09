@@ -1,0 +1,755 @@
+{
+  "executedAt": "2026-10-09T19:03:37.864Z",
+  "runtime": "v22.23.3",
+  "base": "http://127.0.0.1:3008",
+  "deliveryUrl": "http://127.0.0.1:3008/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40",
+  "passed": true,
+  "steps": [
+    {
+      "label": "Campanha exige vídeo e legenda",
+      "request": {
+        "method": "POST",
+        "path": "/campaigns",
+        "body": {
+          "requiredPieces": [
+            "video",
+            "caption"
+          ]
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "campaign-ffedc886-b2ec-4d3c-8be8-c84d01530626",
+        "requiredPieces": [
+          "video",
+          "caption"
+        ],
+        "createdAt": "2026-10-09T19:03:37.832Z"
+      }
+    },
+    {
+      "label": "Entrega em produção",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries",
+        "body": {
+          "campaignId": "campaign-ffedc886-b2ec-4d3c-8be8-c84d01530626"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40",
+        "campaignId": "campaign-ffedc886-b2ec-4d3c-8be8-c84d01530626",
+        "createdAt": "2026-10-09T19:03:37.840Z",
+        "requiredPieces": [
+          "video",
+          "caption"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": null,
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "video",
+            "reason": "required_piece_missing"
+          },
+          {
+            "piece": "caption",
+            "reason": "required_piece_missing"
+          }
+        ],
+        "pieces": {
+          "script": [],
+          "video": [],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": null,
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-4db9f07e-0bd0-4217-8843-b418739c225c",
+            "type": "delivery_created",
+            "at": "2026-10-09T19:03:37.840Z"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Aprovação bloqueada pelas peças ausentes",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/approve"
+      },
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "approval_blocked",
+          "message": "Entrega não pode ser aprovada: há peças obrigatórias ausentes ou versões aguardando aprovação.",
+          "details": {
+            "blockers": [
+              {
+                "piece": "video",
+                "reason": "required_piece_missing"
+              },
+              {
+                "piece": "caption",
+                "reason": "required_piece_missing"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "Vídeo versão 1",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/video/versions",
+        "body": {
+          "asset": {
+            "type": "file",
+            "value": "video-v1.mp4"
+          },
+          "durationSeconds": 30
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "video-v1.mp4"
+        },
+        "createdAt": "2026-10-09T19:03:37.845Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 30
+      }
+    },
+    {
+      "label": "Comentário no segundo 12.5 da versão 1",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/video/versions/version-22948207-7e6a-4d1f-9c89-d9c486e30c77/comments",
+        "body": {
+          "second": 12.5,
+          "body": "Trocar o enquadramento desta cena."
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "comment-14064ea0-f7b9-4dd8-9caa-a9a175c44d10",
+        "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+        "second": 12.5,
+        "body": "Trocar o enquadramento desta cena.",
+        "createdAt": "2026-10-09T19:03:37.846Z"
+      }
+    },
+    {
+      "label": "Aprovar versão 1 do vídeo",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/video/versions/version-22948207-7e6a-4d1f-9c89-d9c486e30c77/approve"
+      },
+      "status": 200,
+      "response": {
+        "id": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "video-v1.mp4"
+        },
+        "createdAt": "2026-10-09T19:03:37.845Z",
+        "approvedAt": "2026-10-09T19:03:37.847Z",
+        "comments": [
+          {
+            "id": "comment-14064ea0-f7b9-4dd8-9caa-a9a175c44d10",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+            "second": 12.5,
+            "body": "Trocar o enquadramento desta cena.",
+            "createdAt": "2026-10-09T19:03:37.846Z"
+          }
+        ],
+        "durationSeconds": 30
+      }
+    },
+    {
+      "label": "Legenda versão 1",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/caption/versions",
+        "body": {
+          "asset": {
+            "type": "text",
+            "value": "Legenda solicitada pela campanha."
+          }
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "Legenda solicitada pela campanha."
+        },
+        "createdAt": "2026-10-09T19:03:37.848Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "label": "Aprovar legenda",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/caption/versions/version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33/approve"
+      },
+      "status": 200,
+      "response": {
+        "id": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "Legenda solicitada pela campanha."
+        },
+        "createdAt": "2026-10-09T19:03:37.848Z",
+        "approvedAt": "2026-10-09T19:03:37.850Z",
+        "comments": []
+      }
+    },
+    {
+      "label": "Entrega aprovada",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/approve"
+      },
+      "status": 200,
+      "response": {
+        "id": "delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40",
+        "campaignId": "campaign-ffedc886-b2ec-4d3c-8be8-c84d01530626",
+        "createdAt": "2026-10-09T19:03:37.840Z",
+        "requiredPieces": [
+          "video",
+          "caption"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T19:03:37.851Z",
+        "lastApprovedAt": "2026-10-09T19:03:37.851Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [],
+          "video": [
+            {
+              "id": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "video-v1.mp4"
+              },
+              "createdAt": "2026-10-09T19:03:37.845Z",
+              "approvedAt": "2026-10-09T19:03:37.847Z",
+              "comments": [
+                {
+                  "id": "comment-14064ea0-f7b9-4dd8-9caa-a9a175c44d10",
+                  "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+                  "second": 12.5,
+                  "body": "Trocar o enquadramento desta cena.",
+                  "createdAt": "2026-10-09T19:03:37.846Z"
+                }
+              ],
+              "durationSeconds": 30
+            }
+          ],
+          "cover": [],
+          "caption": [
+            {
+              "id": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "Legenda solicitada pela campanha."
+              },
+              "createdAt": "2026-10-09T19:03:37.848Z",
+              "approvedAt": "2026-10-09T19:03:37.850Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+          "cover": null,
+          "caption": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33"
+        },
+        "history": [
+          {
+            "id": "event-4db9f07e-0bd0-4217-8843-b418739c225c",
+            "type": "delivery_created",
+            "at": "2026-10-09T19:03:37.840Z"
+          },
+          {
+            "id": "event-c7697f50-a3ee-43c5-8858-1ae51562fc0c",
+            "type": "version_submitted",
+            "at": "2026-10-09T19:03:37.845Z",
+            "piece": "video",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77"
+          },
+          {
+            "id": "event-28b8579d-8660-4596-98f7-5da78500a062",
+            "type": "comment_added",
+            "at": "2026-10-09T19:03:37.846Z",
+            "piece": "video",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+            "commentId": "comment-14064ea0-f7b9-4dd8-9caa-a9a175c44d10"
+          },
+          {
+            "id": "event-759e517f-92d4-4c26-a9b1-f516a6a3ef9e",
+            "type": "version_approved",
+            "at": "2026-10-09T19:03:37.847Z",
+            "piece": "video",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77"
+          },
+          {
+            "id": "event-e719e43a-613f-470d-b3d4-3a58cf4bfabf",
+            "type": "version_submitted",
+            "at": "2026-10-09T19:03:37.848Z",
+            "piece": "caption",
+            "versionId": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33"
+          },
+          {
+            "id": "event-bc0ee19f-1c05-4d7f-a568-86024189101e",
+            "type": "version_approved",
+            "at": "2026-10-09T19:03:37.850Z",
+            "piece": "caption",
+            "versionId": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33"
+          },
+          {
+            "id": "event-6ff0f59c-73c0-4327-a73e-eac84acceb69",
+            "type": "delivery_approved",
+            "at": "2026-10-09T19:03:37.851Z"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Vídeo versão 2 substitui a primeira",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/video/versions",
+        "body": {
+          "asset": {
+            "type": "url",
+            "value": "https://example.com/video-v2.mp4"
+          },
+          "durationSeconds": 15
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff",
+        "number": 2,
+        "asset": {
+          "type": "url",
+          "value": "https://example.com/video-v2.mp4"
+        },
+        "createdAt": "2026-10-09T19:03:37.854Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 15
+      }
+    },
+    {
+      "label": "Aprovação suspensa automaticamente",
+      "request": {
+        "method": "GET",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40"
+      },
+      "status": 200,
+      "response": {
+        "id": "delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40",
+        "campaignId": "campaign-ffedc886-b2ec-4d3c-8be8-c84d01530626",
+        "createdAt": "2026-10-09T19:03:37.840Z",
+        "requiredPieces": [
+          "video",
+          "caption"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": "2026-10-09T19:03:37.851Z",
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "video",
+            "reason": "required_version_unapproved",
+            "versionId": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff"
+          }
+        ],
+        "pieces": {
+          "script": [],
+          "video": [
+            {
+              "id": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "video-v1.mp4"
+              },
+              "createdAt": "2026-10-09T19:03:37.845Z",
+              "approvedAt": "2026-10-09T19:03:37.847Z",
+              "comments": [
+                {
+                  "id": "comment-14064ea0-f7b9-4dd8-9caa-a9a175c44d10",
+                  "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+                  "second": 12.5,
+                  "body": "Trocar o enquadramento desta cena.",
+                  "createdAt": "2026-10-09T19:03:37.846Z"
+                }
+              ],
+              "durationSeconds": 30
+            },
+            {
+              "id": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff",
+              "number": 2,
+              "asset": {
+                "type": "url",
+                "value": "https://example.com/video-v2.mp4"
+              },
+              "createdAt": "2026-10-09T19:03:37.854Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 15
+            }
+          ],
+          "cover": [],
+          "caption": [
+            {
+              "id": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "Legenda solicitada pela campanha."
+              },
+              "createdAt": "2026-10-09T19:03:37.848Z",
+              "approvedAt": "2026-10-09T19:03:37.850Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff",
+          "cover": null,
+          "caption": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33"
+        },
+        "history": [
+          {
+            "id": "event-4db9f07e-0bd0-4217-8843-b418739c225c",
+            "type": "delivery_created",
+            "at": "2026-10-09T19:03:37.840Z"
+          },
+          {
+            "id": "event-c7697f50-a3ee-43c5-8858-1ae51562fc0c",
+            "type": "version_submitted",
+            "at": "2026-10-09T19:03:37.845Z",
+            "piece": "video",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77"
+          },
+          {
+            "id": "event-28b8579d-8660-4596-98f7-5da78500a062",
+            "type": "comment_added",
+            "at": "2026-10-09T19:03:37.846Z",
+            "piece": "video",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+            "commentId": "comment-14064ea0-f7b9-4dd8-9caa-a9a175c44d10"
+          },
+          {
+            "id": "event-759e517f-92d4-4c26-a9b1-f516a6a3ef9e",
+            "type": "version_approved",
+            "at": "2026-10-09T19:03:37.847Z",
+            "piece": "video",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77"
+          },
+          {
+            "id": "event-e719e43a-613f-470d-b3d4-3a58cf4bfabf",
+            "type": "version_submitted",
+            "at": "2026-10-09T19:03:37.848Z",
+            "piece": "caption",
+            "versionId": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33"
+          },
+          {
+            "id": "event-bc0ee19f-1c05-4d7f-a568-86024189101e",
+            "type": "version_approved",
+            "at": "2026-10-09T19:03:37.850Z",
+            "piece": "caption",
+            "versionId": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33"
+          },
+          {
+            "id": "event-6ff0f59c-73c0-4327-a73e-eac84acceb69",
+            "type": "delivery_approved",
+            "at": "2026-10-09T19:03:37.851Z"
+          },
+          {
+            "id": "event-ae629e5b-4a95-41da-b1cc-3a7448628dfa",
+            "type": "version_submitted",
+            "at": "2026-10-09T19:03:37.854Z",
+            "piece": "video",
+            "versionId": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff"
+          },
+          {
+            "id": "event-3de910db-145b-4e42-9810-67fb8270f53f",
+            "type": "delivery_approval_invalidated",
+            "at": "2026-10-09T19:03:37.854Z",
+            "piece": "video",
+            "versionId": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff"
+          }
+        ]
+      }
+    },
+    {
+      "label": "Aprovação antiga não aprova a versão atual",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/video/versions/version-22948207-7e6a-4d1f-9c89-d9c486e30c77/approve"
+      },
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff"
+          }
+        }
+      }
+    },
+    {
+      "label": "Comentário permanece na versão 1",
+      "request": {
+        "method": "GET",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/video/versions/version-22948207-7e6a-4d1f-9c89-d9c486e30c77"
+      },
+      "status": 200,
+      "response": {
+        "id": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "video-v1.mp4"
+        },
+        "createdAt": "2026-10-09T19:03:37.845Z",
+        "approvedAt": "2026-10-09T19:03:37.847Z",
+        "comments": [
+          {
+            "id": "comment-14064ea0-f7b9-4dd8-9caa-a9a175c44d10",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+            "second": 12.5,
+            "body": "Trocar o enquadramento desta cena.",
+            "createdAt": "2026-10-09T19:03:37.846Z"
+          }
+        ],
+        "durationSeconds": 30
+      }
+    },
+    {
+      "label": "Versão 2 não herda comentários",
+      "request": {
+        "method": "GET",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/video/versions/version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff"
+      },
+      "status": 200,
+      "response": {
+        "id": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff",
+        "number": 2,
+        "asset": {
+          "type": "url",
+          "value": "https://example.com/video-v2.mp4"
+        },
+        "createdAt": "2026-10-09T19:03:37.854Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 15
+      }
+    },
+    {
+      "label": "Aprovar versão 2",
+      "request": {
+        "method": "POST",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40/pieces/video/versions/version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff/approve"
+      },
+      "status": 200,
+      "response": {
+        "id": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff",
+        "number": 2,
+        "asset": {
+          "type": "url",
+          "value": "https://example.com/video-v2.mp4"
+        },
+        "createdAt": "2026-10-09T19:03:37.854Z",
+        "approvedAt": "2026-10-09T19:03:37.861Z",
+        "comments": [],
+        "durationSeconds": 15
+      }
+    },
+    {
+      "label": "Aprovação restaurada e histórico preservado",
+      "request": {
+        "method": "GET",
+        "path": "/deliveries/delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40"
+      },
+      "status": 200,
+      "response": {
+        "id": "delivery-0f3626e0-b8c9-44f5-b8c1-cba55d7dcf40",
+        "campaignId": "campaign-ffedc886-b2ec-4d3c-8be8-c84d01530626",
+        "createdAt": "2026-10-09T19:03:37.840Z",
+        "requiredPieces": [
+          "video",
+          "caption"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T19:03:37.861Z",
+        "lastApprovedAt": "2026-10-09T19:03:37.861Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [],
+          "video": [
+            {
+              "id": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "video-v1.mp4"
+              },
+              "createdAt": "2026-10-09T19:03:37.845Z",
+              "approvedAt": "2026-10-09T19:03:37.847Z",
+              "comments": [
+                {
+                  "id": "comment-14064ea0-f7b9-4dd8-9caa-a9a175c44d10",
+                  "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+                  "second": 12.5,
+                  "body": "Trocar o enquadramento desta cena.",
+                  "createdAt": "2026-10-09T19:03:37.846Z"
+                }
+              ],
+              "durationSeconds": 30
+            },
+            {
+              "id": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff",
+              "number": 2,
+              "asset": {
+                "type": "url",
+                "value": "https://example.com/video-v2.mp4"
+              },
+              "createdAt": "2026-10-09T19:03:37.854Z",
+              "approvedAt": "2026-10-09T19:03:37.861Z",
+              "comments": [],
+              "durationSeconds": 15
+            }
+          ],
+          "cover": [],
+          "caption": [
+            {
+              "id": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "Legenda solicitada pela campanha."
+              },
+              "createdAt": "2026-10-09T19:03:37.848Z",
+              "approvedAt": "2026-10-09T19:03:37.850Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff",
+          "cover": null,
+          "caption": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33"
+        },
+        "history": [
+          {
+            "id": "event-4db9f07e-0bd0-4217-8843-b418739c225c",
+            "type": "delivery_created",
+            "at": "2026-10-09T19:03:37.840Z"
+          },
+          {
+            "id": "event-c7697f50-a3ee-43c5-8858-1ae51562fc0c",
+            "type": "version_submitted",
+            "at": "2026-10-09T19:03:37.845Z",
+            "piece": "video",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77"
+          },
+          {
+            "id": "event-28b8579d-8660-4596-98f7-5da78500a062",
+            "type": "comment_added",
+            "at": "2026-10-09T19:03:37.846Z",
+            "piece": "video",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77",
+            "commentId": "comment-14064ea0-f7b9-4dd8-9caa-a9a175c44d10"
+          },
+          {
+            "id": "event-759e517f-92d4-4c26-a9b1-f516a6a3ef9e",
+            "type": "version_approved",
+            "at": "2026-10-09T19:03:37.847Z",
+            "piece": "video",
+            "versionId": "version-22948207-7e6a-4d1f-9c89-d9c486e30c77"
+          },
+          {
+            "id": "event-e719e43a-613f-470d-b3d4-3a58cf4bfabf",
+            "type": "version_submitted",
+            "at": "2026-10-09T19:03:37.848Z",
+            "piece": "caption",
+            "versionId": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33"
+          },
+          {
+            "id": "event-bc0ee19f-1c05-4d7f-a568-86024189101e",
+            "type": "version_approved",
+            "at": "2026-10-09T19:03:37.850Z",
+            "piece": "caption",
+            "versionId": "version-3e66c6d6-0634-4202-9207-0e3d8d1a9c33"
+          },
+          {
+            "id": "event-6ff0f59c-73c0-4327-a73e-eac84acceb69",
+            "type": "delivery_approved",
+            "at": "2026-10-09T19:03:37.851Z"
+          },
+          {
+            "id": "event-ae629e5b-4a95-41da-b1cc-3a7448628dfa",
+            "type": "version_submitted",
+            "at": "2026-10-09T19:03:37.854Z",
+            "piece": "video",
+            "versionId": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff"
+          },
+          {
+            "id": "event-3de910db-145b-4e42-9810-67fb8270f53f",
+            "type": "delivery_approval_invalidated",
+            "at": "2026-10-09T19:03:37.854Z",
+            "piece": "video",
+            "versionId": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff"
+          },
+          {
+            "id": "event-0342ffb7-06ca-4dd4-a5de-d6e567c85fd8",
+            "type": "version_approved",
+            "at": "2026-10-09T19:03:37.861Z",
+            "piece": "video",
+            "versionId": "version-9ede55ea-848b-4bdc-bbe7-f748fa36d7ff"
+          },
+          {
+            "id": "event-ae39122b-ff7a-43a4-83b7-166def8b0e27",
+            "type": "delivery_approval_restored",
+            "at": "2026-10-09T19:03:37.861Z"
+          }
+        ]
+      }
+    }
+  ]
+}

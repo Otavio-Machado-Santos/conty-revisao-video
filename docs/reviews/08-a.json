@@ -1,74 +1,157 @@
 {
   "challenge": "08-revisao-video",
-  "reviewed_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
-  "base_sha": "a8a0bf2ad23fc947e63ad30fff3fa42e7bb4b173",
-  "reviewer": "Codex independent reviewer A (/root/implementar_origem)",
-  "scope": "Correspondência com enunciado: requiredPieces como dados, versão atual aprovada, peças opcionais, substituições, múltiplas alterações suspensas e comentários por segundo/versionId",
+  "reviewed_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+  "base_sha": "b8f0fdc123556fe4c94d0c6791e8394d0ff96154",
+  "previous_code_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
+  "reviewer": "Codex independent reviewer A (/root/implementar_repasses); independente da implementação e da descoberta Opus",
+  "scope": "Revisão do delta only-required-pieces com enunciado, README, ambos src e ambos testes. Provas próprias em git archive; nenhuma alteração no código/docs/mídias do implementador, push ou acesso externo.",
   "runtime": "Node.js v22.23.3",
+  "archive": "/var/folders/1h/dnd2dd992cq41yhypgy46_bc0000gn/T/conty-review-08-a-required-txn_gbzz",
+  "previous_review": "revisoes/08-a-7ab6-anterior.json",
+  "spec_sources": [
+    "docs/enunciado.txt",
+    "README.md",
+    "revisoes/claude-opus55/parecer-subagente-08.json"
+  ],
   "commands": [
     {
-      "command": "npm test (PATH Node22)",
+      "command": "npm test (Node22, git archive do SHA fixo)",
       "exit_code": 0,
-      "result": "22/22 testes passaram, incluindo 15 combinações de requiredPieces, testes de domínio e HTTP real"
+      "result": "27/27 passaram, 0 falhas",
+      "evidence": "revisoes/support/08-a-required-pieces-tests.txt"
     },
     {
-      "command": "node /tmp/conty-review-08-a.mjs (Node22)",
+      "command": "node revisoes/support/08-a-required-pieces-probe.mjs <archive> <repo> <output>",
       "exit_code": 0,
-      "result": "5 grupos de probes independentes passaram",
-      "probes": [
-        {
-          "case": "Peças obrigatórias ausentes/pendentes produzem blockers claros; approvedAt forjado no input é ignorado; capa opcional não aprovada não bloqueia aprovação inicial",
-          "passed": true
-        },
-        {
-          "case": "Quatro alterações durante suspensão: vídeo v2, legenda v2, capa v2, vídeo v3; aprovar v1/v2 antigos falha; aprovar só vídeo/legenda não restaura enquanto capa alterada estiver pendente; comentários permanecem na duração e na versão antiga",
-          "passed": true
-        },
-        {
-          "case": "Três ciclos de invalidação/restauração, incluindo inclusão inicial de roteiro opcional após aprovação; aprovações repetidas não duplicam histórico",
-          "passed": true
-        },
-        {
-          "case": "Todas as 15 combinações não vazias de peças obrigatórias aprovam exclusivamente a partir dos dados da campanha, incluindo só vídeo sem roteiro",
-          "passed": true
-        },
-        {
-          "case": "Fluxo HTTP independente com todas as quatro peças, duas substituições simultâneas, rejeição stale_version e comentário isolado da nova versão",
-          "requests": 22,
-          "passed": true
+      "result": {
+        "passed": true,
+        "combination_runs": 30,
+        "nonempty_required_combinations": 15,
+        "equivalent_order_pairs": 15,
+        "domain_rejections_unchanged": 125,
+        "http_requests": 26,
+        "comments_and_isolation": {
+          "optional_video_did_not_block": true,
+          "old_comments": 2,
+          "new_comments": 2,
+          "version_duration_bounds_preserved": true,
+          "cross_delivery_rejections_unchanged": true,
+          "returned_copies_cannot_mutate_state": true
         }
-      ]
+      },
+      "evidence": "revisoes/support/08-a-required-pieces-probes.json"
     },
     {
-      "command": "git rev-parse HEAD; git status --short; git diff --check <base>...<sha>",
+      "command": "Controle negativo: git show da publicação antiga importado em memória, sem arquivo de código alterado",
       "exit_code": 0,
-      "result": "SHA fixo confirmado, árvore limpa, diff sem problemas de whitespace"
+      "result": {
+        "before": {
+          "status": "approved",
+          "canApprove": true,
+          "blockers": []
+        },
+        "after": {
+          "status": "production",
+          "canApprove": false,
+          "blockers": [
+            {
+              "piece": "script",
+              "reason": "replacement_unapproved"
+            }
+          ]
+        }
+      },
+      "note": "Reproduziu o P2 original: opcional antes aprova; opcional depois bloqueia. O candidato novo passou as duas ordens em todas as 15 combinações.",
+      "evidence": "revisoes/support/08-a-required-pieces-probes.json"
+    },
+    {
+      "command": "node --check src/domain.js; node --check test/domain.test.js; node --check test/http.test.js",
+      "exit_code": 0,
+      "result": "Três arquivos modificados sem erro de sintaxe"
+    },
+    {
+      "command": "git diff b8f0fdc..7cf5c63 --check; diff/hashes dos 10 arquivos preservados; comparação de todos os bytes do archive com git show",
+      "exit_code": 0,
+      "result": "Contrato, servidor, package/lock, demo, recibo e mídias históricas preservados; todos os arquivos rastreados do archive iguais ao commit após a revisão.",
+      "evidence": "revisoes/support/08-a-required-pieces-integrity.json"
     }
   ],
-  "source_verified": [
+  "contract_validation": [
     {
-      "path": "src/domain.js",
-      "lines": "58-73,125-137",
-      "claim": "requiredPieces é dado imutável da campanha e a política central consulta somente a última versão de cada peça"
+      "requirement": "Somente campaign.requiredPieces bloqueia em qualquer fase",
+      "result": "pass",
+      "evidence": "15 conjuntos não vazios em 30 fluxos, com opcionais antes/depois da primeira aprovação e durante suspensão. Bloqueios esperados foram calculados por dados locais de versões/decisões do probe; não pelo approvalBlockers do produto."
     },
     {
-      "path": "src/domain.js",
-      "lines": "105-118,184-194,202-213",
-      "claim": "Versão nova não herda approvedAt; aprovação antiga é rejeitada; conjunto de peças alteradas preserva todos os bloqueios durante suspensão e restaura somente após revisão das atuais"
+      "requirement": "Ordens equivalentes produzem a mesma decisão",
+      "result": "pass",
+      "evidence": "15 pares de fluxos com as mesmas peças, assets, números e aprovações: opcional incluída antes ou depois dá status approved, canApprove=true e blockers vazio. Timestamp original da entrega permanece igual; versões opcionais pendentes permanecem visíveis."
     },
     {
-      "path": "src/domain.js",
-      "lines": "217-229",
-      "claim": "Primeira aprovação exige blockers vazio, erros enumeram cada peça; concessão explícita da entrega e repetição idempotente"
+      "requirement": "Obrigatória nova e todas as versões atuais precisam de aprovação",
+      "result": "pass",
+      "evidence": "Cada fluxo substitui todas as obrigatórias e substitui de novo a primeira durante suspensão. Aprovação anterior não migra. Intermediária e versão original obsoletas são recusadas; somente todas as versões atuais obrigatórias restauram. Aprovação de opcional enquanto obrigatória está pendente não restaura."
     },
     {
-      "path": "src/domain.js",
-      "lines": "232-245",
-      "claim": "Comentário guarda versionId e segundos; valida duração da versão apontada, sem migração para a seguinte"
+      "requirement": "Eventos e timestamps representam transições reais",
+      "result": "pass",
+      "evidence": "Envios opcionais após aprovação não invalidam nem restauram e preservam approvedAt/lastApprovedAt. Cada fluxo obrigatório registra exatamente 1 invalidação e 1 restauração, com timestamps dos comandos reais controlados; prefixos anteriores do histórico preservados. Aprovações repetidas não duplicam eventos nem mudam timestamps."
+    },
+    {
+      "requirement": "Comentários permanecem na versão e na duração de origem",
+      "result": "pass",
+      "evidence": "Vídeo opcional 80s substituído por 12s: comentários de 79,5/80s ficam no antigo; novo só aceita 0/12s. Invalid_second e stale_version preservam o agregado. HTTP confirma comentário na v1 e nenhuma migração à v3."
+    },
+    {
+      "requirement": "Rejeições e isolamento continuam corretos",
+      "result": "pass",
+      "evidence": "125 rejeições de domínio comparadas com snapshots integrais antes/depois. 26 requests HTTP reais verificam as ordens equivalentes, substituição opcional, suspensão obrigatória, obsolescência, comentários e 404 entre entregas; erros preservam todos os agregados monitorados. Cópias retornadas não alteram campanha/versões/histórico."
+    },
+    {
+      "requirement": "API, contrato e limites honestos",
+      "result": "pass",
+      "evidence": "Servidor HTTP é byte-idêntico à publicação; rotas e payloads mantidos. README e nota da correção declaram a nova leitura correta, assets fictícios, armazenamento em memória e ausência de autenticação. Pareceres/capturas antigas estão marcados como históricos; nova revisão humana não é alegada."
     }
   ],
-  "optional_piece_interpretation": "O enunciado simultaneamente diz que peças não exigidas não bloqueiam e que uma versão nova numa peça de entrega já aprovada desfaz a aprovação. O README resolve isso explicitamente: opcional pendente não bloqueia a primeira aprovação, mas alteração/inclusão posterior à concessão precisa revisão. A implementação segue essa leitura de forma uniforme, inclusive alterações durante suspensão; é uma interpretação defensável da regra temporal explícita, sem contradição interna. Nenhum bloqueio de envio por esse ponto.",
   "findings": [],
-  "verdict": "approved",
-  "limits": "Revisão e execução locais, sem persistência/autenticação/deploy, conforme limites declarados da demonstração. Código do desafio não foi editado."
+  "resolved_findings": [
+    {
+      "id": "08-opus-optional-history-blocker",
+      "previous_priority": "P2",
+      "origin": "revisoes/claude-opus55/parecer-subagente-08.json",
+      "status": "fixed_and_independently_verified",
+      "file": "src/domain.js",
+      "line": 58,
+      "related_lines": [
+        60,
+        63,
+        184,
+        202
+      ],
+      "proof": "approvalBlockers agora consulta exclusivamente requiredPieces; reviewRequiredAfterApproval foi removido. Inclusão/substituição/aprovação opcional não cria bloqueio nem evento de invalidação/restauração em nenhuma fase. A contraprova antiga reproduz a divergência e 30 fluxos/15 pares novos confirmam a correção sem enfraquecer as obrigatórias.",
+      "evidence": "revisoes/support/08-a-required-pieces-probes.json"
+    }
+  ],
+  "source_integrity": {
+    "protected_paths": 10,
+    "archive_all_tracked_bytes_unchanged": true,
+    "prior_review_preserved": true,
+    "evidence": "revisoes/support/08-a-required-pieces-integrity.json"
+  },
+  "limits": [
+    "Execução local com assets fictícios e relógio controlado; HTTP real somente em loopback/porta efêmera. Somente o servidor criado nesta sonda foi fechado; nenhum pkill/killall ou processo alheio.",
+    "Não exige persistência, autenticação, upload real, pagamento ou deploy, conforme enunciado e limites explícitos do README.",
+    "PASS se refere ao SHA fixo e às provas próprias. Relatos do implementador/B/coordenador não foram usados como prova da conclusão. Publicação e reavaliação Opus são gates separados."
+  ],
+  "verdict": "pass",
+  "blocking_findings": 0,
+  "repository_mutated_by_reviewer": false,
+  "evidence_artifacts": [
+    "revisoes/08-a-7ab6-anterior.json",
+    "revisoes/support/08-a-required-pieces-tests.txt",
+    "revisoes/support/08-a-required-pieces-probe.mjs",
+    "revisoes/support/08-a-required-pieces-probes.json",
+    "revisoes/support/08-a-required-pieces-integrity.json"
+  ],
+  "reviewed_at": "2026-10-09 21:58:15 UTC"
 }

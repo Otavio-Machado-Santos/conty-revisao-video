@@ -1,0 +1,18 @@
+{
+  "protected_paths": 10,
+  "hashes": {
+    "docs/enunciado.txt": "5868cd636b683acf7e6b8af1ec31b9b62737df7ae91529820f36856ac64597f8",
+    "src/server.js": "25bcc05ce4b1828158627689640b30aa12615d06cf4cb53e4033d59fb2f51497",
+    "package.json": "c0aa69c0b38e9f6466f89da97df563b82e7a2e97e83ee8245112ed39fa39402f",
+    "package-lock.json": "e0955c203410654ac95ef54b4f48bd56d97f8a1b7c7809f6843ca27f30443c77",
+    "docs/demo.mjs": "cf4bed0c50d694d9ec5b6a7940c939a93adb1935def82b964f08113af44a6565",
+    "docs/evidence/flow.gif": "bf52921e1c0bf87df23bb8f836242b828a0f1615dbf082f18535ef6b45872dbe",
+    "docs/evidence/screen.jpg": "00e34063e6dae94b58774499c549ed78bfea5666364d760c35a04d32c6f75813",
+    "docs/evidence/response.jpg": "4bbacf8bbb25a8f55c2a2197af8936165c81bcd1fd8df4b83cfbdb1bc268f843",
+    "docs/evidence/conty-recibo.jpg": "c9c461cccfe50f1b506572eef4e6f7c03a892190377bfabc5d9c9f12ef4b40c3",
+    "docs/evidence/conty-recibo.json": "542dd05e76177d28954e4fc365189181919eb5263adfc2e77434c08a7cb541c2"
+  },
+  "archive_all_tracked_bytes_unchanged": true,
+  "prior_review_preserved": true,
+  "repository_source_mutated_by_reviewer": false
+}

@@ -1,0 +1,74 @@
+{
+  "challenge": "08-revisao-video",
+  "reviewed_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
+  "base_sha": "a8a0bf2ad23fc947e63ad30fff3fa42e7bb4b173",
+  "reviewer": "Codex independent reviewer A (/root/implementar_origem)",
+  "scope": "Correspondência com enunciado: requiredPieces como dados, versão atual aprovada, peças opcionais, substituições, múltiplas alterações suspensas e comentários por segundo/versionId",
+  "runtime": "Node.js v22.23.3",
+  "commands": [
+    {
+      "command": "npm test (PATH Node22)",
+      "exit_code": 0,
+      "result": "22/22 testes passaram, incluindo 15 combinações de requiredPieces, testes de domínio e HTTP real"
+    },
+    {
+      "command": "node /tmp/conty-review-08-a.mjs (Node22)",
+      "exit_code": 0,
+      "result": "5 grupos de probes independentes passaram",
+      "probes": [
+        {
+          "case": "Peças obrigatórias ausentes/pendentes produzem blockers claros; approvedAt forjado no input é ignorado; capa opcional não aprovada não bloqueia aprovação inicial",
+          "passed": true
+        },
+        {
+          "case": "Quatro alterações durante suspensão: vídeo v2, legenda v2, capa v2, vídeo v3; aprovar v1/v2 antigos falha; aprovar só vídeo/legenda não restaura enquanto capa alterada estiver pendente; comentários permanecem na duração e na versão antiga",
+          "passed": true
+        },
+        {
+          "case": "Três ciclos de invalidação/restauração, incluindo inclusão inicial de roteiro opcional após aprovação; aprovações repetidas não duplicam histórico",
+          "passed": true
+        },
+        {
+          "case": "Todas as 15 combinações não vazias de peças obrigatórias aprovam exclusivamente a partir dos dados da campanha, incluindo só vídeo sem roteiro",
+          "passed": true
+        },
+        {
+          "case": "Fluxo HTTP independente com todas as quatro peças, duas substituições simultâneas, rejeição stale_version e comentário isolado da nova versão",
+          "requests": 22,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "command": "git rev-parse HEAD; git status --short; git diff --check <base>...<sha>",
+      "exit_code": 0,
+      "result": "SHA fixo confirmado, árvore limpa, diff sem problemas de whitespace"
+    }
+  ],
+  "source_verified": [
+    {
+      "path": "src/domain.js",
+      "lines": "58-73,125-137",
+      "claim": "requiredPieces é dado imutável da campanha e a política central consulta somente a última versão de cada peça"
+    },
+    {
+      "path": "src/domain.js",
+      "lines": "105-118,184-194,202-213",
+      "claim": "Versão nova não herda approvedAt; aprovação antiga é rejeitada; conjunto de peças alteradas preserva todos os bloqueios durante suspensão e restaura somente após revisão das atuais"
+    },
+    {
+      "path": "src/domain.js",
+      "lines": "217-229",
+      "claim": "Primeira aprovação exige blockers vazio, erros enumeram cada peça; concessão explícita da entrega e repetição idempotente"
+    },
+    {
+      "path": "src/domain.js",
+      "lines": "232-245",
+      "claim": "Comentário guarda versionId e segundos; valida duração da versão apontada, sem migração para a seguinte"
+    }
+  ],
+  "optional_piece_interpretation": "O enunciado simultaneamente diz que peças não exigidas não bloqueiam e que uma versão nova numa peça de entrega já aprovada desfaz a aprovação. O README resolve isso explicitamente: opcional pendente não bloqueia a primeira aprovação, mas alteração/inclusão posterior à concessão precisa revisão. A implementação segue essa leitura de forma uniforme, inclusive alterações durante suspensão; é uma interpretação defensável da regra temporal explícita, sem contradição interna. Nenhum bloqueio de envio por esse ponto.",
+  "findings": [],
+  "verdict": "approved",
+  "limits": "Revisão e execução locais, sem persistência/autenticação/deploy, conforme limites declarados da demonstração. Código do desafio não foi editado."
+}

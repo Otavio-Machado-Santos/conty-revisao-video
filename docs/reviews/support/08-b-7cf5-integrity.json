@@ -1,0 +1,71 @@
+{
+  "reviewed_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+  "publication_base_sha": "b8f0fdc123556fe4c94d0c6791e8394d0ff96154",
+  "prior_code_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
+  "unchanged_files": [
+    {
+      "file": "src/server.js",
+      "old_code_blob": "e15ce07cfb32453ed4ad4c07196241802ef6aacf",
+      "published_base_blob": "e15ce07cfb32453ed4ad4c07196241802ef6aacf",
+      "candidate_blob": "e15ce07cfb32453ed4ad4c07196241802ef6aacf",
+      "candidate_sha256": "25bcc05ce4b1828158627689640b30aa12615d06cf4cb53e4033d59fb2f51497",
+      "identical_three_commits": true,
+      "snapshot_matches_commit": true
+    },
+    {
+      "file": "package.json",
+      "old_code_blob": "0297a928164142e20730b6299fa5d56ba03126c6",
+      "published_base_blob": "0297a928164142e20730b6299fa5d56ba03126c6",
+      "candidate_blob": "0297a928164142e20730b6299fa5d56ba03126c6",
+      "candidate_sha256": "c0aa69c0b38e9f6466f89da97df563b82e7a2e97e83ee8245112ed39fa39402f",
+      "identical_three_commits": true,
+      "snapshot_matches_commit": true
+    },
+    {
+      "file": "package-lock.json",
+      "old_code_blob": "993fad7a8dd55e5a17021968576ac59bfffddd8a",
+      "published_base_blob": "993fad7a8dd55e5a17021968576ac59bfffddd8a",
+      "candidate_blob": "993fad7a8dd55e5a17021968576ac59bfffddd8a",
+      "candidate_sha256": "e0955c203410654ac95ef54b4f48bd56d97f8a1b7c7809f6843ca27f30443c77",
+      "identical_three_commits": true,
+      "snapshot_matches_commit": true
+    },
+    {
+      "file": "docs/demo.mjs",
+      "old_code_blob": "79f337c51696cab231a6820d375a914b2d80be3a",
+      "published_base_blob": "79f337c51696cab231a6820d375a914b2d80be3a",
+      "candidate_blob": "79f337c51696cab231a6820d375a914b2d80be3a",
+      "candidate_sha256": "cf4bed0c50d694d9ec5b6a7940c939a93adb1935def82b964f08113af44a6565",
+      "identical_three_commits": true,
+      "snapshot_matches_commit": true
+    },
+    {
+      "file": "docs/enunciado.txt",
+      "old_code_blob": "e17d5664bd64aa02b06f16973a7d5dd67a3111b0",
+      "published_base_blob": "e17d5664bd64aa02b06f16973a7d5dd67a3111b0",
+      "candidate_blob": "e17d5664bd64aa02b06f16973a7d5dd67a3111b0",
+      "candidate_sha256": "5868cd636b683acf7e6b8af1ec31b9b62737df7ae91529820f36856ac64597f8",
+      "identical_three_commits": true,
+      "snapshot_matches_commit": true
+    }
+  ],
+  "published_domain_identical_prior_code": true,
+  "validation_helpers_literal_unchanged": true,
+  "approve_version_delivery_comments_tail_literal_unchanged": true,
+  "diff_check_exit": 0,
+  "syntax_delta": [
+    {
+      "file": "src/domain.js",
+      "exit_code": 0
+    },
+    {
+      "file": "test/domain.test.js",
+      "exit_code": 0
+    },
+    {
+      "file": "test/http.test.js",
+      "exit_code": 0
+    }
+  ],
+  "scope": "Só bloqueios de opcionais/conjunto histórico e evento de invalidação mudaram no domínio; transporte, validação e cauda de aprovação/comentários imutáveis herdados por escopo explícito."
+}

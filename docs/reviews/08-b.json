@@ -1,110 +1,256 @@
 {
   "challenge": 8,
   "review": "B",
-  "reviewer": "/root/implementar_rastreio (Codex; independente da implementação do desafio 8)",
-  "reviewed_at": "2026-10-09T19:14:14Z",
+  "reviewer": "Codex /root/implementar_metricas; independente do implementador da correção",
+  "reviewed_at": "2026-10-09T21:55:16.318865+00:00",
+  "reviewed_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+  "candidate_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+  "base_sha": "b8f0fdc123556fe4c94d0c6791e8394d0ff96154",
+  "previous_code_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
+  "previous_review": "revisoes/08-b-7ab6-anterior.json",
   "repository": "projetos/conty-revisao-video",
-  "base_sha": "a8a0bf2ad23fc947e63ad30fff3fa42e7bb4b173",
-  "candidate_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
-  "head_unchanged_after_review": true,
-  "working_tree_clean": true,
-  "scope": "Robustez dos inputs, comentários por versão, aprovação atual, invalidação/restauração, idempotência, cópias defensivas e isolamento. Sem edição do candidato.",
+  "scope": "Delta de aprovação de opcionais/obrigatórias, independência da ordem histórica das peças, suspensão/restauração, comentários por versão, erros sem efeitos, isolamento e eventos. Execução exclusiva em git archive fixo. Não foi usada a árvore de trabalho modificada como fonte da execução.",
   "sources_read": [
-    "docs/enunciado.txt", "README.md", "package.json", "src/domain.js", "src/server.js",
-    "test/domain.test.js", "test/http.test.js"
+    "docs/enunciado.txt",
+    "README.md",
+    "src/domain.js",
+    "src/server.js",
+    "package.json",
+    "test/domain.test.js",
+    "test/http.test.js",
+    "docs/correcao-pecas-opcionais.md",
+    "docs/verificacao-final.md",
+    "revisoes/claude-opus55/parecer-subagente-08.json",
+    "revisoes/08-b-7ab6-anterior.json",
+    "diff b8f0fdc...7cf5c63"
   ],
   "environment": {
     "runtime": "Node.js v22.23.3",
-    "network": "HTTP real em servidor de loopback com porta efêmera; sem rede externa",
-    "candidate_modifications": "Nenhuma; probes e relatórios gravados somente na pasta de coordenação revisoes."
+    "network": "HTTP real em loopback, porta efêmera; nenhuma rede externa",
+    "candidate_modifications": "Nenhuma edição de source, testes ou docs do implementador, mídia ou progresso; artefatos próprios somente em revisoes/support.",
+    "cleanup": "Servidor próprio fechado por server.close; nenhum pkill/killall nem processo alheio tocado."
   },
-  "checks": [
+  "commands": [
     {
-      "command": "npm test",
-      "cwd": "projetos/conty-revisao-video",
+      "command": "git archive 7cf5c6343987f501f45f760984dbc2e126adb06e; git diff --check b8f0fdc...7cf5c63 e leitura do delta",
       "exit_code": 0,
-      "result": "22/22 testes passaram, sem falhas, skips ou cancelamentos."
+      "result": "Candidato fixo conferido; retirada do conjunto histórico de opcionais e invalidação condicionada à mudança real de status; diff sem whitespace errors.",
+      "evidence": "revisoes/support/08-b-7cf5-integrity.json"
     },
     {
-      "command": "node --test revisoes/08-b-probes.mjs",
-      "cwd": ".",
+      "command": "npm test com Node22 no archive isolado",
       "exit_code": 0,
-      "evidence": "revisoes/08-b-probes.txt",
-      "result": "5/5 probes independentes passaram. Todas as 15 políticas foram exercitadas em 12 ciclos cada (180 ciclos), com múltiplas peças substituídas, versões obsoletas e restauração. Também foram verificados comentários fracionários, cópias defensivas, isolamento, clock inválido, 16 aprovações HTTP concorrentes e limite de corpo chunked."
+      "result": "27/27 testes passaram, sem falhas, skips ou cancelamentos.",
+      "evidence": "revisoes/support/08-b-7cf5-tests.txt; revisoes/support/08-b-7cf5-tests.json"
     },
     {
-      "command": "git diff --check",
-      "cwd": "projetos/conty-revisao-video",
+      "command": "node revisoes/support/08-b-7cf5-probes.mjs <archive fixo> revisoes/support/08-b-7cf5-probes.json",
       "exit_code": 0,
-      "result": "Sem erros de whitespace."
+      "result": "95 requests HTTP reais, 4 grupos próprios e 14 erros sem mutação de agregado/contador de IDs; oracle independente da função approvalBlockers em todas as leituras; pares com mesma aprovação e história diferente, três obrigatórias, opcionais e comentários por versão.",
+      "evidence": "revisoes/support/08-b-7cf5-probes.json"
     },
     {
-      "command": "git rev-parse HEAD && git status --short",
-      "cwd": "projetos/conty-revisao-video",
+      "command": "Hashes de arquivos imutáveis entre código7ab6/publicaçãob8f/candidato7cf5; comparação de regiões literais do domínio; node --check dos 3 JS alterados",
       "exit_code": 0,
-      "result": "Candidato fixado permanece no HEAD com árvore limpa."
+      "result": "5 arquivos inteiros iguais nos três commits; helpers de validação e cauda de aprovações/comentários literalmente iguais. Domínio original da publicação é igual ao código7ab6. Sintaxe do delta passou.",
+      "evidence": "revisoes/support/08-b-7cf5-integrity.json"
+    }
+  ],
+  "own_probes": [
+    {
+      "name": "same_piece_state_different_history",
+      "policies": [
+        "video"
+      ],
+      "optional_inclusion_and_replacement": [
+        "script",
+        "cover",
+        "caption"
+      ],
+      "equivalent_current_approval": true,
+      "false_invalidation_events": 0,
+      "false_restoration_events": 0,
+      "timestamps_preserved": true
+    },
+    {
+      "name": "delivery_isolation_and_defensive_copies",
+      "foreign_version_rejected": true,
+      "other_delivery_unchanged": true,
+      "campaign_immutable": true
+    },
+    {
+      "name": "multiple_required_versions_during_suspension",
+      "required": [
+        "video",
+        "caption",
+        "cover"
+      ],
+      "version_numbers_video": [
+        1,
+        2,
+        3
+      ],
+      "stale_rejections": 3,
+      "invalidations": 1,
+      "restorations": 1,
+      "optional_did_not_restore": true
+    },
+    {
+      "name": "optional_video_comments_and_timestamps",
+      "old_duration": 17.25,
+      "new_duration": 0.25,
+      "old_comments": 2,
+      "new_comments": 1,
+      "version_references_and_created_at_match": true,
+      "no_false_approval_events": true
     }
   ],
   "requirements_verified": [
     {
-      "requirement": "A lista de peças obrigatórias é dado da campanha e aprovação pendente retorna blockers claros.",
+      "requirement": "A campanha define as exigências e opcionais não bloqueiam em nenhum momento.",
       "result": "pass",
-      "evidence": "src/domain.js:58-74 e 217-229; suíte e probes cobrem todas as 15 combinações não vazias."
+      "evidence": "Leitura da política central e oracle próprio por campaign.requiredPieces/currentVersion; HTTP com optional script/cover/caption antes/depois da aprovação, primeira inclusão/substituição/aprovação. Mesmo estado atual das peças produziu mesma decisão nas duas ordens históricas."
     },
     {
-      "requirement": "Campanha só de vídeo não exige roteiro, capa ou legenda; opcionais pendentes não bloqueiam a primeira aprovação.",
+      "requirement": "Nova versão obrigatória de entrega aprovada suspende até todas as atuais serem aprovadas.",
       "result": "pass",
-      "evidence": "Suíte de vídeo-only e opcional pendente; probe inicia todas as peças, aprovando apenas as exigidas antes da primeira aprovação."
+      "evidence": "HTTP com video/caption/cover exigidos: vídeo trocado duas vezes e legenda uma, opcional enviado/revisado na suspensão; blockers somente atuais video/caption. Aprovação parcial não restaurou; última atual obrigatória restaurou exatamente uma vez."
     },
     {
-      "requirement": "Versão atual substitui a anterior na regra de aprovação e uma substituição invalida a entrega aprovada.",
+      "requirement": "Versão obsoleta não pode ser aprovada e rejeições não alteram estado ou IDs.",
       "result": "pass",
-      "evidence": "src/domain.js:173-215; 180 ciclos com duas peças alteradas por ciclo confirmam production até todas as revisões necessárias."
+      "evidence": "14 rejeições próprias, incluindo antigas obrigatórias/opcionais, referências cruzadas de entrega, aprovação da entrega bloqueada e comentário inválido; snapshots e contador de IDs integralmente iguais antes/depois."
     },
     {
-      "requirement": "Aprovar versão obsoleta falha sem alterar histórico; retry de aprovação é idempotente.",
+      "requirement": "Comentários permanecem na versão e usam a duração/horário daquela versão.",
       "result": "pass",
-      "evidence": "src/domain.js:105-113, 202-229; probes comparam snapshot antes/depois do erro stale_version e de retries, incluindo 16 chamadas simultâneas HTTP."
+      "evidence": "Vídeo opcional17.25s substituído por0.25s: comentário15.875 e endpoint17.25 ficaram na versão antiga; endpoint0.25 ficou na nova. second15.875 na nova e comentário em script recusados. versionId/createdAt exactos e timelines preservados."
     },
     {
-      "requirement": "Comentário mantém versionId e é validado pela duração da versão de origem, inclusive antiga.",
+      "requirement": "Eventos e timestamps representam mudanças reais de aprovação.",
       "result": "pass",
-      "evidence": "src/domain.js:232-245; vídeos de 22.75 s e 0.25 s, limite inclusivo, frações, fora do intervalo e tipos inválidos. Comentários antigos não migraram."
+      "evidence": "Opcionais geraram zero invalidations/restorations e não mudaram approvedAt/lastApprovedAt. Duas mudanças obrigatórias na mesma suspensão geraram uma invalidação e uma restauração final; retries de aprovação não repetiram eventos."
     },
     {
-      "requirement": "Campanhas, entregas, peças e versões são isoladas e respostas não expõem estado mutável.",
+      "requirement": "Campanhas/entregas/peças/versões e DTOs permanecem isolados.",
       "result": "pass",
-      "evidence": "src/domain.js:93-113, 158-170 e 198-199; probes rejeitam referências cruzadas e tentativas de alterar comments, history, requiredPieces e currentVersionIds via cópias."
+      "evidence": "Versão de outra entrega retorna404 sem alterar nenhuma entrega; mudanças em cópias de requiredPieces/pieces/history não alteraram o serviço/campanha."
     },
     {
-      "requirement": "Entradas e paths inválidos não geram versões/aprovações nem falhas internas desnecessárias.",
+      "requirement": "Nota IA e limites honestos, sem aproveitar aprovações antigas como prova da correção.",
       "result": "pass",
-      "evidence": "Probes HTTP com escalares/arrays, requiredPieces inválido, __proto__, encoding malformado, id com slash codificado e corpo chunked acima de 64 KiB."
-    },
-    {
-      "requirement": "Clock inválido é recusado antes de mutar versões, aprovações ou comentários.",
-      "result": "pass",
-      "evidence": "Probe mantém snapshot idêntico após falha nas três operações."
+      "evidence": "README identifica o P2 real de Claude Opus e a autoria Codex, separa revisões/capturas históricas das novas ainda pendentes, declara memória sem persistência, sem autenticação/upload real/pagamento."
     }
   ],
+  "source_integrity": {
+    "reviewed_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+    "publication_base_sha": "b8f0fdc123556fe4c94d0c6791e8394d0ff96154",
+    "prior_code_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
+    "unchanged_files": [
+      {
+        "file": "src/server.js",
+        "old_code_blob": "e15ce07cfb32453ed4ad4c07196241802ef6aacf",
+        "published_base_blob": "e15ce07cfb32453ed4ad4c07196241802ef6aacf",
+        "candidate_blob": "e15ce07cfb32453ed4ad4c07196241802ef6aacf",
+        "candidate_sha256": "25bcc05ce4b1828158627689640b30aa12615d06cf4cb53e4033d59fb2f51497",
+        "identical_three_commits": true,
+        "snapshot_matches_commit": true
+      },
+      {
+        "file": "package.json",
+        "old_code_blob": "0297a928164142e20730b6299fa5d56ba03126c6",
+        "published_base_blob": "0297a928164142e20730b6299fa5d56ba03126c6",
+        "candidate_blob": "0297a928164142e20730b6299fa5d56ba03126c6",
+        "candidate_sha256": "c0aa69c0b38e9f6466f89da97df563b82e7a2e97e83ee8245112ed39fa39402f",
+        "identical_three_commits": true,
+        "snapshot_matches_commit": true
+      },
+      {
+        "file": "package-lock.json",
+        "old_code_blob": "993fad7a8dd55e5a17021968576ac59bfffddd8a",
+        "published_base_blob": "993fad7a8dd55e5a17021968576ac59bfffddd8a",
+        "candidate_blob": "993fad7a8dd55e5a17021968576ac59bfffddd8a",
+        "candidate_sha256": "e0955c203410654ac95ef54b4f48bd56d97f8a1b7c7809f6843ca27f30443c77",
+        "identical_three_commits": true,
+        "snapshot_matches_commit": true
+      },
+      {
+        "file": "docs/demo.mjs",
+        "old_code_blob": "79f337c51696cab231a6820d375a914b2d80be3a",
+        "published_base_blob": "79f337c51696cab231a6820d375a914b2d80be3a",
+        "candidate_blob": "79f337c51696cab231a6820d375a914b2d80be3a",
+        "candidate_sha256": "cf4bed0c50d694d9ec5b6a7940c939a93adb1935def82b964f08113af44a6565",
+        "identical_three_commits": true,
+        "snapshot_matches_commit": true
+      },
+      {
+        "file": "docs/enunciado.txt",
+        "old_code_blob": "e17d5664bd64aa02b06f16973a7d5dd67a3111b0",
+        "published_base_blob": "e17d5664bd64aa02b06f16973a7d5dd67a3111b0",
+        "candidate_blob": "e17d5664bd64aa02b06f16973a7d5dd67a3111b0",
+        "candidate_sha256": "5868cd636b683acf7e6b8af1ec31b9b62737df7ae91529820f36856ac64597f8",
+        "identical_three_commits": true,
+        "snapshot_matches_commit": true
+      }
+    ],
+    "published_domain_identical_prior_code": true,
+    "validation_helpers_literal_unchanged": true,
+    "approve_version_delivery_comments_tail_literal_unchanged": true,
+    "diff_check_exit": 0,
+    "syntax_delta": [
+      {
+        "file": "src/domain.js",
+        "exit_code": 0
+      },
+      {
+        "file": "test/domain.test.js",
+        "exit_code": 0
+      },
+      {
+        "file": "test/http.test.js",
+        "exit_code": 0
+      }
+    ],
+    "scope": "Só bloqueios de opcionais/conjunto histórico e evento de invalidação mudaram no domínio; transporte, validação e cauda de aprovação/comentários imutáveis herdados por escopo explícito."
+  },
+  "inherited_evidence": {
+    "from_code_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
+    "report": "revisoes/08-b-7ab6-anterior.json",
+    "scope": "Transporte HTTP e validação geral imutáveis; clock/approveVersion/approveDelivery/addComment continuam literais na cauda do domínio. Provas anteriores de erros gerais de corpo/rotas não foram repetidas em nova matriz por rotina. Comentários, aprovação, idempotência e isolamento relevantes à política alterada foram reexecutados no fluxo próprio atual.",
+    "not_inherited": "O parecer anterior aprovou a interpretação de opcionais como sugestão P3. Essa interpretação foi rejeitada pelo P2 real do Opus e não foi usada como base para liberar o novo candidato."
+  },
+  "resolutions": [
+    {
+      "id": "08-opus-optional-history-blocker",
+      "status": "resolved",
+      "origin": "revisoes/claude-opus55/parecer-subagente-08.json; P2 src/domain.js:66/192 do código anterior",
+      "source": "src/domain.js:58-66,139-141,180-186; README.md:67-71",
+      "evidence": "approvalBlockers percorre somente campaign.requiredPieces, sem conjunto histórico de opcionais. Mesma configuração atual de peças aprovou igual nos pares antes/depois da primeira aprovação; opcionais jamais suspenderam nem geraram eventos falsos. Obrigatórias novas continuam suspendendo até a aprovação de todas as atuais. As duas cláusulas foram comprovadas juntas por HTTP."
+    }
+  ],
+  "review_axes": {
+    "Standards": {
+      "reviewer": "standards_delta09; leitura independente do delta fixo, integrada às sondagens próprias B",
+      "verdict": "pass",
+      "blocking_findings": 0,
+      "report": "Nenhuma infração documentada de Node22/ESM/ausência de dependências e nenhum smell relevante. O conjunto histórico foi removido sem referência residual; invalidação condicionada a mudança real de status. Cópias defensivas, clock, stale_version e comentários preservaram seus caminhos; testes e nota IA descrevem a nova política sem reaproveitar aprovações históricas."
+    },
+    "Spec": {
+      "reviewer": "spec_delta09; leitura independente do delta fixo, integrada às sondagens próprias B",
+      "verdict": "pass",
+      "blocking_findings": 0,
+      "report": "As cláusulas do contrato valem juntas: opcionais nunca bloqueiam; aprovação e suspensão referem-se às versões atuais exigidas pela campanha. Inclusão/substituição opcionais preservam aprovação; múltiplas obrigatórias exigem todas as atuais. Eventos refletem transição real. Nenhum requisito ausente, comportamento contratual errado ou ampliação indevida no delta."
+    }
+  },
   "findings": [],
-  "suggestions": [
-    {
-      "kind": "contract_interpretation",
-      "priority": "P3",
-      "blocking": false,
-      "file": "src/domain.js",
-      "line": 66,
-      "title": "Registrar a interpretação de peça opcional após aprovação",
-      "observation": "A implementação deixa opcionais pendentes livres antes da primeira aprovação, mas uma nova versão opcional após ela suspende e bloqueia a entrega até revisão. A regra está documentada e testada. O texto contém tanto 'peça que a campanha não pediu não bloqueia' quanto 'uma peça de uma entrega já aprovada recebe versão nova ... deixa de estar aprovada'. A opção escolhida segue a segunda regra como exceção posterior; não foi classificada como erro inequívoco nesta revisão de robustez.",
-      "reproduction": "Campanha requiredPieces=['video']; enviar/aprovar video e aprovar entrega; adicionar cover; getDelivery retorna production e blocker replacement_unapproved até aprovar cover.",
-      "recommendation": "Manter essa decisão explícita na nota ao avaliador e na revisão de requisitos; evita apresentar a exceção como se fosse uma conclusão sem ambiguidade."
-    }
-  ],
+  "suggestions": [],
   "limits": [
-    "A persistência, autenticação, upload real e metadados reais de duração não foram validados; são limites documentados da demonstração em memória.",
-    "npm run demo não foi repetido, pois grava evidência rastreada no candidato; os probes próprios fizeram HTTP real sem editar esse arquivo."
+    "Demo em memória: estado se perde ao reiniciar; sem persistência/auth/upload real/duração descoberta/pagamento. Nenhum desses itens fora do contrato foi exigido para aprovação.",
+    "Dados fictícios e HTTP local com relógio controlado; nenhum serviço externo, mídia ou ambiente publicado foi validado.",
+    "Não executei npm run demo, que grava evidência do implementador; os probes próprios exercitaram HTTP real e gravaram somente em revisoes/support.",
+    "Este parecer aprova o SHA de código fixo acima; republicação, nova captura e nova revisão externa de Opus pertencem ao fluxo do coordenador."
   ],
-  "verdict": "approved",
-  "summary": "Nenhum bloqueador reproduzível de robustez identificado no candidato. Há uma nota não bloqueadora de interpretação contratual sobre versões opcionais posteriores à primeira aprovação."
+  "verdict": "pass",
+  "publication_performed": false,
+  "summary": "Sem P0/P1/P2 pendentes. P2 real de opcionais/história resolvido com provas próprias das duas cláusulas. Código candidato e seus testes/docs não editados; anterior preservado; nenhum push ou envio à Conty."
 }

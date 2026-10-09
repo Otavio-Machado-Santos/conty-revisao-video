@@ -1,0 +1,6232 @@
+{
+  "reviewed_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+  "requests": [
+    {
+      "at": "2026-10-09T20:00:00.000Z",
+      "path": "/campaigns",
+      "method": "POST",
+      "payload": {
+        "requiredPieces": [
+          "video"
+        ]
+      },
+      "status": 201,
+      "response": {
+        "id": "campaign-1",
+        "requiredPieces": [
+          "video"
+        ],
+        "createdAt": "2026-10-09T20:00:00.000Z"
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:00.000Z",
+      "path": "/deliveries",
+      "method": "POST",
+      "payload": {
+        "campaignId": "campaign-1"
+      },
+      "status": 201,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": null,
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "video",
+            "reason": "required_piece_missing"
+          }
+        ],
+        "pieces": {
+          "script": [],
+          "video": [],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": null,
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:01.000Z",
+      "path": "/deliveries/delivery-2/pieces/script/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "same-content-script"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-4",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-script"
+        },
+        "createdAt": "2026-10-09T20:00:01.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:02.000Z",
+      "path": "/deliveries/delivery-2/pieces/cover/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "same-content-cover"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-6",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-cover"
+        },
+        "createdAt": "2026-10-09T20:00:02.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:03.000Z",
+      "path": "/deliveries/delivery-2/pieces/caption/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "same-content-caption"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-8",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-caption"
+        },
+        "createdAt": "2026-10-09T20:00:03.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:04.000Z",
+      "path": "/deliveries/delivery-2/pieces/video/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "file",
+          "value": "same-content-video"
+        },
+        "durationSeconds": 12.5
+      },
+      "status": 201,
+      "response": {
+        "id": "version-10",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "same-content-video"
+        },
+        "createdAt": "2026-10-09T20:00:04.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 12.5
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:05.000Z",
+      "path": "/deliveries/delivery-2/pieces/video/versions/version-10/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-10",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "same-content-video"
+        },
+        "createdAt": "2026-10-09T20:00:04.000Z",
+        "approvedAt": "2026-10-09T20:00:05.000Z",
+        "comments": [],
+        "durationSeconds": 12.5
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:06.000Z",
+      "path": "/deliveries/delivery-2/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:01.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-10",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:04.000Z",
+              "approvedAt": "2026-10-09T20:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:02.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-8",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-4",
+          "video": "version-10",
+          "cover": "version-6",
+          "caption": "version-8"
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:01.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:02.000Z",
+            "piece": "cover",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:03.000Z",
+            "piece": "caption",
+            "versionId": "version-8"
+          },
+          {
+            "id": "event-11",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-12",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-13",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:06.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:06.000Z",
+      "path": "/deliveries/delivery-2",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:01.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-10",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:04.000Z",
+              "approvedAt": "2026-10-09T20:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:02.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-8",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-4",
+          "video": "version-10",
+          "cover": "version-6",
+          "caption": "version-8"
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:01.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:02.000Z",
+            "piece": "cover",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:03.000Z",
+            "piece": "caption",
+            "versionId": "version-8"
+          },
+          {
+            "id": "event-11",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-12",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-13",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:06.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:07.000Z",
+      "path": "/deliveries/delivery-2/pieces/script/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "replacement-script"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-14",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-script"
+        },
+        "createdAt": "2026-10-09T20:00:07.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:07.000Z",
+      "path": "/deliveries/delivery-2",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:01.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-14",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:07.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-10",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:04.000Z",
+              "approvedAt": "2026-10-09T20:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:02.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-8",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-14",
+          "video": "version-10",
+          "cover": "version-6",
+          "caption": "version-8"
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:01.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:02.000Z",
+            "piece": "cover",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:03.000Z",
+            "piece": "caption",
+            "versionId": "version-8"
+          },
+          {
+            "id": "event-11",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-12",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-13",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:06.000Z"
+          },
+          {
+            "id": "event-15",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:07.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:08.000Z",
+      "path": "/deliveries/delivery-2/pieces/script/versions/version-4/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-14"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:09.000Z",
+      "path": "/deliveries/delivery-2/pieces/script/versions/version-14/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-14",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-script"
+        },
+        "createdAt": "2026-10-09T20:00:07.000Z",
+        "approvedAt": "2026-10-09T20:00:09.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:09.000Z",
+      "path": "/deliveries/delivery-2",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:01.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-14",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:07.000Z",
+              "approvedAt": "2026-10-09T20:00:09.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-10",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:04.000Z",
+              "approvedAt": "2026-10-09T20:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:02.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-8",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-14",
+          "video": "version-10",
+          "cover": "version-6",
+          "caption": "version-8"
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:01.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:02.000Z",
+            "piece": "cover",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:03.000Z",
+            "piece": "caption",
+            "versionId": "version-8"
+          },
+          {
+            "id": "event-11",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-12",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-13",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:06.000Z"
+          },
+          {
+            "id": "event-15",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:07.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-16",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:09.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:10.000Z",
+      "path": "/deliveries/delivery-2/pieces/cover/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "replacement-cover"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-17",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-cover"
+        },
+        "createdAt": "2026-10-09T20:00:10.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:10.000Z",
+      "path": "/deliveries/delivery-2",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:01.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-14",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:07.000Z",
+              "approvedAt": "2026-10-09T20:00:09.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-10",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:04.000Z",
+              "approvedAt": "2026-10-09T20:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:02.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-17",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:10.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-8",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-14",
+          "video": "version-10",
+          "cover": "version-17",
+          "caption": "version-8"
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:01.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:02.000Z",
+            "piece": "cover",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:03.000Z",
+            "piece": "caption",
+            "versionId": "version-8"
+          },
+          {
+            "id": "event-11",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-12",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-13",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:06.000Z"
+          },
+          {
+            "id": "event-15",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:07.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-16",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:09.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-18",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:10.000Z",
+            "piece": "cover",
+            "versionId": "version-17"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:11.000Z",
+      "path": "/deliveries/delivery-2/pieces/cover/versions/version-6/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-17"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:12.000Z",
+      "path": "/deliveries/delivery-2/pieces/cover/versions/version-17/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-17",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-cover"
+        },
+        "createdAt": "2026-10-09T20:00:10.000Z",
+        "approvedAt": "2026-10-09T20:00:12.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:12.000Z",
+      "path": "/deliveries/delivery-2",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:01.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-14",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:07.000Z",
+              "approvedAt": "2026-10-09T20:00:09.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-10",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:04.000Z",
+              "approvedAt": "2026-10-09T20:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:02.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-17",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:10.000Z",
+              "approvedAt": "2026-10-09T20:00:12.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-8",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-14",
+          "video": "version-10",
+          "cover": "version-17",
+          "caption": "version-8"
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:01.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:02.000Z",
+            "piece": "cover",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:03.000Z",
+            "piece": "caption",
+            "versionId": "version-8"
+          },
+          {
+            "id": "event-11",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-12",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-13",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:06.000Z"
+          },
+          {
+            "id": "event-15",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:07.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-16",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:09.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-18",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:10.000Z",
+            "piece": "cover",
+            "versionId": "version-17"
+          },
+          {
+            "id": "event-19",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:12.000Z",
+            "piece": "cover",
+            "versionId": "version-17"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:13.000Z",
+      "path": "/deliveries/delivery-2/pieces/caption/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "replacement-caption"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-20",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-caption"
+        },
+        "createdAt": "2026-10-09T20:00:13.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:13.000Z",
+      "path": "/deliveries/delivery-2",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:01.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-14",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:07.000Z",
+              "approvedAt": "2026-10-09T20:00:09.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-10",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:04.000Z",
+              "approvedAt": "2026-10-09T20:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:02.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-17",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:10.000Z",
+              "approvedAt": "2026-10-09T20:00:12.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-8",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-20",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-caption"
+              },
+              "createdAt": "2026-10-09T20:00:13.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-14",
+          "video": "version-10",
+          "cover": "version-17",
+          "caption": "version-20"
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:01.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:02.000Z",
+            "piece": "cover",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:03.000Z",
+            "piece": "caption",
+            "versionId": "version-8"
+          },
+          {
+            "id": "event-11",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-12",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-13",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:06.000Z"
+          },
+          {
+            "id": "event-15",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:07.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-16",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:09.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-18",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:10.000Z",
+            "piece": "cover",
+            "versionId": "version-17"
+          },
+          {
+            "id": "event-19",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:12.000Z",
+            "piece": "cover",
+            "versionId": "version-17"
+          },
+          {
+            "id": "event-21",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:13.000Z",
+            "piece": "caption",
+            "versionId": "version-20"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:14.000Z",
+      "path": "/deliveries/delivery-2/pieces/caption/versions/version-8/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-20"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:15.000Z",
+      "path": "/deliveries/delivery-2/pieces/caption/versions/version-20/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-20",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-caption"
+        },
+        "createdAt": "2026-10-09T20:00:13.000Z",
+        "approvedAt": "2026-10-09T20:00:15.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:15.000Z",
+      "path": "/deliveries/delivery-2",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:01.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-14",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:07.000Z",
+              "approvedAt": "2026-10-09T20:00:09.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-10",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:04.000Z",
+              "approvedAt": "2026-10-09T20:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:02.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-17",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:10.000Z",
+              "approvedAt": "2026-10-09T20:00:12.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-8",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-20",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-caption"
+              },
+              "createdAt": "2026-10-09T20:00:13.000Z",
+              "approvedAt": "2026-10-09T20:00:15.000Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-14",
+          "video": "version-10",
+          "cover": "version-17",
+          "caption": "version-20"
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:01.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:02.000Z",
+            "piece": "cover",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:03.000Z",
+            "piece": "caption",
+            "versionId": "version-8"
+          },
+          {
+            "id": "event-11",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-12",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-13",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:06.000Z"
+          },
+          {
+            "id": "event-15",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:07.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-16",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:09.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-18",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:10.000Z",
+            "piece": "cover",
+            "versionId": "version-17"
+          },
+          {
+            "id": "event-19",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:12.000Z",
+            "piece": "cover",
+            "versionId": "version-17"
+          },
+          {
+            "id": "event-21",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:13.000Z",
+            "piece": "caption",
+            "versionId": "version-20"
+          },
+          {
+            "id": "event-22",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:15.000Z",
+            "piece": "caption",
+            "versionId": "version-20"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:16.000Z",
+      "path": "/deliveries/delivery-2/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:00.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:01.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-14",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:07.000Z",
+              "approvedAt": "2026-10-09T20:00:09.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-10",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:04.000Z",
+              "approvedAt": "2026-10-09T20:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:02.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-17",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:10.000Z",
+              "approvedAt": "2026-10-09T20:00:12.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-8",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-20",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-caption"
+              },
+              "createdAt": "2026-10-09T20:00:13.000Z",
+              "approvedAt": "2026-10-09T20:00:15.000Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-14",
+          "video": "version-10",
+          "cover": "version-17",
+          "caption": "version-20"
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:00.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:01.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:02.000Z",
+            "piece": "cover",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:03.000Z",
+            "piece": "caption",
+            "versionId": "version-8"
+          },
+          {
+            "id": "event-11",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-12",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-10"
+          },
+          {
+            "id": "event-13",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:06.000Z"
+          },
+          {
+            "id": "event-15",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:07.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-16",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:09.000Z",
+            "piece": "script",
+            "versionId": "version-14"
+          },
+          {
+            "id": "event-18",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:10.000Z",
+            "piece": "cover",
+            "versionId": "version-17"
+          },
+          {
+            "id": "event-19",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:12.000Z",
+            "piece": "cover",
+            "versionId": "version-17"
+          },
+          {
+            "id": "event-21",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:13.000Z",
+            "piece": "caption",
+            "versionId": "version-20"
+          },
+          {
+            "id": "event-22",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:15.000Z",
+            "piece": "caption",
+            "versionId": "version-20"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:16.000Z",
+      "path": "/deliveries",
+      "method": "POST",
+      "payload": {
+        "campaignId": "campaign-1"
+      },
+      "status": 201,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": null,
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "video",
+            "reason": "required_piece_missing"
+          }
+        ],
+        "pieces": {
+          "script": [],
+          "video": [],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": null,
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:17.000Z",
+      "path": "/deliveries/delivery-23/pieces/video/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "file",
+          "value": "same-content-video"
+        },
+        "durationSeconds": 12.5
+      },
+      "status": 201,
+      "response": {
+        "id": "version-25",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "same-content-video"
+        },
+        "createdAt": "2026-10-09T20:00:17.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 12.5
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:18.000Z",
+      "path": "/deliveries/delivery-23/pieces/video/versions/version-25/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-25",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "same-content-video"
+        },
+        "createdAt": "2026-10-09T20:00:17.000Z",
+        "approvedAt": "2026-10-09T20:00:18.000Z",
+        "comments": [],
+        "durationSeconds": 12.5
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:19.000Z",
+      "path": "/deliveries/delivery-23/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:19.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:19.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [],
+          "video": [
+            {
+              "id": "version-25",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:17.000Z",
+              "approvedAt": "2026-10-09T20:00:18.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": "version-25",
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          },
+          {
+            "id": "event-26",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:17.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-27",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:18.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-28",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:19.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:20.000Z",
+      "path": "/deliveries/delivery-23/pieces/script/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "same-content-script"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-29",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-script"
+        },
+        "createdAt": "2026-10-09T20:00:20.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:21.000Z",
+      "path": "/deliveries/delivery-23/pieces/cover/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "same-content-cover"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-31",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-cover"
+        },
+        "createdAt": "2026-10-09T20:00:21.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:22.000Z",
+      "path": "/deliveries/delivery-23/pieces/caption/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "same-content-caption"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-33",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-caption"
+        },
+        "createdAt": "2026-10-09T20:00:22.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:22.000Z",
+      "path": "/deliveries/delivery-23",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:19.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:19.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-29",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:20.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-25",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:17.000Z",
+              "approvedAt": "2026-10-09T20:00:18.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-31",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:21.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:22.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-29",
+          "video": "version-25",
+          "cover": "version-31",
+          "caption": "version-33"
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          },
+          {
+            "id": "event-26",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:17.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-27",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:18.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-28",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:19.000Z"
+          },
+          {
+            "id": "event-30",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:20.000Z",
+            "piece": "script",
+            "versionId": "version-29"
+          },
+          {
+            "id": "event-32",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:21.000Z",
+            "piece": "cover",
+            "versionId": "version-31"
+          },
+          {
+            "id": "event-34",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:22.000Z",
+            "piece": "caption",
+            "versionId": "version-33"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:23.000Z",
+      "path": "/deliveries/delivery-23/pieces/script/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "replacement-script"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-35",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-script"
+        },
+        "createdAt": "2026-10-09T20:00:23.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:23.000Z",
+      "path": "/deliveries/delivery-23",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:19.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:19.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-29",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:20.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-35",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:23.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-25",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:17.000Z",
+              "approvedAt": "2026-10-09T20:00:18.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-31",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:21.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:22.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-35",
+          "video": "version-25",
+          "cover": "version-31",
+          "caption": "version-33"
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          },
+          {
+            "id": "event-26",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:17.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-27",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:18.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-28",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:19.000Z"
+          },
+          {
+            "id": "event-30",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:20.000Z",
+            "piece": "script",
+            "versionId": "version-29"
+          },
+          {
+            "id": "event-32",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:21.000Z",
+            "piece": "cover",
+            "versionId": "version-31"
+          },
+          {
+            "id": "event-34",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:22.000Z",
+            "piece": "caption",
+            "versionId": "version-33"
+          },
+          {
+            "id": "event-36",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:23.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:24.000Z",
+      "path": "/deliveries/delivery-23/pieces/script/versions/version-29/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-35"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:25.000Z",
+      "path": "/deliveries/delivery-23/pieces/script/versions/version-35/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-35",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-script"
+        },
+        "createdAt": "2026-10-09T20:00:23.000Z",
+        "approvedAt": "2026-10-09T20:00:25.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:25.000Z",
+      "path": "/deliveries/delivery-23",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:19.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:19.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-29",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:20.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-35",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:23.000Z",
+              "approvedAt": "2026-10-09T20:00:25.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-25",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:17.000Z",
+              "approvedAt": "2026-10-09T20:00:18.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-31",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:21.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:22.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-35",
+          "video": "version-25",
+          "cover": "version-31",
+          "caption": "version-33"
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          },
+          {
+            "id": "event-26",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:17.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-27",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:18.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-28",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:19.000Z"
+          },
+          {
+            "id": "event-30",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:20.000Z",
+            "piece": "script",
+            "versionId": "version-29"
+          },
+          {
+            "id": "event-32",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:21.000Z",
+            "piece": "cover",
+            "versionId": "version-31"
+          },
+          {
+            "id": "event-34",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:22.000Z",
+            "piece": "caption",
+            "versionId": "version-33"
+          },
+          {
+            "id": "event-36",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:23.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-37",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:25.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:26.000Z",
+      "path": "/deliveries/delivery-23/pieces/cover/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "replacement-cover"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-38",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-cover"
+        },
+        "createdAt": "2026-10-09T20:00:26.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:26.000Z",
+      "path": "/deliveries/delivery-23",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:19.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:19.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-29",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:20.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-35",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:23.000Z",
+              "approvedAt": "2026-10-09T20:00:25.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-25",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:17.000Z",
+              "approvedAt": "2026-10-09T20:00:18.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-31",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:21.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-38",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:26.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:22.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-35",
+          "video": "version-25",
+          "cover": "version-38",
+          "caption": "version-33"
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          },
+          {
+            "id": "event-26",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:17.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-27",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:18.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-28",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:19.000Z"
+          },
+          {
+            "id": "event-30",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:20.000Z",
+            "piece": "script",
+            "versionId": "version-29"
+          },
+          {
+            "id": "event-32",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:21.000Z",
+            "piece": "cover",
+            "versionId": "version-31"
+          },
+          {
+            "id": "event-34",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:22.000Z",
+            "piece": "caption",
+            "versionId": "version-33"
+          },
+          {
+            "id": "event-36",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:23.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-37",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:25.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-39",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:26.000Z",
+            "piece": "cover",
+            "versionId": "version-38"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:27.000Z",
+      "path": "/deliveries/delivery-23/pieces/cover/versions/version-31/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-38"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:28.000Z",
+      "path": "/deliveries/delivery-23/pieces/cover/versions/version-38/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-38",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-cover"
+        },
+        "createdAt": "2026-10-09T20:00:26.000Z",
+        "approvedAt": "2026-10-09T20:00:28.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:28.000Z",
+      "path": "/deliveries/delivery-23",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:19.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:19.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-29",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:20.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-35",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:23.000Z",
+              "approvedAt": "2026-10-09T20:00:25.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-25",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:17.000Z",
+              "approvedAt": "2026-10-09T20:00:18.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-31",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:21.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-38",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:26.000Z",
+              "approvedAt": "2026-10-09T20:00:28.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:22.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-35",
+          "video": "version-25",
+          "cover": "version-38",
+          "caption": "version-33"
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          },
+          {
+            "id": "event-26",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:17.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-27",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:18.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-28",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:19.000Z"
+          },
+          {
+            "id": "event-30",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:20.000Z",
+            "piece": "script",
+            "versionId": "version-29"
+          },
+          {
+            "id": "event-32",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:21.000Z",
+            "piece": "cover",
+            "versionId": "version-31"
+          },
+          {
+            "id": "event-34",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:22.000Z",
+            "piece": "caption",
+            "versionId": "version-33"
+          },
+          {
+            "id": "event-36",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:23.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-37",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:25.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-39",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:26.000Z",
+            "piece": "cover",
+            "versionId": "version-38"
+          },
+          {
+            "id": "event-40",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:28.000Z",
+            "piece": "cover",
+            "versionId": "version-38"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:29.000Z",
+      "path": "/deliveries/delivery-23/pieces/caption/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "replacement-caption"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-41",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-caption"
+        },
+        "createdAt": "2026-10-09T20:00:29.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:29.000Z",
+      "path": "/deliveries/delivery-23",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:19.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:19.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-29",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:20.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-35",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:23.000Z",
+              "approvedAt": "2026-10-09T20:00:25.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-25",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:17.000Z",
+              "approvedAt": "2026-10-09T20:00:18.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-31",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:21.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-38",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:26.000Z",
+              "approvedAt": "2026-10-09T20:00:28.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:22.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-41",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-caption"
+              },
+              "createdAt": "2026-10-09T20:00:29.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-35",
+          "video": "version-25",
+          "cover": "version-38",
+          "caption": "version-41"
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          },
+          {
+            "id": "event-26",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:17.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-27",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:18.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-28",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:19.000Z"
+          },
+          {
+            "id": "event-30",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:20.000Z",
+            "piece": "script",
+            "versionId": "version-29"
+          },
+          {
+            "id": "event-32",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:21.000Z",
+            "piece": "cover",
+            "versionId": "version-31"
+          },
+          {
+            "id": "event-34",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:22.000Z",
+            "piece": "caption",
+            "versionId": "version-33"
+          },
+          {
+            "id": "event-36",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:23.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-37",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:25.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-39",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:26.000Z",
+            "piece": "cover",
+            "versionId": "version-38"
+          },
+          {
+            "id": "event-40",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:28.000Z",
+            "piece": "cover",
+            "versionId": "version-38"
+          },
+          {
+            "id": "event-42",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:29.000Z",
+            "piece": "caption",
+            "versionId": "version-41"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:30.000Z",
+      "path": "/deliveries/delivery-23/pieces/caption/versions/version-33/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-41"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:31.000Z",
+      "path": "/deliveries/delivery-23/pieces/caption/versions/version-41/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-41",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "replacement-caption"
+        },
+        "createdAt": "2026-10-09T20:00:29.000Z",
+        "approvedAt": "2026-10-09T20:00:31.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:31.000Z",
+      "path": "/deliveries/delivery-23",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:19.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:19.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-29",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:20.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-35",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:23.000Z",
+              "approvedAt": "2026-10-09T20:00:25.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-25",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:17.000Z",
+              "approvedAt": "2026-10-09T20:00:18.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-31",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:21.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-38",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:26.000Z",
+              "approvedAt": "2026-10-09T20:00:28.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:22.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-41",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-caption"
+              },
+              "createdAt": "2026-10-09T20:00:29.000Z",
+              "approvedAt": "2026-10-09T20:00:31.000Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-35",
+          "video": "version-25",
+          "cover": "version-38",
+          "caption": "version-41"
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          },
+          {
+            "id": "event-26",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:17.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-27",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:18.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-28",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:19.000Z"
+          },
+          {
+            "id": "event-30",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:20.000Z",
+            "piece": "script",
+            "versionId": "version-29"
+          },
+          {
+            "id": "event-32",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:21.000Z",
+            "piece": "cover",
+            "versionId": "version-31"
+          },
+          {
+            "id": "event-34",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:22.000Z",
+            "piece": "caption",
+            "versionId": "version-33"
+          },
+          {
+            "id": "event-36",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:23.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-37",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:25.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-39",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:26.000Z",
+            "piece": "cover",
+            "versionId": "version-38"
+          },
+          {
+            "id": "event-40",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:28.000Z",
+            "piece": "cover",
+            "versionId": "version-38"
+          },
+          {
+            "id": "event-42",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:29.000Z",
+            "piece": "caption",
+            "versionId": "version-41"
+          },
+          {
+            "id": "event-43",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:31.000Z",
+            "piece": "caption",
+            "versionId": "version-41"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:32.000Z",
+      "path": "/deliveries/delivery-23/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "delivery-23",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T20:00:16.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:19.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:19.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-29",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:20.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-35",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-script"
+              },
+              "createdAt": "2026-10-09T20:00:23.000Z",
+              "approvedAt": "2026-10-09T20:00:25.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-25",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:17.000Z",
+              "approvedAt": "2026-10-09T20:00:18.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-31",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:21.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-38",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-cover"
+              },
+              "createdAt": "2026-10-09T20:00:26.000Z",
+              "approvedAt": "2026-10-09T20:00:28.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-33",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:22.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-41",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "replacement-caption"
+              },
+              "createdAt": "2026-10-09T20:00:29.000Z",
+              "approvedAt": "2026-10-09T20:00:31.000Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-35",
+          "video": "version-25",
+          "cover": "version-38",
+          "caption": "version-41"
+        },
+        "history": [
+          {
+            "id": "event-24",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:16.000Z"
+          },
+          {
+            "id": "event-26",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:17.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-27",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:18.000Z",
+            "piece": "video",
+            "versionId": "version-25"
+          },
+          {
+            "id": "event-28",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:19.000Z"
+          },
+          {
+            "id": "event-30",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:20.000Z",
+            "piece": "script",
+            "versionId": "version-29"
+          },
+          {
+            "id": "event-32",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:21.000Z",
+            "piece": "cover",
+            "versionId": "version-31"
+          },
+          {
+            "id": "event-34",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:22.000Z",
+            "piece": "caption",
+            "versionId": "version-33"
+          },
+          {
+            "id": "event-36",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:23.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-37",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:25.000Z",
+            "piece": "script",
+            "versionId": "version-35"
+          },
+          {
+            "id": "event-39",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:26.000Z",
+            "piece": "cover",
+            "versionId": "version-38"
+          },
+          {
+            "id": "event-40",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:28.000Z",
+            "piece": "cover",
+            "versionId": "version-38"
+          },
+          {
+            "id": "event-42",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:29.000Z",
+            "piece": "caption",
+            "versionId": "version-41"
+          },
+          {
+            "id": "event-43",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:31.000Z",
+            "piece": "caption",
+            "versionId": "version-41"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:33.000Z",
+      "path": "/deliveries/delivery-2/pieces/video/versions/version-25/approve",
+      "method": "POST",
+      "status": 404,
+      "response": {
+        "error": {
+          "code": "version_not_found",
+          "message": "Versão não encontrada nesta peça e entrega."
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:33.000Z",
+      "path": "/campaigns",
+      "method": "POST",
+      "payload": {
+        "requiredPieces": [
+          "video",
+          "caption",
+          "cover"
+        ]
+      },
+      "status": 201,
+      "response": {
+        "id": "campaign-44",
+        "requiredPieces": [
+          "video",
+          "caption",
+          "cover"
+        ],
+        "createdAt": "2026-10-09T20:00:33.000Z"
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:33.000Z",
+      "path": "/deliveries",
+      "method": "POST",
+      "payload": {
+        "campaignId": "campaign-44"
+      },
+      "status": 201,
+      "response": {
+        "id": "delivery-45",
+        "campaignId": "campaign-44",
+        "createdAt": "2026-10-09T20:00:33.000Z",
+        "requiredPieces": [
+          "video",
+          "caption",
+          "cover"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": null,
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "video",
+            "reason": "required_piece_missing"
+          },
+          {
+            "piece": "caption",
+            "reason": "required_piece_missing"
+          },
+          {
+            "piece": "cover",
+            "reason": "required_piece_missing"
+          }
+        ],
+        "pieces": {
+          "script": [],
+          "video": [],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": null,
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-46",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:33.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:34.000Z",
+      "path": "/deliveries/delivery-45/pieces/video/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "file",
+          "value": "same-content-video"
+        },
+        "durationSeconds": 12.5
+      },
+      "status": 201,
+      "response": {
+        "id": "version-47",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "same-content-video"
+        },
+        "createdAt": "2026-10-09T20:00:34.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 12.5
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:35.000Z",
+      "path": "/deliveries/delivery-45/pieces/video/versions/version-47/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-47",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "same-content-video"
+        },
+        "createdAt": "2026-10-09T20:00:34.000Z",
+        "approvedAt": "2026-10-09T20:00:35.000Z",
+        "comments": [],
+        "durationSeconds": 12.5
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:36.000Z",
+      "path": "/deliveries/delivery-45/pieces/caption/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "same-content-caption"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-50",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-caption"
+        },
+        "createdAt": "2026-10-09T20:00:36.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:37.000Z",
+      "path": "/deliveries/delivery-45/pieces/caption/versions/version-50/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-50",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-caption"
+        },
+        "createdAt": "2026-10-09T20:00:36.000Z",
+        "approvedAt": "2026-10-09T20:00:37.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:38.000Z",
+      "path": "/deliveries/delivery-45/pieces/cover/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "same-content-cover"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-53",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-cover"
+        },
+        "createdAt": "2026-10-09T20:00:38.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:39.000Z",
+      "path": "/deliveries/delivery-45/pieces/cover/versions/version-53/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-53",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-cover"
+        },
+        "createdAt": "2026-10-09T20:00:38.000Z",
+        "approvedAt": "2026-10-09T20:00:39.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:40.000Z",
+      "path": "/deliveries/delivery-45/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "delivery-45",
+        "campaignId": "campaign-44",
+        "createdAt": "2026-10-09T20:00:33.000Z",
+        "requiredPieces": [
+          "video",
+          "caption",
+          "cover"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:40.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:40.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [],
+          "video": [
+            {
+              "id": "version-47",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:34.000Z",
+              "approvedAt": "2026-10-09T20:00:35.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-53",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:38.000Z",
+              "approvedAt": "2026-10-09T20:00:39.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-50",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:36.000Z",
+              "approvedAt": "2026-10-09T20:00:37.000Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": "version-47",
+          "cover": "version-53",
+          "caption": "version-50"
+        },
+        "history": [
+          {
+            "id": "event-46",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:33.000Z"
+          },
+          {
+            "id": "event-48",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:34.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-49",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:35.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-51",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:36.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-52",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:37.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-54",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:38.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-55",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:39.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-56",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:40.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:41.000Z",
+      "path": "/deliveries/delivery-45/pieces/video/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "file",
+          "value": "short-second-video"
+        },
+        "durationSeconds": 0.625
+      },
+      "status": 201,
+      "response": {
+        "id": "version-57",
+        "number": 2,
+        "asset": {
+          "type": "file",
+          "value": "short-second-video"
+        },
+        "createdAt": "2026-10-09T20:00:41.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 0.625
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:42.000Z",
+      "path": "/deliveries/delivery-45/pieces/caption/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "caption-second-caption"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-60",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "caption-second-caption"
+        },
+        "createdAt": "2026-10-09T20:00:42.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:43.000Z",
+      "path": "/deliveries/delivery-45/pieces/script/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "optional-first-script"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-62",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "optional-first-script"
+        },
+        "createdAt": "2026-10-09T20:00:43.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:44.000Z",
+      "path": "/deliveries/delivery-45/pieces/script/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "optional-second-script"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-64",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "optional-second-script"
+        },
+        "createdAt": "2026-10-09T20:00:44.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:45.000Z",
+      "path": "/deliveries/delivery-45/pieces/video/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "file",
+          "value": "short-third-video"
+        },
+        "durationSeconds": 0.125
+      },
+      "status": 201,
+      "response": {
+        "id": "version-66",
+        "number": 3,
+        "asset": {
+          "type": "file",
+          "value": "short-third-video"
+        },
+        "createdAt": "2026-10-09T20:00:45.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 0.125
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:45.000Z",
+      "path": "/deliveries/delivery-45",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-45",
+        "campaignId": "campaign-44",
+        "createdAt": "2026-10-09T20:00:33.000Z",
+        "requiredPieces": [
+          "video",
+          "caption",
+          "cover"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": "2026-10-09T20:00:40.000Z",
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "video",
+            "reason": "required_version_unapproved",
+            "versionId": "version-66"
+          },
+          {
+            "piece": "caption",
+            "reason": "required_version_unapproved",
+            "versionId": "version-60"
+          }
+        ],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-62",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "optional-first-script"
+              },
+              "createdAt": "2026-10-09T20:00:43.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-64",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "optional-second-script"
+              },
+              "createdAt": "2026-10-09T20:00:44.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-47",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:34.000Z",
+              "approvedAt": "2026-10-09T20:00:35.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            },
+            {
+              "id": "version-57",
+              "number": 2,
+              "asset": {
+                "type": "file",
+                "value": "short-second-video"
+              },
+              "createdAt": "2026-10-09T20:00:41.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 0.625
+            },
+            {
+              "id": "version-66",
+              "number": 3,
+              "asset": {
+                "type": "file",
+                "value": "short-third-video"
+              },
+              "createdAt": "2026-10-09T20:00:45.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 0.125
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-53",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:38.000Z",
+              "approvedAt": "2026-10-09T20:00:39.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-50",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:36.000Z",
+              "approvedAt": "2026-10-09T20:00:37.000Z",
+              "comments": []
+            },
+            {
+              "id": "version-60",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "caption-second-caption"
+              },
+              "createdAt": "2026-10-09T20:00:42.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-64",
+          "video": "version-66",
+          "cover": "version-53",
+          "caption": "version-60"
+        },
+        "history": [
+          {
+            "id": "event-46",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:33.000Z"
+          },
+          {
+            "id": "event-48",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:34.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-49",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:35.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-51",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:36.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-52",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:37.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-54",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:38.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-55",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:39.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-56",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:40.000Z"
+          },
+          {
+            "id": "event-58",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-59",
+            "type": "delivery_approval_invalidated",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-61",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:42.000Z",
+            "piece": "caption",
+            "versionId": "version-60"
+          },
+          {
+            "id": "event-63",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:43.000Z",
+            "piece": "script",
+            "versionId": "version-62"
+          },
+          {
+            "id": "event-65",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:44.000Z",
+            "piece": "script",
+            "versionId": "version-64"
+          },
+          {
+            "id": "event-67",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:45.000Z",
+            "piece": "video",
+            "versionId": "version-66"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:46.000Z",
+      "path": "/deliveries/delivery-45/pieces/video/versions/version-57/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-66"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:47.000Z",
+      "path": "/deliveries/delivery-45/pieces/caption/versions/version-50/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-60"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:48.000Z",
+      "path": "/deliveries/delivery-45/pieces/script/versions/version-62/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-64"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:49.000Z",
+      "path": "/deliveries/delivery-45/pieces/script/versions/version-64/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-64",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "optional-second-script"
+        },
+        "createdAt": "2026-10-09T20:00:44.000Z",
+        "approvedAt": "2026-10-09T20:00:49.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:49.000Z",
+      "path": "/deliveries/delivery-45",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-45",
+        "campaignId": "campaign-44",
+        "createdAt": "2026-10-09T20:00:33.000Z",
+        "requiredPieces": [
+          "video",
+          "caption",
+          "cover"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": "2026-10-09T20:00:40.000Z",
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "video",
+            "reason": "required_version_unapproved",
+            "versionId": "version-66"
+          },
+          {
+            "piece": "caption",
+            "reason": "required_version_unapproved",
+            "versionId": "version-60"
+          }
+        ],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-62",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "optional-first-script"
+              },
+              "createdAt": "2026-10-09T20:00:43.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-64",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "optional-second-script"
+              },
+              "createdAt": "2026-10-09T20:00:44.000Z",
+              "approvedAt": "2026-10-09T20:00:49.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-47",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:34.000Z",
+              "approvedAt": "2026-10-09T20:00:35.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            },
+            {
+              "id": "version-57",
+              "number": 2,
+              "asset": {
+                "type": "file",
+                "value": "short-second-video"
+              },
+              "createdAt": "2026-10-09T20:00:41.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 0.625
+            },
+            {
+              "id": "version-66",
+              "number": 3,
+              "asset": {
+                "type": "file",
+                "value": "short-third-video"
+              },
+              "createdAt": "2026-10-09T20:00:45.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 0.125
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-53",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:38.000Z",
+              "approvedAt": "2026-10-09T20:00:39.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-50",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:36.000Z",
+              "approvedAt": "2026-10-09T20:00:37.000Z",
+              "comments": []
+            },
+            {
+              "id": "version-60",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "caption-second-caption"
+              },
+              "createdAt": "2026-10-09T20:00:42.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-64",
+          "video": "version-66",
+          "cover": "version-53",
+          "caption": "version-60"
+        },
+        "history": [
+          {
+            "id": "event-46",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:33.000Z"
+          },
+          {
+            "id": "event-48",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:34.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-49",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:35.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-51",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:36.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-52",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:37.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-54",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:38.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-55",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:39.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-56",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:40.000Z"
+          },
+          {
+            "id": "event-58",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-59",
+            "type": "delivery_approval_invalidated",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-61",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:42.000Z",
+            "piece": "caption",
+            "versionId": "version-60"
+          },
+          {
+            "id": "event-63",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:43.000Z",
+            "piece": "script",
+            "versionId": "version-62"
+          },
+          {
+            "id": "event-65",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:44.000Z",
+            "piece": "script",
+            "versionId": "version-64"
+          },
+          {
+            "id": "event-67",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:45.000Z",
+            "piece": "video",
+            "versionId": "version-66"
+          },
+          {
+            "id": "event-68",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:49.000Z",
+            "piece": "script",
+            "versionId": "version-64"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:50.000Z",
+      "path": "/deliveries/delivery-45/pieces/video/versions/version-66/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-66",
+        "number": 3,
+        "asset": {
+          "type": "file",
+          "value": "short-third-video"
+        },
+        "createdAt": "2026-10-09T20:00:45.000Z",
+        "approvedAt": "2026-10-09T20:00:50.000Z",
+        "comments": [],
+        "durationSeconds": 0.125
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:50.000Z",
+      "path": "/deliveries/delivery-45",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-45",
+        "campaignId": "campaign-44",
+        "createdAt": "2026-10-09T20:00:33.000Z",
+        "requiredPieces": [
+          "video",
+          "caption",
+          "cover"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": "2026-10-09T20:00:40.000Z",
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "caption",
+            "reason": "required_version_unapproved",
+            "versionId": "version-60"
+          }
+        ],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-62",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "optional-first-script"
+              },
+              "createdAt": "2026-10-09T20:00:43.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-64",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "optional-second-script"
+              },
+              "createdAt": "2026-10-09T20:00:44.000Z",
+              "approvedAt": "2026-10-09T20:00:49.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-47",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:34.000Z",
+              "approvedAt": "2026-10-09T20:00:35.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            },
+            {
+              "id": "version-57",
+              "number": 2,
+              "asset": {
+                "type": "file",
+                "value": "short-second-video"
+              },
+              "createdAt": "2026-10-09T20:00:41.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 0.625
+            },
+            {
+              "id": "version-66",
+              "number": 3,
+              "asset": {
+                "type": "file",
+                "value": "short-third-video"
+              },
+              "createdAt": "2026-10-09T20:00:45.000Z",
+              "approvedAt": "2026-10-09T20:00:50.000Z",
+              "comments": [],
+              "durationSeconds": 0.125
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-53",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:38.000Z",
+              "approvedAt": "2026-10-09T20:00:39.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-50",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:36.000Z",
+              "approvedAt": "2026-10-09T20:00:37.000Z",
+              "comments": []
+            },
+            {
+              "id": "version-60",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "caption-second-caption"
+              },
+              "createdAt": "2026-10-09T20:00:42.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-64",
+          "video": "version-66",
+          "cover": "version-53",
+          "caption": "version-60"
+        },
+        "history": [
+          {
+            "id": "event-46",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:33.000Z"
+          },
+          {
+            "id": "event-48",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:34.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-49",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:35.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-51",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:36.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-52",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:37.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-54",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:38.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-55",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:39.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-56",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:40.000Z"
+          },
+          {
+            "id": "event-58",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-59",
+            "type": "delivery_approval_invalidated",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-61",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:42.000Z",
+            "piece": "caption",
+            "versionId": "version-60"
+          },
+          {
+            "id": "event-63",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:43.000Z",
+            "piece": "script",
+            "versionId": "version-62"
+          },
+          {
+            "id": "event-65",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:44.000Z",
+            "piece": "script",
+            "versionId": "version-64"
+          },
+          {
+            "id": "event-67",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:45.000Z",
+            "piece": "video",
+            "versionId": "version-66"
+          },
+          {
+            "id": "event-68",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:49.000Z",
+            "piece": "script",
+            "versionId": "version-64"
+          },
+          {
+            "id": "event-69",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:50.000Z",
+            "piece": "video",
+            "versionId": "version-66"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:51.000Z",
+      "path": "/deliveries/delivery-45/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "approval_blocked",
+          "message": "Entrega não pode ser aprovada: há peças obrigatórias ausentes ou versões aguardando aprovação.",
+          "details": {
+            "blockers": [
+              {
+                "piece": "caption",
+                "reason": "required_version_unapproved",
+                "versionId": "version-60"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:52.000Z",
+      "path": "/deliveries/delivery-45/pieces/caption/versions/version-60/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-60",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "caption-second-caption"
+        },
+        "createdAt": "2026-10-09T20:00:42.000Z",
+        "approvedAt": "2026-10-09T20:00:52.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:52.000Z",
+      "path": "/deliveries/delivery-45",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-45",
+        "campaignId": "campaign-44",
+        "createdAt": "2026-10-09T20:00:33.000Z",
+        "requiredPieces": [
+          "video",
+          "caption",
+          "cover"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:52.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:52.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-62",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "optional-first-script"
+              },
+              "createdAt": "2026-10-09T20:00:43.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-64",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "optional-second-script"
+              },
+              "createdAt": "2026-10-09T20:00:44.000Z",
+              "approvedAt": "2026-10-09T20:00:49.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-47",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:34.000Z",
+              "approvedAt": "2026-10-09T20:00:35.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            },
+            {
+              "id": "version-57",
+              "number": 2,
+              "asset": {
+                "type": "file",
+                "value": "short-second-video"
+              },
+              "createdAt": "2026-10-09T20:00:41.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 0.625
+            },
+            {
+              "id": "version-66",
+              "number": 3,
+              "asset": {
+                "type": "file",
+                "value": "short-third-video"
+              },
+              "createdAt": "2026-10-09T20:00:45.000Z",
+              "approvedAt": "2026-10-09T20:00:50.000Z",
+              "comments": [],
+              "durationSeconds": 0.125
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-53",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:38.000Z",
+              "approvedAt": "2026-10-09T20:00:39.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-50",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:36.000Z",
+              "approvedAt": "2026-10-09T20:00:37.000Z",
+              "comments": []
+            },
+            {
+              "id": "version-60",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "caption-second-caption"
+              },
+              "createdAt": "2026-10-09T20:00:42.000Z",
+              "approvedAt": "2026-10-09T20:00:52.000Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-64",
+          "video": "version-66",
+          "cover": "version-53",
+          "caption": "version-60"
+        },
+        "history": [
+          {
+            "id": "event-46",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:33.000Z"
+          },
+          {
+            "id": "event-48",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:34.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-49",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:35.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-51",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:36.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-52",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:37.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-54",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:38.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-55",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:39.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-56",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:40.000Z"
+          },
+          {
+            "id": "event-58",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-59",
+            "type": "delivery_approval_invalidated",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-61",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:42.000Z",
+            "piece": "caption",
+            "versionId": "version-60"
+          },
+          {
+            "id": "event-63",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:43.000Z",
+            "piece": "script",
+            "versionId": "version-62"
+          },
+          {
+            "id": "event-65",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:44.000Z",
+            "piece": "script",
+            "versionId": "version-64"
+          },
+          {
+            "id": "event-67",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:45.000Z",
+            "piece": "video",
+            "versionId": "version-66"
+          },
+          {
+            "id": "event-68",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:49.000Z",
+            "piece": "script",
+            "versionId": "version-64"
+          },
+          {
+            "id": "event-69",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:50.000Z",
+            "piece": "video",
+            "versionId": "version-66"
+          },
+          {
+            "id": "event-70",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:52.000Z",
+            "piece": "caption",
+            "versionId": "version-60"
+          },
+          {
+            "id": "event-71",
+            "type": "delivery_approval_restored",
+            "at": "2026-10-09T20:00:52.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:53.000Z",
+      "path": "/deliveries/delivery-45/pieces/caption/versions/version-60/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-60",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "caption-second-caption"
+        },
+        "createdAt": "2026-10-09T20:00:42.000Z",
+        "approvedAt": "2026-10-09T20:00:52.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:54.000Z",
+      "path": "/deliveries/delivery-45/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "delivery-45",
+        "campaignId": "campaign-44",
+        "createdAt": "2026-10-09T20:00:33.000Z",
+        "requiredPieces": [
+          "video",
+          "caption",
+          "cover"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:52.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:52.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-62",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "optional-first-script"
+              },
+              "createdAt": "2026-10-09T20:00:43.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-64",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "optional-second-script"
+              },
+              "createdAt": "2026-10-09T20:00:44.000Z",
+              "approvedAt": "2026-10-09T20:00:49.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-47",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "same-content-video"
+              },
+              "createdAt": "2026-10-09T20:00:34.000Z",
+              "approvedAt": "2026-10-09T20:00:35.000Z",
+              "comments": [],
+              "durationSeconds": 12.5
+            },
+            {
+              "id": "version-57",
+              "number": 2,
+              "asset": {
+                "type": "file",
+                "value": "short-second-video"
+              },
+              "createdAt": "2026-10-09T20:00:41.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 0.625
+            },
+            {
+              "id": "version-66",
+              "number": 3,
+              "asset": {
+                "type": "file",
+                "value": "short-third-video"
+              },
+              "createdAt": "2026-10-09T20:00:45.000Z",
+              "approvedAt": "2026-10-09T20:00:50.000Z",
+              "comments": [],
+              "durationSeconds": 0.125
+            }
+          ],
+          "cover": [
+            {
+              "id": "version-53",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-cover"
+              },
+              "createdAt": "2026-10-09T20:00:38.000Z",
+              "approvedAt": "2026-10-09T20:00:39.000Z",
+              "comments": []
+            }
+          ],
+          "caption": [
+            {
+              "id": "version-50",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-caption"
+              },
+              "createdAt": "2026-10-09T20:00:36.000Z",
+              "approvedAt": "2026-10-09T20:00:37.000Z",
+              "comments": []
+            },
+            {
+              "id": "version-60",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "caption-second-caption"
+              },
+              "createdAt": "2026-10-09T20:00:42.000Z",
+              "approvedAt": "2026-10-09T20:00:52.000Z",
+              "comments": []
+            }
+          ]
+        },
+        "currentVersionIds": {
+          "script": "version-64",
+          "video": "version-66",
+          "cover": "version-53",
+          "caption": "version-60"
+        },
+        "history": [
+          {
+            "id": "event-46",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:33.000Z"
+          },
+          {
+            "id": "event-48",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:34.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-49",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:35.000Z",
+            "piece": "video",
+            "versionId": "version-47"
+          },
+          {
+            "id": "event-51",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:36.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-52",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:37.000Z",
+            "piece": "caption",
+            "versionId": "version-50"
+          },
+          {
+            "id": "event-54",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:38.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-55",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:39.000Z",
+            "piece": "cover",
+            "versionId": "version-53"
+          },
+          {
+            "id": "event-56",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:40.000Z"
+          },
+          {
+            "id": "event-58",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-59",
+            "type": "delivery_approval_invalidated",
+            "at": "2026-10-09T20:00:41.000Z",
+            "piece": "video",
+            "versionId": "version-57"
+          },
+          {
+            "id": "event-61",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:42.000Z",
+            "piece": "caption",
+            "versionId": "version-60"
+          },
+          {
+            "id": "event-63",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:43.000Z",
+            "piece": "script",
+            "versionId": "version-62"
+          },
+          {
+            "id": "event-65",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:44.000Z",
+            "piece": "script",
+            "versionId": "version-64"
+          },
+          {
+            "id": "event-67",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:45.000Z",
+            "piece": "video",
+            "versionId": "version-66"
+          },
+          {
+            "id": "event-68",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:49.000Z",
+            "piece": "script",
+            "versionId": "version-64"
+          },
+          {
+            "id": "event-69",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:50.000Z",
+            "piece": "video",
+            "versionId": "version-66"
+          },
+          {
+            "id": "event-70",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:52.000Z",
+            "piece": "caption",
+            "versionId": "version-60"
+          },
+          {
+            "id": "event-71",
+            "type": "delivery_approval_restored",
+            "at": "2026-10-09T20:00:52.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:54.000Z",
+      "path": "/campaigns",
+      "method": "POST",
+      "payload": {
+        "requiredPieces": [
+          "script"
+        ]
+      },
+      "status": 201,
+      "response": {
+        "id": "campaign-72",
+        "requiredPieces": [
+          "script"
+        ],
+        "createdAt": "2026-10-09T20:00:54.000Z"
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:54.000Z",
+      "path": "/deliveries",
+      "method": "POST",
+      "payload": {
+        "campaignId": "campaign-72"
+      },
+      "status": 201,
+      "response": {
+        "id": "delivery-73",
+        "campaignId": "campaign-72",
+        "createdAt": "2026-10-09T20:00:54.000Z",
+        "requiredPieces": [
+          "script"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": null,
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "script",
+            "reason": "required_piece_missing"
+          }
+        ],
+        "pieces": {
+          "script": [],
+          "video": [],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": null,
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-74",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:54.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:55.000Z",
+      "path": "/deliveries/delivery-73/pieces/script/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "text",
+          "value": "same-content-script"
+        }
+      },
+      "status": 201,
+      "response": {
+        "id": "version-75",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-script"
+        },
+        "createdAt": "2026-10-09T20:00:55.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:56.000Z",
+      "path": "/deliveries/delivery-73/pieces/script/versions/version-75/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-75",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "same-content-script"
+        },
+        "createdAt": "2026-10-09T20:00:55.000Z",
+        "approvedAt": "2026-10-09T20:00:56.000Z",
+        "comments": []
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:57.000Z",
+      "path": "/deliveries/delivery-73/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "delivery-73",
+        "campaignId": "campaign-72",
+        "createdAt": "2026-10-09T20:00:54.000Z",
+        "requiredPieces": [
+          "script"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:57.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:57.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-75",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:55.000Z",
+              "approvedAt": "2026-10-09T20:00:56.000Z",
+              "comments": []
+            }
+          ],
+          "video": [],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": "version-75",
+          "video": null,
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-74",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:54.000Z"
+          },
+          {
+            "id": "event-76",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:55.000Z",
+            "piece": "script",
+            "versionId": "version-75"
+          },
+          {
+            "id": "event-77",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:56.000Z",
+            "piece": "script",
+            "versionId": "version-75"
+          },
+          {
+            "id": "event-78",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:57.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:58.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "file",
+          "value": "optional-long-video"
+        },
+        "durationSeconds": 17.25
+      },
+      "status": 201,
+      "response": {
+        "id": "version-79",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "optional-long-video"
+        },
+        "createdAt": "2026-10-09T20:00:58.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 17.25
+      }
+    },
+    {
+      "at": "2026-10-09T20:00:59.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions/version-79/comments",
+      "method": "POST",
+      "payload": {
+        "second": 15.875,
+        "body": "Comentário na versão longa."
+      },
+      "status": 201,
+      "response": {
+        "id": "comment-81",
+        "versionId": "version-79",
+        "second": 15.875,
+        "body": "Comentário na versão longa.",
+        "createdAt": "2026-10-09T20:00:59.000Z"
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:00.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions",
+      "method": "POST",
+      "payload": {
+        "asset": {
+          "type": "file",
+          "value": "optional-short-video"
+        },
+        "durationSeconds": 0.25
+      },
+      "status": 201,
+      "response": {
+        "id": "version-83",
+        "number": 2,
+        "asset": {
+          "type": "file",
+          "value": "optional-short-video"
+        },
+        "createdAt": "2026-10-09T20:01:00.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 0.25
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:00.000Z",
+      "path": "/deliveries/delivery-73",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-73",
+        "campaignId": "campaign-72",
+        "createdAt": "2026-10-09T20:00:54.000Z",
+        "requiredPieces": [
+          "script"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:57.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:57.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-75",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:55.000Z",
+              "approvedAt": "2026-10-09T20:00:56.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-79",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "optional-long-video"
+              },
+              "createdAt": "2026-10-09T20:00:58.000Z",
+              "approvedAt": null,
+              "comments": [
+                {
+                  "id": "comment-81",
+                  "versionId": "version-79",
+                  "second": 15.875,
+                  "body": "Comentário na versão longa.",
+                  "createdAt": "2026-10-09T20:00:59.000Z"
+                }
+              ],
+              "durationSeconds": 17.25
+            },
+            {
+              "id": "version-83",
+              "number": 2,
+              "asset": {
+                "type": "file",
+                "value": "optional-short-video"
+              },
+              "createdAt": "2026-10-09T20:01:00.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 0.25
+            }
+          ],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": "version-75",
+          "video": "version-83",
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-74",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:54.000Z"
+          },
+          {
+            "id": "event-76",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:55.000Z",
+            "piece": "script",
+            "versionId": "version-75"
+          },
+          {
+            "id": "event-77",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:56.000Z",
+            "piece": "script",
+            "versionId": "version-75"
+          },
+          {
+            "id": "event-78",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:57.000Z"
+          },
+          {
+            "id": "event-80",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:58.000Z",
+            "piece": "video",
+            "versionId": "version-79"
+          },
+          {
+            "id": "event-82",
+            "type": "comment_added",
+            "at": "2026-10-09T20:00:59.000Z",
+            "piece": "video",
+            "versionId": "version-79",
+            "commentId": "comment-81"
+          },
+          {
+            "id": "event-84",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:01:00.000Z",
+            "piece": "video",
+            "versionId": "version-83"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:01.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions/version-79/approve",
+      "method": "POST",
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-83"
+          }
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:02.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions/version-83/comments",
+      "method": "POST",
+      "payload": {
+        "second": 15.875,
+        "body": "Não cabe no vídeo atual."
+      },
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "invalid_second",
+          "message": "second deve estar entre 0 e 0.25, inclusive."
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:03.000Z",
+      "path": "/deliveries/delivery-73/pieces/script/versions/version-75/comments",
+      "method": "POST",
+      "payload": {
+        "second": 0,
+        "body": "Peça sem timeline."
+      },
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "invalid_comment_piece",
+          "message": "Comentários em segundos só se aplicam à peça video."
+        }
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:04.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions/version-79/comments",
+      "method": "POST",
+      "payload": {
+        "second": 17.25,
+        "body": "Fim da versão antiga."
+      },
+      "status": 201,
+      "response": {
+        "id": "comment-85",
+        "versionId": "version-79",
+        "second": 17.25,
+        "body": "Fim da versão antiga.",
+        "createdAt": "2026-10-09T20:01:04.000Z"
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:05.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions/version-83/comments",
+      "method": "POST",
+      "payload": {
+        "second": 0.25,
+        "body": "Fim da versão nova."
+      },
+      "status": 201,
+      "response": {
+        "id": "comment-87",
+        "versionId": "version-83",
+        "second": 0.25,
+        "body": "Fim da versão nova.",
+        "createdAt": "2026-10-09T20:01:05.000Z"
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:05.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions/version-79",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "version-79",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "optional-long-video"
+        },
+        "createdAt": "2026-10-09T20:00:58.000Z",
+        "approvedAt": null,
+        "comments": [
+          {
+            "id": "comment-81",
+            "versionId": "version-79",
+            "second": 15.875,
+            "body": "Comentário na versão longa.",
+            "createdAt": "2026-10-09T20:00:59.000Z"
+          },
+          {
+            "id": "comment-85",
+            "versionId": "version-79",
+            "second": 17.25,
+            "body": "Fim da versão antiga.",
+            "createdAt": "2026-10-09T20:01:04.000Z"
+          }
+        ],
+        "durationSeconds": 17.25
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:05.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions/version-83",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "version-83",
+        "number": 2,
+        "asset": {
+          "type": "file",
+          "value": "optional-short-video"
+        },
+        "createdAt": "2026-10-09T20:01:00.000Z",
+        "approvedAt": null,
+        "comments": [
+          {
+            "id": "comment-87",
+            "versionId": "version-83",
+            "second": 0.25,
+            "body": "Fim da versão nova.",
+            "createdAt": "2026-10-09T20:01:05.000Z"
+          }
+        ],
+        "durationSeconds": 0.25
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:06.000Z",
+      "path": "/deliveries/delivery-73/pieces/video/versions/version-83/approve",
+      "method": "POST",
+      "status": 200,
+      "response": {
+        "id": "version-83",
+        "number": 2,
+        "asset": {
+          "type": "file",
+          "value": "optional-short-video"
+        },
+        "createdAt": "2026-10-09T20:01:00.000Z",
+        "approvedAt": "2026-10-09T20:01:06.000Z",
+        "comments": [
+          {
+            "id": "comment-87",
+            "versionId": "version-83",
+            "second": 0.25,
+            "body": "Fim da versão nova.",
+            "createdAt": "2026-10-09T20:01:05.000Z"
+          }
+        ],
+        "durationSeconds": 0.25
+      }
+    },
+    {
+      "at": "2026-10-09T20:01:06.000Z",
+      "path": "/deliveries/delivery-73",
+      "method": "GET",
+      "status": 200,
+      "response": {
+        "id": "delivery-73",
+        "campaignId": "campaign-72",
+        "createdAt": "2026-10-09T20:00:54.000Z",
+        "requiredPieces": [
+          "script"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T20:00:57.000Z",
+        "lastApprovedAt": "2026-10-09T20:00:57.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-75",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "same-content-script"
+              },
+              "createdAt": "2026-10-09T20:00:55.000Z",
+              "approvedAt": "2026-10-09T20:00:56.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-79",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "optional-long-video"
+              },
+              "createdAt": "2026-10-09T20:00:58.000Z",
+              "approvedAt": null,
+              "comments": [
+                {
+                  "id": "comment-81",
+                  "versionId": "version-79",
+                  "second": 15.875,
+                  "body": "Comentário na versão longa.",
+                  "createdAt": "2026-10-09T20:00:59.000Z"
+                },
+                {
+                  "id": "comment-85",
+                  "versionId": "version-79",
+                  "second": 17.25,
+                  "body": "Fim da versão antiga.",
+                  "createdAt": "2026-10-09T20:01:04.000Z"
+                }
+              ],
+              "durationSeconds": 17.25
+            },
+            {
+              "id": "version-83",
+              "number": 2,
+              "asset": {
+                "type": "file",
+                "value": "optional-short-video"
+              },
+              "createdAt": "2026-10-09T20:01:00.000Z",
+              "approvedAt": "2026-10-09T20:01:06.000Z",
+              "comments": [
+                {
+                  "id": "comment-87",
+                  "versionId": "version-83",
+                  "second": 0.25,
+                  "body": "Fim da versão nova.",
+                  "createdAt": "2026-10-09T20:01:05.000Z"
+                }
+              ],
+              "durationSeconds": 0.25
+            }
+          ],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": "version-75",
+          "video": "version-83",
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-74",
+            "type": "delivery_created",
+            "at": "2026-10-09T20:00:54.000Z"
+          },
+          {
+            "id": "event-76",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:55.000Z",
+            "piece": "script",
+            "versionId": "version-75"
+          },
+          {
+            "id": "event-77",
+            "type": "version_approved",
+            "at": "2026-10-09T20:00:56.000Z",
+            "piece": "script",
+            "versionId": "version-75"
+          },
+          {
+            "id": "event-78",
+            "type": "delivery_approved",
+            "at": "2026-10-09T20:00:57.000Z"
+          },
+          {
+            "id": "event-80",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:00:58.000Z",
+            "piece": "video",
+            "versionId": "version-79"
+          },
+          {
+            "id": "event-82",
+            "type": "comment_added",
+            "at": "2026-10-09T20:00:59.000Z",
+            "piece": "video",
+            "versionId": "version-79",
+            "commentId": "comment-81"
+          },
+          {
+            "id": "event-84",
+            "type": "version_submitted",
+            "at": "2026-10-09T20:01:00.000Z",
+            "piece": "video",
+            "versionId": "version-83"
+          },
+          {
+            "id": "event-86",
+            "type": "comment_added",
+            "at": "2026-10-09T20:01:04.000Z",
+            "piece": "video",
+            "versionId": "version-79",
+            "commentId": "comment-85"
+          },
+          {
+            "id": "event-88",
+            "type": "comment_added",
+            "at": "2026-10-09T20:01:05.000Z",
+            "piece": "video",
+            "versionId": "version-83",
+            "commentId": "comment-87"
+          },
+          {
+            "id": "event-89",
+            "type": "version_approved",
+            "at": "2026-10-09T20:01:06.000Z",
+            "piece": "video",
+            "versionId": "version-83"
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "same_piece_state_different_history",
+      "policies": [
+        "video"
+      ],
+      "optional_inclusion_and_replacement": [
+        "script",
+        "cover",
+        "caption"
+      ],
+      "equivalent_current_approval": true,
+      "false_invalidation_events": 0,
+      "false_restoration_events": 0,
+      "timestamps_preserved": true
+    },
+    {
+      "name": "delivery_isolation_and_defensive_copies",
+      "foreign_version_rejected": true,
+      "other_delivery_unchanged": true,
+      "campaign_immutable": true
+    },
+    {
+      "name": "multiple_required_versions_during_suspension",
+      "required": [
+        "video",
+        "caption",
+        "cover"
+      ],
+      "version_numbers_video": [
+        1,
+        2,
+        3
+      ],
+      "stale_rejections": 3,
+      "invalidations": 1,
+      "restorations": 1,
+      "optional_did_not_restore": true
+    },
+    {
+      "name": "optional_video_comments_and_timestamps",
+      "old_duration": 17.25,
+      "new_duration": 0.25,
+      "old_comments": 2,
+      "new_comments": 1,
+      "version_references_and_created_at_match": true,
+      "no_false_approval_events": true
+    }
+  ],
+  "nonmutating_errors": [
+    {
+      "endpoint": "/deliveries/delivery-2/pieces/script/versions/version-4/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-2/pieces/cover/versions/version-6/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-2/pieces/caption/versions/version-8/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-23/pieces/script/versions/version-29/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-23/pieces/cover/versions/version-31/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-23/pieces/caption/versions/version-33/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-2/pieces/video/versions/version-25/approve",
+      "code": "version_not_found",
+      "status": 404
+    },
+    {
+      "endpoint": "/deliveries/delivery-45/pieces/video/versions/version-57/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-45/pieces/caption/versions/version-50/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-45/pieces/script/versions/version-62/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-45/approve",
+      "code": "approval_blocked",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-73/pieces/video/versions/version-79/approve",
+      "code": "stale_version",
+      "status": 409
+    },
+    {
+      "endpoint": "/deliveries/delivery-73/pieces/video/versions/version-83/comments",
+      "code": "invalid_second",
+      "status": 400
+    },
+    {
+      "endpoint": "/deliveries/delivery-73/pieces/script/versions/version-75/comments",
+      "code": "invalid_comment_piece",
+      "status": 400
+    }
+  ],
+  "passed": true
+}

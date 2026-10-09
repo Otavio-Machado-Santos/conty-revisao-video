@@ -1,0 +1,1612 @@
+{
+  "reviewed_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+  "passed": true,
+  "combinations": [
+    {
+      "mask": 1,
+      "requiredPieces": [
+        "script"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 1,
+      "requiredPieces": [
+        "script"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:22.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 2,
+      "requiredPieces": [
+        "video"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 2,
+      "requiredPieces": [
+        "video"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:22.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 3,
+      "requiredPieces": [
+        "video",
+        "script"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:17.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 3,
+      "requiredPieces": [
+        "video",
+        "script"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 4,
+      "requiredPieces": [
+        "cover"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 4,
+      "requiredPieces": [
+        "cover"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:22.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 5,
+      "requiredPieces": [
+        "cover",
+        "script"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:17.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 5,
+      "requiredPieces": [
+        "cover",
+        "script"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 6,
+      "requiredPieces": [
+        "video",
+        "cover"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:17.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 6,
+      "requiredPieces": [
+        "video",
+        "cover"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 7,
+      "requiredPieces": [
+        "cover",
+        "video",
+        "script"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:15.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 7,
+      "requiredPieces": [
+        "cover",
+        "video",
+        "script"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:16.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 8,
+      "requiredPieces": [
+        "caption"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 8,
+      "requiredPieces": [
+        "caption"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:22.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 9,
+      "requiredPieces": [
+        "caption",
+        "script"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:17.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 9,
+      "requiredPieces": [
+        "caption",
+        "script"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 10,
+      "requiredPieces": [
+        "video",
+        "caption"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:17.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 10,
+      "requiredPieces": [
+        "video",
+        "caption"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 11,
+      "requiredPieces": [
+        "caption",
+        "video",
+        "script"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:15.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 11,
+      "requiredPieces": [
+        "caption",
+        "video",
+        "script"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:16.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 12,
+      "requiredPieces": [
+        "cover",
+        "caption"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:17.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 12,
+      "requiredPieces": [
+        "cover",
+        "caption"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:19.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 13,
+      "requiredPieces": [
+        "caption",
+        "cover",
+        "script"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:15.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 13,
+      "requiredPieces": [
+        "caption",
+        "cover",
+        "script"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:16.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 14,
+      "requiredPieces": [
+        "video",
+        "cover",
+        "caption"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:15.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 14,
+      "requiredPieces": [
+        "video",
+        "cover",
+        "caption"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:16.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 15,
+      "requiredPieces": [
+        "caption",
+        "cover",
+        "video",
+        "script"
+      ],
+      "optionalBefore": true,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:13.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    },
+    {
+      "mask": 15,
+      "requiredPieces": [
+        "caption",
+        "cover",
+        "video",
+        "script"
+      ],
+      "optionalBefore": false,
+      "all_phases_passed": true,
+      "approvedAt": "2026-10-09T13:00:01.000Z",
+      "restoredAt": "2026-10-09T13:00:13.000Z",
+      "invalidations": 1,
+      "restorations": 1
+    }
+  ],
+  "equivalent_order_pairs": 15,
+  "error_checks": 125,
+  "http": [
+    {
+      "name": "campaign",
+      "path": "/campaigns",
+      "body": {
+        "requiredPieces": [
+          "video"
+        ]
+      },
+      "status": 201,
+      "data": {
+        "id": "campaign-1",
+        "requiredPieces": [
+          "video"
+        ],
+        "createdAt": "2026-10-09T14:00:01.000Z"
+      }
+    },
+    {
+      "name": "delivery true",
+      "path": "/deliveries",
+      "body": {
+        "campaignId": "campaign-1"
+      },
+      "status": 201,
+      "data": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T14:00:02.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": null,
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "video",
+            "reason": "required_piece_missing"
+          }
+        ],
+        "pieces": {
+          "script": [],
+          "video": [],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": null,
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T14:00:02.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "optional true",
+      "path": "/deliveries/delivery-2/pieces/script/versions",
+      "body": {
+        "asset": {
+          "type": "text",
+          "value": "script-v1"
+        }
+      },
+      "status": 201,
+      "data": {
+        "id": "version-4",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "script-v1"
+        },
+        "createdAt": "2026-10-09T14:00:03.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "name": "video true",
+      "path": "/deliveries/delivery-2/pieces/video/versions",
+      "body": {
+        "asset": {
+          "type": "file",
+          "value": "video-v1"
+        },
+        "durationSeconds": 60
+      },
+      "status": 201,
+      "data": {
+        "id": "version-6",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "video-v1"
+        },
+        "createdAt": "2026-10-09T14:00:04.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 60
+      }
+    },
+    {
+      "name": "approve video true",
+      "path": "/deliveries/delivery-2/pieces/video/versions/version-6/approve",
+      "status": 200,
+      "data": {
+        "id": "version-6",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "video-v1"
+        },
+        "createdAt": "2026-10-09T14:00:04.000Z",
+        "approvedAt": "2026-10-09T14:00:05.000Z",
+        "comments": [],
+        "durationSeconds": 60
+      }
+    },
+    {
+      "name": "approve delivery true",
+      "path": "/deliveries/delivery-2/approve",
+      "status": 200,
+      "data": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T14:00:02.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T14:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T14:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "script-v1"
+              },
+              "createdAt": "2026-10-09T14:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "video-v1"
+              },
+              "createdAt": "2026-10-09T14:00:04.000Z",
+              "approvedAt": "2026-10-09T14:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 60
+            }
+          ],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": "version-4",
+          "video": "version-6",
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T14:00:02.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:03.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-8",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "delivery_approved",
+            "at": "2026-10-09T14:00:06.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "state true",
+      "path": "/deliveries/delivery-2",
+      "status": 200,
+      "data": {
+        "id": "delivery-2",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T14:00:02.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T14:00:06.000Z",
+        "lastApprovedAt": "2026-10-09T14:00:06.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-4",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "script-v1"
+              },
+              "createdAt": "2026-10-09T14:00:03.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-6",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "video-v1"
+              },
+              "createdAt": "2026-10-09T14:00:04.000Z",
+              "approvedAt": "2026-10-09T14:00:05.000Z",
+              "comments": [],
+              "durationSeconds": 60
+            }
+          ],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": "version-4",
+          "video": "version-6",
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-3",
+            "type": "delivery_created",
+            "at": "2026-10-09T14:00:02.000Z"
+          },
+          {
+            "id": "event-5",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:03.000Z",
+            "piece": "script",
+            "versionId": "version-4"
+          },
+          {
+            "id": "event-7",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:04.000Z",
+            "piece": "video",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-8",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:05.000Z",
+            "piece": "video",
+            "versionId": "version-6"
+          },
+          {
+            "id": "event-9",
+            "type": "delivery_approved",
+            "at": "2026-10-09T14:00:06.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "delivery false",
+      "path": "/deliveries",
+      "body": {
+        "campaignId": "campaign-1"
+      },
+      "status": 201,
+      "data": {
+        "id": "delivery-10",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T14:00:08.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "production",
+        "approvedAt": null,
+        "lastApprovedAt": null,
+        "canApprove": false,
+        "blockers": [
+          {
+            "piece": "video",
+            "reason": "required_piece_missing"
+          }
+        ],
+        "pieces": {
+          "script": [],
+          "video": [],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": null,
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-11",
+            "type": "delivery_created",
+            "at": "2026-10-09T14:00:08.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "video false",
+      "path": "/deliveries/delivery-10/pieces/video/versions",
+      "body": {
+        "asset": {
+          "type": "file",
+          "value": "video-v1"
+        },
+        "durationSeconds": 60
+      },
+      "status": 201,
+      "data": {
+        "id": "version-12",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "video-v1"
+        },
+        "createdAt": "2026-10-09T14:00:09.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 60
+      }
+    },
+    {
+      "name": "approve video false",
+      "path": "/deliveries/delivery-10/pieces/video/versions/version-12/approve",
+      "status": 200,
+      "data": {
+        "id": "version-12",
+        "number": 1,
+        "asset": {
+          "type": "file",
+          "value": "video-v1"
+        },
+        "createdAt": "2026-10-09T14:00:09.000Z",
+        "approvedAt": "2026-10-09T14:00:10.000Z",
+        "comments": [],
+        "durationSeconds": 60
+      }
+    },
+    {
+      "name": "approve delivery false",
+      "path": "/deliveries/delivery-10/approve",
+      "status": 200,
+      "data": {
+        "id": "delivery-10",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T14:00:08.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T14:00:11.000Z",
+        "lastApprovedAt": "2026-10-09T14:00:11.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [],
+          "video": [
+            {
+              "id": "version-12",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "video-v1"
+              },
+              "createdAt": "2026-10-09T14:00:09.000Z",
+              "approvedAt": "2026-10-09T14:00:10.000Z",
+              "comments": [],
+              "durationSeconds": 60
+            }
+          ],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": null,
+          "video": "version-12",
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-11",
+            "type": "delivery_created",
+            "at": "2026-10-09T14:00:08.000Z"
+          },
+          {
+            "id": "event-13",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:09.000Z",
+            "piece": "video",
+            "versionId": "version-12"
+          },
+          {
+            "id": "event-14",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:10.000Z",
+            "piece": "video",
+            "versionId": "version-12"
+          },
+          {
+            "id": "event-15",
+            "type": "delivery_approved",
+            "at": "2026-10-09T14:00:11.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "optional false",
+      "path": "/deliveries/delivery-10/pieces/script/versions",
+      "body": {
+        "asset": {
+          "type": "text",
+          "value": "script-v1"
+        }
+      },
+      "status": 201,
+      "data": {
+        "id": "version-16",
+        "number": 1,
+        "asset": {
+          "type": "text",
+          "value": "script-v1"
+        },
+        "createdAt": "2026-10-09T14:00:12.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "name": "state false",
+      "path": "/deliveries/delivery-10",
+      "status": 200,
+      "data": {
+        "id": "delivery-10",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T14:00:08.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T14:00:11.000Z",
+        "lastApprovedAt": "2026-10-09T14:00:11.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-16",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "script-v1"
+              },
+              "createdAt": "2026-10-09T14:00:12.000Z",
+              "approvedAt": null,
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-12",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "video-v1"
+              },
+              "createdAt": "2026-10-09T14:00:09.000Z",
+              "approvedAt": "2026-10-09T14:00:10.000Z",
+              "comments": [],
+              "durationSeconds": 60
+            }
+          ],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": "version-16",
+          "video": "version-12",
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-11",
+            "type": "delivery_created",
+            "at": "2026-10-09T14:00:08.000Z"
+          },
+          {
+            "id": "event-13",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:09.000Z",
+            "piece": "video",
+            "versionId": "version-12"
+          },
+          {
+            "id": "event-14",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:10.000Z",
+            "piece": "video",
+            "versionId": "version-12"
+          },
+          {
+            "id": "event-15",
+            "type": "delivery_approved",
+            "at": "2026-10-09T14:00:11.000Z"
+          },
+          {
+            "id": "event-17",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:12.000Z",
+            "piece": "script",
+            "versionId": "version-16"
+          }
+        ]
+      }
+    },
+    {
+      "name": "replace optional",
+      "path": "/deliveries/delivery-10/pieces/script/versions",
+      "body": {
+        "asset": {
+          "type": "text",
+          "value": "script-v2"
+        }
+      },
+      "status": 201,
+      "data": {
+        "id": "version-18",
+        "number": 2,
+        "asset": {
+          "type": "text",
+          "value": "script-v2"
+        },
+        "createdAt": "2026-10-09T14:00:14.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "name": "replace required",
+      "path": "/deliveries/delivery-10/pieces/video/versions",
+      "body": {
+        "asset": {
+          "type": "file",
+          "value": "video-v2"
+        },
+        "durationSeconds": 20
+      },
+      "status": 201,
+      "data": {
+        "id": "version-20",
+        "number": 2,
+        "asset": {
+          "type": "file",
+          "value": "video-v2"
+        },
+        "createdAt": "2026-10-09T14:00:15.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 20
+      }
+    },
+    {
+      "name": "optional while suspended",
+      "path": "/deliveries/delivery-10/pieces/script/versions",
+      "body": {
+        "asset": {
+          "type": "text",
+          "value": "script-v3"
+        }
+      },
+      "status": 201,
+      "data": {
+        "id": "version-23",
+        "number": 3,
+        "asset": {
+          "type": "text",
+          "value": "script-v3"
+        },
+        "createdAt": "2026-10-09T14:00:16.000Z",
+        "approvedAt": null,
+        "comments": []
+      }
+    },
+    {
+      "name": "approve optional while suspended",
+      "path": "/deliveries/delivery-10/pieces/script/versions/version-23/approve",
+      "status": 200,
+      "data": {
+        "id": "version-23",
+        "number": 3,
+        "asset": {
+          "type": "text",
+          "value": "script-v3"
+        },
+        "createdAt": "2026-10-09T14:00:16.000Z",
+        "approvedAt": "2026-10-09T14:00:17.000Z",
+        "comments": []
+      }
+    },
+    {
+      "name": "blocked required",
+      "path": "/deliveries/delivery-10/approve",
+      "status": 409,
+      "data": {
+        "error": {
+          "code": "approval_blocked",
+          "message": "Entrega não pode ser aprovada: há peças obrigatórias ausentes ou versões aguardando aprovação.",
+          "details": {
+            "blockers": [
+              {
+                "piece": "video",
+                "reason": "required_version_unapproved",
+                "versionId": "version-20"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "new required during suspension",
+      "path": "/deliveries/delivery-10/pieces/video/versions",
+      "body": {
+        "asset": {
+          "type": "file",
+          "value": "video-v3"
+        },
+        "durationSeconds": 10
+      },
+      "status": 201,
+      "data": {
+        "id": "version-26",
+        "number": 3,
+        "asset": {
+          "type": "file",
+          "value": "video-v3"
+        },
+        "createdAt": "2026-10-09T14:00:19.000Z",
+        "approvedAt": null,
+        "comments": [],
+        "durationSeconds": 10
+      }
+    },
+    {
+      "name": "stale required",
+      "path": "/deliveries/delivery-10/pieces/video/versions/version-20/approve",
+      "status": 409,
+      "data": {
+        "error": {
+          "code": "stale_version",
+          "message": "Só a versão atual pode ser aprovada.",
+          "details": {
+            "currentVersionId": "version-26"
+          }
+        }
+      }
+    },
+    {
+      "name": "comment old",
+      "path": "/deliveries/delivery-10/pieces/video/versions/version-12/comments",
+      "body": {
+        "second": 45,
+        "body": "Fica na v1"
+      },
+      "status": 201,
+      "data": {
+        "id": "comment-28",
+        "versionId": "version-12",
+        "second": 45,
+        "body": "Fica na v1",
+        "createdAt": "2026-10-09T14:00:21.000Z"
+      }
+    },
+    {
+      "name": "comment out of new duration",
+      "path": "/deliveries/delivery-10/pieces/video/versions/version-26/comments",
+      "body": {
+        "second": 45,
+        "body": "Inválido na v3"
+      },
+      "status": 400,
+      "data": {
+        "error": {
+          "code": "invalid_second",
+          "message": "second deve estar entre 0 e 10, inclusive."
+        }
+      }
+    },
+    {
+      "name": "cross delivery version",
+      "path": "/deliveries/delivery-10/pieces/video/versions/version-6/approve",
+      "status": 404,
+      "data": {
+        "error": {
+          "code": "version_not_found",
+          "message": "Versão não encontrada nesta peça e entrega."
+        }
+      }
+    },
+    {
+      "name": "restore required",
+      "path": "/deliveries/delivery-10/pieces/video/versions/version-26/approve",
+      "status": 200,
+      "data": {
+        "id": "version-26",
+        "number": 3,
+        "asset": {
+          "type": "file",
+          "value": "video-v3"
+        },
+        "createdAt": "2026-10-09T14:00:19.000Z",
+        "approvedAt": "2026-10-09T14:00:24.000Z",
+        "comments": [],
+        "durationSeconds": 10
+      }
+    },
+    {
+      "name": "restored state",
+      "path": "/deliveries/delivery-10",
+      "status": 200,
+      "data": {
+        "id": "delivery-10",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T14:00:08.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T14:00:24.000Z",
+        "lastApprovedAt": "2026-10-09T14:00:24.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-16",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "script-v1"
+              },
+              "createdAt": "2026-10-09T14:00:12.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-18",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "script-v2"
+              },
+              "createdAt": "2026-10-09T14:00:14.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-23",
+              "number": 3,
+              "asset": {
+                "type": "text",
+                "value": "script-v3"
+              },
+              "createdAt": "2026-10-09T14:00:16.000Z",
+              "approvedAt": "2026-10-09T14:00:17.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-12",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "video-v1"
+              },
+              "createdAt": "2026-10-09T14:00:09.000Z",
+              "approvedAt": "2026-10-09T14:00:10.000Z",
+              "comments": [
+                {
+                  "id": "comment-28",
+                  "versionId": "version-12",
+                  "second": 45,
+                  "body": "Fica na v1",
+                  "createdAt": "2026-10-09T14:00:21.000Z"
+                }
+              ],
+              "durationSeconds": 60
+            },
+            {
+              "id": "version-20",
+              "number": 2,
+              "asset": {
+                "type": "file",
+                "value": "video-v2"
+              },
+              "createdAt": "2026-10-09T14:00:15.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 20
+            },
+            {
+              "id": "version-26",
+              "number": 3,
+              "asset": {
+                "type": "file",
+                "value": "video-v3"
+              },
+              "createdAt": "2026-10-09T14:00:19.000Z",
+              "approvedAt": "2026-10-09T14:00:24.000Z",
+              "comments": [],
+              "durationSeconds": 10
+            }
+          ],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": "version-23",
+          "video": "version-26",
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-11",
+            "type": "delivery_created",
+            "at": "2026-10-09T14:00:08.000Z"
+          },
+          {
+            "id": "event-13",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:09.000Z",
+            "piece": "video",
+            "versionId": "version-12"
+          },
+          {
+            "id": "event-14",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:10.000Z",
+            "piece": "video",
+            "versionId": "version-12"
+          },
+          {
+            "id": "event-15",
+            "type": "delivery_approved",
+            "at": "2026-10-09T14:00:11.000Z"
+          },
+          {
+            "id": "event-17",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:12.000Z",
+            "piece": "script",
+            "versionId": "version-16"
+          },
+          {
+            "id": "event-19",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:14.000Z",
+            "piece": "script",
+            "versionId": "version-18"
+          },
+          {
+            "id": "event-21",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:15.000Z",
+            "piece": "video",
+            "versionId": "version-20"
+          },
+          {
+            "id": "event-22",
+            "type": "delivery_approval_invalidated",
+            "at": "2026-10-09T14:00:15.000Z",
+            "piece": "video",
+            "versionId": "version-20"
+          },
+          {
+            "id": "event-24",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:16.000Z",
+            "piece": "script",
+            "versionId": "version-23"
+          },
+          {
+            "id": "event-25",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:17.000Z",
+            "piece": "script",
+            "versionId": "version-23"
+          },
+          {
+            "id": "event-27",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:19.000Z",
+            "piece": "video",
+            "versionId": "version-26"
+          },
+          {
+            "id": "event-29",
+            "type": "comment_added",
+            "at": "2026-10-09T14:00:21.000Z",
+            "piece": "video",
+            "versionId": "version-12",
+            "commentId": "comment-28"
+          },
+          {
+            "id": "event-30",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:24.000Z",
+            "piece": "video",
+            "versionId": "version-26"
+          },
+          {
+            "id": "event-31",
+            "type": "delivery_approval_restored",
+            "at": "2026-10-09T14:00:24.000Z"
+          }
+        ]
+      }
+    },
+    {
+      "name": "idempotent approval",
+      "path": "/deliveries/delivery-10/approve",
+      "status": 200,
+      "data": {
+        "id": "delivery-10",
+        "campaignId": "campaign-1",
+        "createdAt": "2026-10-09T14:00:08.000Z",
+        "requiredPieces": [
+          "video"
+        ],
+        "status": "approved",
+        "approvedAt": "2026-10-09T14:00:24.000Z",
+        "lastApprovedAt": "2026-10-09T14:00:24.000Z",
+        "canApprove": true,
+        "blockers": [],
+        "pieces": {
+          "script": [
+            {
+              "id": "version-16",
+              "number": 1,
+              "asset": {
+                "type": "text",
+                "value": "script-v1"
+              },
+              "createdAt": "2026-10-09T14:00:12.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-18",
+              "number": 2,
+              "asset": {
+                "type": "text",
+                "value": "script-v2"
+              },
+              "createdAt": "2026-10-09T14:00:14.000Z",
+              "approvedAt": null,
+              "comments": []
+            },
+            {
+              "id": "version-23",
+              "number": 3,
+              "asset": {
+                "type": "text",
+                "value": "script-v3"
+              },
+              "createdAt": "2026-10-09T14:00:16.000Z",
+              "approvedAt": "2026-10-09T14:00:17.000Z",
+              "comments": []
+            }
+          ],
+          "video": [
+            {
+              "id": "version-12",
+              "number": 1,
+              "asset": {
+                "type": "file",
+                "value": "video-v1"
+              },
+              "createdAt": "2026-10-09T14:00:09.000Z",
+              "approvedAt": "2026-10-09T14:00:10.000Z",
+              "comments": [
+                {
+                  "id": "comment-28",
+                  "versionId": "version-12",
+                  "second": 45,
+                  "body": "Fica na v1",
+                  "createdAt": "2026-10-09T14:00:21.000Z"
+                }
+              ],
+              "durationSeconds": 60
+            },
+            {
+              "id": "version-20",
+              "number": 2,
+              "asset": {
+                "type": "file",
+                "value": "video-v2"
+              },
+              "createdAt": "2026-10-09T14:00:15.000Z",
+              "approvedAt": null,
+              "comments": [],
+              "durationSeconds": 20
+            },
+            {
+              "id": "version-26",
+              "number": 3,
+              "asset": {
+                "type": "file",
+                "value": "video-v3"
+              },
+              "createdAt": "2026-10-09T14:00:19.000Z",
+              "approvedAt": "2026-10-09T14:00:24.000Z",
+              "comments": [],
+              "durationSeconds": 10
+            }
+          ],
+          "cover": [],
+          "caption": []
+        },
+        "currentVersionIds": {
+          "script": "version-23",
+          "video": "version-26",
+          "cover": null,
+          "caption": null
+        },
+        "history": [
+          {
+            "id": "event-11",
+            "type": "delivery_created",
+            "at": "2026-10-09T14:00:08.000Z"
+          },
+          {
+            "id": "event-13",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:09.000Z",
+            "piece": "video",
+            "versionId": "version-12"
+          },
+          {
+            "id": "event-14",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:10.000Z",
+            "piece": "video",
+            "versionId": "version-12"
+          },
+          {
+            "id": "event-15",
+            "type": "delivery_approved",
+            "at": "2026-10-09T14:00:11.000Z"
+          },
+          {
+            "id": "event-17",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:12.000Z",
+            "piece": "script",
+            "versionId": "version-16"
+          },
+          {
+            "id": "event-19",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:14.000Z",
+            "piece": "script",
+            "versionId": "version-18"
+          },
+          {
+            "id": "event-21",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:15.000Z",
+            "piece": "video",
+            "versionId": "version-20"
+          },
+          {
+            "id": "event-22",
+            "type": "delivery_approval_invalidated",
+            "at": "2026-10-09T14:00:15.000Z",
+            "piece": "video",
+            "versionId": "version-20"
+          },
+          {
+            "id": "event-24",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:16.000Z",
+            "piece": "script",
+            "versionId": "version-23"
+          },
+          {
+            "id": "event-25",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:17.000Z",
+            "piece": "script",
+            "versionId": "version-23"
+          },
+          {
+            "id": "event-27",
+            "type": "version_submitted",
+            "at": "2026-10-09T14:00:19.000Z",
+            "piece": "video",
+            "versionId": "version-26"
+          },
+          {
+            "id": "event-29",
+            "type": "comment_added",
+            "at": "2026-10-09T14:00:21.000Z",
+            "piece": "video",
+            "versionId": "version-12",
+            "commentId": "comment-28"
+          },
+          {
+            "id": "event-30",
+            "type": "version_approved",
+            "at": "2026-10-09T14:00:24.000Z",
+            "piece": "video",
+            "versionId": "version-26"
+          },
+          {
+            "id": "event-31",
+            "type": "delivery_approval_restored",
+            "at": "2026-10-09T14:00:24.000Z"
+          }
+        ]
+      }
+    }
+  ],
+  "old_negative_control": {
+    "before": {
+      "status": "approved",
+      "canApprove": true,
+      "blockers": []
+    },
+    "after": {
+      "status": "production",
+      "canApprove": false,
+      "blockers": [
+        {
+          "piece": "script",
+          "reason": "replacement_unapproved"
+        }
+      ]
+    }
+  },
+  "comments_isolation": {
+    "optional_video_did_not_block": true,
+    "old_comments": 2,
+    "new_comments": 2,
+    "version_duration_bounds_preserved": true,
+    "cross_delivery_rejections_unchanged": true,
+    "returned_copies_cannot_mutate_state": true
+  },
+  "http_summary": {
+    "requests": 26,
+    "equivalent_order_pair": true,
+    "rejections_unchanged": true,
+    "optional_before_after_and_suspension": true,
+    "required_invalidation_restoration": true,
+    "comments_anchored": true
+  }
+}

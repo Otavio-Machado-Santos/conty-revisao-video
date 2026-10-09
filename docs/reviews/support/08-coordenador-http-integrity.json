@@ -1,0 +1,13 @@
+{
+  "source_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+  "source_sha_verified": true,
+  "source_hashes": {
+    "src/domain.js": "b5ddc3871fb7bfd69c1378ea94fdd08e944c42cf0830229257220aaf3b73a73a",
+    "src/server.js": "25bcc05ce4b1828158627689640b30aa12615d06cf4cb53e4033d59fb2f51497"
+  },
+  "record_sha256": "af1dc35ba5cdb86b29ec79da400eab867df7f40a0bf63df8ebd45a059a6ea459",
+  "steps": 29,
+  "invariants": 91,
+  "passed": true,
+  "environment": "macOS, Node.js22.23.3, HTTP loopback, estado em memória, arquivos/URLs e dados fictícios, sem upload real."
+}

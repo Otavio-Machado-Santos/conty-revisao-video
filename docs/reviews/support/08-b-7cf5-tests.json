@@ -1,0 +1,19 @@
+{
+  "reviewed_sha": "7cf5c6343987f501f45f760984dbc2e126adb06e",
+  "command": "npm test",
+  "runtime": "v22.23.3",
+  "archive_isolated": true,
+  "exit_code": 0,
+  "tail": [
+    "\u2714 HTTP retorna erros \u00fateis para JSON, tipo de conte\u00fado, rota e identificador inv\u00e1lidos (5.721959ms)",
+    "\u2714 HTTP limita corpo antes de criar campanha (2.115584ms)",
+    "\u2139 tests 27",
+    "\u2139 suites 0",
+    "\u2139 pass 27",
+    "\u2139 fail 0",
+    "\u2139 cancelled 0",
+    "\u2139 skipped 0",
+    "\u2139 todo 0",
+    "\u2139 duration_ms 137.385917"
+  ]
+}

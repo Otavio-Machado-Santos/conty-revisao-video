@@ -1,37 +1,22 @@
-# Verificação e histórico da entrega 8
+# Verificação final da entrega 8
 
-## Correção de peças opcionais
-
-A branch `fix/pecas-opcionais`, baseada na publicação `b8f0fdc123556fe4c94d0c6791e8394d0ff96154`, corrige o P2 apontado pela revisão real de Claude Opus 5.5. Aprovação e bloqueios usam exclusivamente as peças exigidas da campanha, inclusive depois da primeira aprovação. Peça obrigatória nova suspende a aprovação; peça opcional nova não a suspende. O histórico artificial de peças a revisar foi removido.
-
-Codex implementou a correção e seus testes. **27/27 testes** passaram em Node.js 22.23.3, incluindo cinco testes HTTP com servidores reais. As regressões novas ou corrigidas haviam produzido oito falhas no domínio anterior. Veja a [nota da correção](correcao-pecas-opcionais.md), o [log atual](evidence/test.txt) e a [evidência estruturada](evidence/pecas-opcionais.json).
-
-Este candidato aguarda revisão independente e nova rodada real de Claude. A publicação, os pareceres, as capturas e o recibo apresentados abaixo se referem à entrega anterior. Nenhum novo envio à Conty ou captura global foi realizado nesta correção.
-
-## Validação da publicação anterior
-
-Código revisado: `7ab6ea31c6e5bd69565345dffdf7e35bd263ad21`. Runtime: Node.js 22.23.3 em macOS.
+Código revisado: `7cf5c6343987f501f45f760984dbc2e126adb06e`. Runtime: Node.js 22.23.3 em macOS.
 
 Implementação e documentação: Codex. Revisão: dois agentes Codex independentes do implementador. Não houve revisão humana do código.
 
-- 22 testes passaram no código anteriormente publicado; [checkout isolado](evidence/coordenador-clone-limpo.txt).
+- 27 testes passaram no código final; [checkout isolado](evidence/coordenador-clone-limpo.txt).
 - [Parecer A](reviews/08-a.json) e [parecer B](reviews/08-b.json), com sondagens independentes, limites e sugestões.
-- [Transcrição HTTP real](evidence/coordenador-http.json): 21 etapas verificadas, com requests, respostas e invariantes.
+- [Transcrição HTTP real](evidence/coordenador-http.json): 29 etapas verificadas, com requests, respostas e invariantes.
 - [Screenshot](evidence/screen.jpg), [resposta expandida](evidence/response.jpg) e [GIF da execução real](evidence/flow.gif).
 
-O GIF foi codificado dos frames de screencast do navegador durante a execução das chamadas locais; não é uma montagem ou simulação. Os dados são fictícios. O portal apenas apresenta respostas da API e compara invariantes. As integrações externas são mockadas quando previsto no enunciado. Os limites de persistência, autenticação e operação estão no README. Os testes e capturas não representam deploy ou funcionamento em produção.
+O GIF foi codificado dos frames de screencast do navegador durante a execução das chamadas locais; não é uma montagem ou simulação. Os dados são fictícios. O portal apenas apresenta respostas da API e compara invariantes. Os limites de persistência, autenticação e operação estão no README. Os testes e capturas não representam deploy ou funcionamento em produção.
 
 ![Respostas reais da API](evidence/screen.jpg)
 
 ![Gravação do fluxo HTTP](evidence/flow.gif)
 
-## Registro na Conty
+## Ajuste após a primeira revisão do Opus
 
-Status observado: **Entrega registrada**, em 2026-10-09T19:46:42.120Z.
+O Opus pediu que peça não exigida pela campanha não bloqueasse também depois da aprovação. A política agora usa exclusivamente `campaign.requiredPieces`. Inclusão e substituição de roteiro, capa ou outra peça opcional nunca bloqueiam; versão nova obrigatória suspende até a versão atual ser aprovada. Não existe conjunto histórico de opcionais a revisar. Duas novas revisões Codex, 27 testes em checkout isolado e 29 etapas HTTP reais conferiram a correção, incluindo opcionais durante a suspensão e duas obrigatórias substituídas. Comentários continuam presos à versão e ao segundo original.
 
-- [Link enviado](https://github.com/Otavio-Machado-Santos/conty-revisao-video).
-- [Página do desafio](https://challenge.appconty.com/desafios/revisao-video).
-- [Recibo e texto persistidos](evidence/conty-recibo.json).
-- [Screenshot real do registro](evidence/conty-recibo.jpg).
-
-O registro confirma o envio do link; a avaliação da Conty e o ranking dependem da auditoria da organização. Não é uma aprovação técnica pelo avaliador.
+A nota original registrada na Conty descrevia a interpretação anterior de opcionais depois da aprovação. O recibo foi preservado; o README atual e [a nota da correção](correcao-pecas-opcionais.md) explicam a mudança feita após o pedido do Opus. A reavaliação pelo Opus será registrada separadamente após a publicação deste ajuste.

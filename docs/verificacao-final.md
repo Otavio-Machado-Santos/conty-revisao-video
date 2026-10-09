@@ -20,3 +20,14 @@ O GIF foi codificado dos frames de screencast do navegador durante a execução 
 O Opus pediu que peça não exigida pela campanha não bloqueasse também depois da aprovação. A política agora usa exclusivamente `campaign.requiredPieces`. Inclusão e substituição de roteiro, capa ou outra peça opcional nunca bloqueiam; versão nova obrigatória suspende até a versão atual ser aprovada. Não existe conjunto histórico de opcionais a revisar. Duas novas revisões Codex, 27 testes em checkout isolado e 29 etapas HTTP reais conferiram a correção, incluindo opcionais durante a suspensão e duas obrigatórias substituídas. Comentários continuam presos à versão e ao segundo original.
 
 A nota original registrada na Conty descrevia a interpretação anterior de opcionais depois da aprovação. O recibo foi preservado; o README atual e [a nota da correção](correcao-pecas-opcionais.md) explicam a mudança feita após o pedido do Opus. A reavaliação pelo Opus será registrada separadamente após a publicação deste ajuste.
+
+## Registro na Conty
+
+Status observado: **Entrega registrada**, em 2026-10-09T19:46:42.120Z.
+
+- [Link enviado](https://github.com/Otavio-Machado-Santos/conty-revisao-video).
+- [Página do desafio](https://challenge.appconty.com/desafios/revisao-video).
+- [Recibo e texto persistidos](evidence/conty-recibo.json).
+- [Screenshot real do registro](evidence/conty-recibo.jpg).
+
+O registro confirma o envio do link; a avaliação da Conty e o ranking dependem da auditoria da organização. Não é uma aprovação técnica pelo avaliador.

@@ -60,12 +60,24 @@ test('erro de aprovação identifica cada peça ausente ou versão pendente', ()
   });
 });
 
-test('peça opcional pendente não bloqueia primeira aprovação', () => {
+test('inclusão e substituição opcionais pendentes não bloqueiam antes da primeira aprovação', () => {
   const { service, delivery, add } = fixture();
-  add('caption');
+  for (const piece of ['script', 'cover', 'caption']) {
+    add(piece);
+    add(piece);
+  }
   const video = add('video');
   service.approveVersion(delivery.id, 'video', video.id);
-  assert.equal(service.approveDelivery(delivery.id).status, 'approved');
+  const ready = service.getDelivery(delivery.id);
+  assert.equal(ready.status, 'production');
+  assert.equal(ready.canApprove, true);
+  assert.deepEqual(ready.blockers, []);
+  const approved = service.approveDelivery(delivery.id);
+  assert.equal(approved.status, 'approved');
+  for (const piece of ['script', 'cover', 'caption']) {
+    assert.equal(approved.pieces[piece].length, 2);
+    assert.ok(approved.pieces[piece].every(version => version.approvedAt === null));
+  }
 });
 
 test('versão nova de peça obrigatória invalida aprovação até ser aprovada', () => {
@@ -89,44 +101,136 @@ test('versão nova de peça obrigatória invalida aprovação até ser aprovada'
   ]);
 });
 
-test('nova versão opcional depois da aprovação exige revisão explícita', () => {
-  const { service, delivery, add } = fixture();
+test('substituição opcional depois da aprovação permanece livre e não gera invalidação', () => {
+  const { service, delivery, add, advance } = fixture();
   const caption = add('caption');
   const video = add('video');
   service.approveVersion(delivery.id, 'video', video.id);
-  service.approveDelivery(delivery.id);
+  const approved = service.approveDelivery(delivery.id);
+  advance(60);
   const newCaption = add('caption');
-  assert.deepEqual(service.getDelivery(delivery.id).blockers, [
-    { piece: 'caption', reason: 'replacement_unapproved', versionId: newCaption.id }
-  ]);
+  const after = service.getDelivery(delivery.id);
+  assert.equal(after.status, 'approved');
+  assert.equal(after.canApprove, true);
+  assert.deepEqual(after.blockers, []);
+  assert.equal(after.approvedAt, approved.approvedAt);
+  assert.equal(after.lastApprovedAt, approved.lastApprovedAt);
+  assert.equal(after.currentVersionIds.caption, newCaption.id);
+  assert.equal(after.pieces.caption.at(-1).approvedAt, null);
+  assert.equal(after.history.filter(event => event.type === 'delivery_approval_invalidated').length, 0);
   failsWith(() => service.approveVersion(delivery.id, 'caption', caption.id), 'stale_version', 409);
   service.approveVersion(delivery.id, 'caption', newCaption.id);
-  assert.equal(service.getDelivery(delivery.id).status, 'approved');
+  const reviewed = service.getDelivery(delivery.id);
+  assert.equal(reviewed.status, 'approved');
+  assert.equal(reviewed.approvedAt, approved.approvedAt);
+  assert.equal(reviewed.history.filter(event => event.type === 'delivery_approval_restored').length, 0);
 });
 
-test('primeira inclusão de peça opcional após aprovação também suspende a aprovação', () => {
+test('primeira inclusão de peças opcionais após aprovação não suspende a aprovação', () => {
   const { service, delivery, add } = fixture();
   service.approveVersion(delivery.id, 'video', add('video').id);
-  service.approveDelivery(delivery.id);
-  const cover = add('cover');
-  assert.equal(service.getDelivery(delivery.id).status, 'production');
-  service.approveVersion(delivery.id, 'cover', cover.id);
-  assert.equal(service.getDelivery(delivery.id).status, 'approved');
+  const approved = service.approveDelivery(delivery.id);
+  for (const piece of ['script', 'cover', 'caption']) {
+    const optional = add(piece);
+    const state = service.getDelivery(delivery.id);
+    assert.equal(state.status, 'approved');
+    assert.equal(state.canApprove, true);
+    assert.deepEqual(state.blockers, []);
+    assert.equal(state.approvedAt, approved.approvedAt);
+    assert.equal(state.currentVersionIds[piece], optional.id);
+    assert.equal(state.pieces[piece].at(-1).approvedAt, null);
+    assert.equal(service.approveDelivery(delivery.id).status, 'approved');
+  }
+  assert.equal(service.getDelivery(delivery.id).history.filter(event => event.type === 'delivery_approval_invalidated').length, 0);
 });
 
-test('várias substituições durante suspensão exigem todas as versões atuais', () => {
-  const { service, delivery, add } = fixture();
-  service.approveVersion(delivery.id, 'video', add('video').id);
+test('várias substituições obrigatórias durante suspensão exigem somente suas versões atuais', () => {
+  const { service, delivery, add } = fixture(['video', 'cover']);
+  for (const piece of ['video', 'cover']) service.approveVersion(delivery.id, piece, add(piece).id);
   service.approveDelivery(delivery.id);
   const oldReplacement = add('video');
-  const caption = add('caption');
+  const cover = add('cover');
+  add('caption');
   const currentVideo = add('video');
+  add('caption');
+  assert.deepEqual(service.getDelivery(delivery.id).blockers, [
+    { piece: 'video', reason: 'required_version_unapproved', versionId: currentVideo.id },
+    { piece: 'cover', reason: 'required_version_unapproved', versionId: cover.id }
+  ]);
   failsWith(() => service.approveVersion(delivery.id, 'video', oldReplacement.id), 'stale_version', 409);
   service.approveVersion(delivery.id, 'video', currentVideo.id);
   assert.equal(service.getDelivery(delivery.id).status, 'production');
-  service.approveVersion(delivery.id, 'caption', caption.id);
+  assert.deepEqual(service.getDelivery(delivery.id).blockers, [
+    { piece: 'cover', reason: 'required_version_unapproved', versionId: cover.id }
+  ]);
+  failsWith(() => service.approveDelivery(delivery.id), 'approval_blocked', 409);
+  service.approveVersion(delivery.id, 'cover', cover.id);
   assert.equal(service.getDelivery(delivery.id).status, 'approved');
+  assert.ok(service.getDelivery(delivery.id).pieces.caption.every(version => version.approvedAt === null));
   assert.equal(service.getDelivery(delivery.id).history.filter(event => event.type === 'delivery_approval_invalidated').length, 1);
+});
+
+test('mesmo estado de peças dá a mesma aprovação com opcional enviada antes ou depois', () => {
+  const states = [true, false].map(before => {
+    const { service, delivery, add } = fixture();
+    if (before) add('script');
+    service.approveVersion(delivery.id, 'video', add('video').id);
+    service.approveDelivery(delivery.id);
+    if (!before) add('script');
+    const state = service.getDelivery(delivery.id);
+    return {
+      requiredPieces: state.requiredPieces, status: state.status, canApprove: state.canApprove,
+      blockers: state.blockers,
+      pieces: Object.fromEntries(PIECES.map(piece => [piece, state.pieces[piece].map(version => ({
+        number: version.number, asset: version.asset, approved: version.approvedAt !== null,
+        durationSeconds: version.durationSeconds, comments: version.comments
+      }))]))
+    };
+  });
+  assert.deepEqual(states[0], states[1]);
+  assert.equal(states[1].status, 'approved');
+  assert.equal(states[1].canApprove, true);
+});
+
+test('todas as combinações da campanha ignoram inclusão e substituição das peças não exigidas', () => {
+  for (let mask = 1; mask < 16; mask++) {
+    const required = PIECES.filter((_, index) => mask & (1 << index));
+    const optional = PIECES.filter(piece => !required.includes(piece));
+    const { service, delivery, add } = fixture(required);
+    for (const piece of required) service.approveVersion(delivery.id, piece, add(piece).id);
+    const approved = service.approveDelivery(delivery.id);
+    for (const piece of optional) {
+      add(piece);
+      add(piece);
+      const state = service.getDelivery(delivery.id);
+      assert.equal(state.status, 'approved', `${required}: opcional ${piece}`);
+      assert.equal(state.canApprove, true);
+      assert.deepEqual(state.blockers, []);
+      assert.equal(state.approvedAt, approved.approvedAt);
+      assert.ok(state.pieces[piece].every(version => version.approvedAt === null));
+      assert.equal(state.history.filter(event => event.type === 'delivery_approval_invalidated').length, 0);
+    }
+  }
+});
+
+test('vídeo opcional substituído não bloqueia e seus comentários continuam na versão de origem', () => {
+  const { service, delivery, add } = fixture(['script']);
+  service.approveVersion(delivery.id, 'script', add('script').id);
+  service.approveDelivery(delivery.id);
+  const old = add('video');
+  const comment = service.addComment(delivery.id, 'video', old.id, { second: 50, body: 'Cena da versão antiga.' });
+  const current = service.addVersion(delivery.id, 'video', {
+    asset: { type: 'file', value: 'short-optional.mp4' }, durationSeconds: 10
+  });
+  assert.equal(service.getDelivery(delivery.id).status, 'approved');
+  assert.deepEqual(service.getDelivery(delivery.id).blockers, []);
+  failsWith(() => service.approveVersion(delivery.id, 'video', old.id), 'stale_version', 409);
+  assert.deepEqual(service.getVersion(delivery.id, 'video', old.id).comments, [comment]);
+  assert.deepEqual(service.getVersion(delivery.id, 'video', current.id).comments, []);
+  failsWith(() => service.addComment(delivery.id, 'video', current.id, { second: 50, body: 'Fora desta versão.' }), 'invalid_second');
+  service.addComment(delivery.id, 'video', current.id, { second: 10, body: 'Fim da versão atual.' });
+  assert.equal(service.getVersion(delivery.id, 'video', old.id).comments.length, 1);
+  assert.equal(service.getDelivery(delivery.id).status, 'approved');
 });
 
 test('versão anterior aprovada não aprova automaticamente substituta antes da primeira aprovação', () => {

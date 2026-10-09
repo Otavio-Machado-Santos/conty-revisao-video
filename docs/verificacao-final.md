@@ -1,10 +1,20 @@
-# Verificação final da entrega 8
+# Verificação e histórico da entrega 8
+
+## Correção de peças opcionais
+
+A branch `fix/pecas-opcionais`, baseada na publicação `b8f0fdc123556fe4c94d0c6791e8394d0ff96154`, corrige o P2 apontado pela revisão real de Claude Opus 5.5. Aprovação e bloqueios usam exclusivamente as peças exigidas da campanha, inclusive depois da primeira aprovação. Peça obrigatória nova suspende a aprovação; peça opcional nova não a suspende. O histórico artificial de peças a revisar foi removido.
+
+Codex implementou a correção e seus testes. **27/27 testes** passaram em Node.js 22.23.3, incluindo cinco testes HTTP com servidores reais. As regressões novas ou corrigidas haviam produzido oito falhas no domínio anterior. Veja a [nota da correção](correcao-pecas-opcionais.md), o [log atual](evidence/test.txt) e a [evidência estruturada](evidence/pecas-opcionais.json).
+
+Este candidato aguarda revisão independente e nova rodada real de Claude. A publicação, os pareceres, as capturas e o recibo apresentados abaixo se referem à entrega anterior. Nenhum novo envio à Conty ou captura global foi realizado nesta correção.
+
+## Validação da publicação anterior
 
 Código revisado: `7ab6ea31c6e5bd69565345dffdf7e35bd263ad21`. Runtime: Node.js 22.23.3 em macOS.
 
 Implementação e documentação: Codex. Revisão: dois agentes Codex independentes do implementador. Não houve revisão humana do código.
 
-- 22 testes passaram no código final; [checkout isolado](evidence/coordenador-clone-limpo.txt).
+- 22 testes passaram no código anteriormente publicado; [checkout isolado](evidence/coordenador-clone-limpo.txt).
 - [Parecer A](reviews/08-a.json) e [parecer B](reviews/08-b.json), com sondagens independentes, limites e sugestões.
 - [Transcrição HTTP real](evidence/coordenador-http.json): 21 etapas verificadas, com requests, respostas e invariantes.
 - [Screenshot](evidence/screen.jpg), [resposta expandida](evidence/response.jpg) e [GIF da execução real](evidence/flow.gif).

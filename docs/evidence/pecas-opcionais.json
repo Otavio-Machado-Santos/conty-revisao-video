@@ -1,0 +1,155 @@
+{
+  "base_publication_sha": "b8f0fdc123556fe4c94d0c6791e8394d0ff96154",
+  "code_before_correction_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
+  "branch": "fix/pecas-opcionais",
+  "author": "Codex",
+  "finding_source": "Revisão real de Claude Opus 5.5, parecer-subagente-08.json, P2",
+  "changes": [
+    "approvalBlockers considera apenas requiredPieces em todos os momentos",
+    "reviewRequiredAfterApproval removido",
+    "delivery_approval_invalidated registrado somente em transição real de approved para production"
+  ],
+  "runtime": "Node.js 22.23.3",
+  "command": "npm test",
+  "default_workers": true,
+  "before_domain_change": {
+    "exit_code": 1,
+    "tests": 27,
+    "pass": 19,
+    "fail": 8,
+    "cancelled": 0,
+    "skipped": 0,
+    "log": "docs/evidence/pecas-opcionais-red.txt",
+    "log_formatting": "Somente espaços finais de linhas removidos do log no Git; stdout bruto preservado fora do repositório.",
+    "raw_log_sha256": "67ed99fc99b96bbc52263b0712779b9da1dcfe3a605604f8555e842a60a4ae4b",
+    "raw_log_coordination_path": "evidencias/2026-10-09/correcao-08-pecas-opcionais/npm-test-red-raw.txt"
+  },
+  "after_domain_change": {
+    "exit_code": 0,
+    "tests": 27,
+    "pass": 27,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "http_tests_using_real_loopback_servers": 5,
+    "log": "docs/evidence/test.txt"
+  },
+  "syntax": {
+    "commands": [
+      "node --check src/domain.js",
+      "node --check test/domain.test.js",
+      "node --check test/http.test.js"
+    ],
+    "all_exit_codes": 0
+  },
+  "regressions": [
+    "optional before first approval (inclusion/replacement)",
+    "first optional inclusion after approval",
+    "optional replacement after approval without invalidation/restoration or changed approvedAt",
+    "all 15 requiredPieces combinations and optional pieces including video",
+    "same piece state with different operation histories",
+    "required replacement and multiple required updates during suspension",
+    "current-only approval including optional stale versions",
+    "comments and duration belong to their origin version",
+    "HTTP before/after/replacement and suspended multiple replacements"
+  ],
+  "protected_files": {
+    "src/server.js": {
+      "unchanged": true,
+      "sha256": "25bcc05ce4b1828158627689640b30aa12615d06cf4cb53e4033d59fb2f51497"
+    },
+    "docs/enunciado.txt": {
+      "unchanged": true,
+      "sha256": "5868cd636b683acf7e6b8af1ec31b9b62737df7ae91529820f36856ac64597f8"
+    },
+    "package.json": {
+      "unchanged": true,
+      "sha256": "c0aa69c0b38e9f6466f89da97df563b82e7a2e97e83ee8245112ed39fa39402f"
+    },
+    "package-lock.json": {
+      "unchanged": true,
+      "sha256": "e0955c203410654ac95ef54b4f48bd56d97f8a1b7c7809f6843ca27f30443c77"
+    },
+    ".gitignore": {
+      "unchanged": true,
+      "sha256": "c650a9fd74b219793554304c28a0919813f7cb518f1e567a6f1604ba7f5aa9fd"
+    },
+    ".nvmrc": {
+      "unchanged": true,
+      "sha256": "f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56"
+    },
+    "docs/demo.mjs": {
+      "unchanged": true,
+      "sha256": "cf4bed0c50d694d9ec5b6a7940c939a93adb1935def82b964f08113af44a6565"
+    },
+    "docs/evidence/capture.json": {
+      "unchanged": true,
+      "sha256": "d789e7d07ec87b562a5206c7bf84bf42f90461035294a067d34577d2a75bfd44"
+    },
+    "docs/evidence/conty-recibo.jpg": {
+      "unchanged": true,
+      "sha256": "c9c461cccfe50f1b506572eef4e6f7c03a892190377bfabc5d9c9f12ef4b40c3"
+    },
+    "docs/evidence/conty-recibo.json": {
+      "unchanged": true,
+      "sha256": "542dd05e76177d28954e4fc365189181919eb5263adfc2e77434c08a7cb541c2"
+    },
+    "docs/evidence/coordenador-clone-limpo.txt": {
+      "unchanged": true,
+      "sha256": "bc2d3a9120f84778fd74eaf291fb9f8e6a3a073343d39869d16231357a2d5219"
+    },
+    "docs/evidence/coordenador-http.json": {
+      "unchanged": true,
+      "sha256": "23719773b65ab6a77361f2fc79f0ed6afeaffe12656f47ba497a1cea0f42267a"
+    },
+    "docs/evidence/demo.txt": {
+      "unchanged": true,
+      "sha256": "c549b4acbc333a94fd4b694aba17a9e9cef5979768766291cccaac9d3d282e1b"
+    },
+    "docs/evidence/flow.gif": {
+      "unchanged": true,
+      "sha256": "bf52921e1c0bf87df23bb8f836242b828a0f1615dbf082f18535ef6b45872dbe"
+    },
+    "docs/evidence/http-flow.json": {
+      "unchanged": true,
+      "sha256": "25e9a035cb592d098d51d109bd256491ebaf66be4dc125052cc0a77dcacd31ea"
+    },
+    "docs/evidence/response.jpg": {
+      "unchanged": true,
+      "sha256": "4bbacf8bbb25a8f55c2a2197af8936165c81bcd1fd8df4b83cfbdb1bc268f843"
+    },
+    "docs/evidence/screen.jpg": {
+      "unchanged": true,
+      "sha256": "00e34063e6dae94b58774499c549ed78bfea5666364d760c35a04d32c6f75813"
+    },
+    "docs/reviews/08-a.json": {
+      "unchanged": true,
+      "sha256": "4c89f31b1a832ebf7b81c84106fd5010010e4320147495650743fd5c21c5bfd6"
+    },
+    "docs/reviews/08-b.json": {
+      "unchanged": true,
+      "sha256": "3a94b505fd60300170ea3efa39d86bda2d2730f976b41730381e7915747ef0a8"
+    }
+  },
+  "current_file_sha256": {
+    "src/domain.js": "b5ddc3871fb7bfd69c1378ea94fdd08e944c42cf0830229257220aaf3b73a73a",
+    "test/domain.test.js": "cef17a15db0f2e199bf81084a5e46ca1674b5424054b8f192352fd50971dcab4",
+    "test/http.test.js": "b13101b5ac048e95575c9fe38ba0a34fdf765ae7081d0ecf0848076dd3ea73e2",
+    "README.md": "7fab35203255a6a001326392c2d98f8a1554a81d1fbbb9123dc07c9828fddfde",
+    "docs/correcao-pecas-opcionais.md": "8846afd28fee8855d6df96fccab30e4e5895aabfdd2aebb9232f4337e9582269",
+    "docs/verificacao-final.md": "9b30a638364d371cdcce7bab82c8e980381757fa58646e38902cba10ba971c1c"
+  },
+  "pending": [
+    "revisão independente do candidato",
+    "nova rodada real de Claude Opus 5.5",
+    "nova mídia pelo coordenador",
+    "publicação e eventual atualização da entrega pela coordenação"
+  ],
+  "limits": [
+    "estado em memória, sem persistência/autenticação/pagamento",
+    "assets fictícios ou URLs sem upload/download real",
+    "duração declarada, validação local e dados sintéticos",
+    "pareceres, capturas e recibo anteriores são históricos e não aprovam o candidato"
+  ],
+  "no_push_no_conty_no_global_capture": true
+}

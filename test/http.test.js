@@ -45,6 +45,107 @@ test('fluxo HTTP: peças faltantes, aprovação, substituição e comentário na
   assert.equal((await request(path)).data.status, 'approved');
 });
 
+test('HTTP: opcional antes ou depois da aprovação dá o mesmo estado, inclusive após substituição', async t => {
+  const { request } = await api(t);
+  const campaign = (await request('/campaigns', { requiredPieces: ['video'] })).data;
+  const states = [];
+  for (const before of [true, false]) {
+    const delivery = (await request('/deliveries', { campaignId: campaign.id })).data;
+    const path = `/deliveries/${delivery.id}`;
+    const addScript = () => request(`${path}/pieces/script/versions`, { asset: { type: 'text', value: 'Roteiro não contratado.' } });
+    if (before) assert.equal((await addScript()).status, 201);
+    const video = (await request(`${path}/pieces/video/versions`, {
+      asset: { type: 'file', value: 'clip.mp4' }, durationSeconds: 30
+    })).data;
+    assert.equal((await request(`${path}/pieces/video/versions/${video.id}/approve`, undefined, 'POST')).status, 200);
+    const approved = await request(`${path}/approve`, undefined, 'POST');
+    assert.equal(approved.status, 200);
+    assert.equal(approved.data.status, 'approved');
+    if (!before) assert.equal((await addScript()).status, 201);
+    const result = await request(path);
+    assert.equal(result.status, 200);
+    assert.equal(result.data.approvedAt, approved.data.approvedAt);
+    assert.equal(result.data.history.filter(event => event.type === 'delivery_approval_invalidated').length, 0);
+    const shape = state => ({
+      requiredPieces: state.requiredPieces, status: state.status, canApprove: state.canApprove,
+      blockers: state.blockers,
+      pieces: Object.fromEntries(Object.entries(state.pieces).map(([piece, versions]) => [piece, versions.map(version => ({
+        number: version.number, asset: version.asset, approved: version.approvedAt !== null,
+        durationSeconds: version.durationSeconds, comments: version.comments
+      }))]))
+    });
+    states.push(shape(result.data));
+    const oldScript = result.data.currentVersionIds.script;
+    assert.equal((await addScript()).status, 201);
+    const replaced = (await request(path)).data;
+    assert.equal(replaced.status, 'approved');
+    assert.equal(replaced.canApprove, true);
+    assert.deepEqual(replaced.blockers, []);
+    assert.equal(replaced.approvedAt, approved.data.approvedAt);
+    const stale = await request(`${path}/pieces/script/versions/${oldScript}/approve`, undefined, 'POST');
+    assert.equal(stale.status, 409);
+    assert.equal(stale.data.error.code, 'stale_version');
+    assert.equal((await request(`${path}/approve`, undefined, 'POST')).data.status, 'approved');
+    assert.ok(replaced.pieces.script.every(version => version.approvedAt === null));
+  }
+  assert.deepEqual(states[0], states[1]);
+  assert.equal(states[1].status, 'approved');
+  assert.equal(states[1].canApprove, true);
+});
+
+test('HTTP: mudanças obrigatórias durante suspensão não passam a exigir opcionais nem migram comentários', async t => {
+  const { request } = await api(t);
+  const campaign = (await request('/campaigns', { requiredPieces: ['video', 'caption'] })).data;
+  const delivery = (await request('/deliveries', { campaignId: campaign.id })).data;
+  const path = `/deliveries/${delivery.id}`;
+  const addVideo = durationSeconds => request(`${path}/pieces/video/versions`, {
+    asset: { type: 'file', value: 'clip.mp4' }, durationSeconds
+  });
+  const addText = piece => request(`${path}/pieces/${piece}/versions`, { asset: { type: 'text', value: `Conteúdo ${piece}` } });
+  const approve = (piece, id) => request(`${path}/pieces/${piece}/versions/${id}/approve`, undefined, 'POST');
+  const firstVideo = (await addVideo(30)).data;
+  const firstCaption = (await addText('caption')).data;
+  assert.equal((await approve('video', firstVideo.id)).status, 200);
+  assert.equal((await approve('caption', firstCaption.id)).status, 200);
+  assert.equal((await request(`${path}/approve`, undefined, 'POST')).data.status, 'approved');
+  const oldReplacement = (await addVideo(20)).data;
+  const currentCaption = (await addText('caption')).data;
+  assert.equal((await addText('cover')).status, 201);
+  assert.equal((await addText('cover')).status, 201);
+  const currentVideo = (await addVideo(10)).data;
+  const blocked = await request(`${path}/approve`, undefined, 'POST');
+  assert.equal(blocked.status, 409);
+  assert.deepEqual(blocked.data.error.details.blockers, [
+    { piece: 'video', reason: 'required_version_unapproved', versionId: currentVideo.id },
+    { piece: 'caption', reason: 'required_version_unapproved', versionId: currentCaption.id }
+  ]);
+  const stale = await approve('video', oldReplacement.id);
+  assert.equal(stale.status, 409);
+  assert.equal(stale.data.error.code, 'stale_version');
+  assert.equal((await approve('video', currentVideo.id)).status, 200);
+  const suspended = (await request(path)).data;
+  assert.equal(suspended.status, 'production');
+  assert.deepEqual(suspended.blockers, [
+    { piece: 'caption', reason: 'required_version_unapproved', versionId: currentCaption.id }
+  ]);
+  assert.equal((await approve('caption', currentCaption.id)).status, 200);
+  const restored = (await request(path)).data;
+  assert.equal(restored.status, 'approved');
+  assert.deepEqual(restored.blockers, []);
+  assert.ok(restored.pieces.cover.every(version => version.approvedAt === null));
+  assert.equal(restored.history.filter(event => event.type === 'delivery_approval_invalidated').length, 1);
+  assert.equal(restored.history.filter(event => event.type === 'delivery_approval_restored').length, 1);
+  assert.equal((await request(`${path}/pieces/video/versions/${firstVideo.id}/comments`, { second: 22, body: 'Versão original.' })).status, 201);
+  assert.equal((await request(`${path}/pieces/video/versions/${currentVideo.id}/comments`, { second: 11, body: 'Fora da atual.' })).status, 400);
+  const oldVersion = (await request(`${path}/pieces/video/versions/${firstVideo.id}`)).data;
+  const newVersion = (await request(`${path}/pieces/video/versions/${currentVideo.id}`)).data;
+  assert.equal(oldVersion.comments.length, 1);
+  assert.equal(oldVersion.comments[0].versionId, firstVideo.id);
+  assert.equal(oldVersion.comments[0].second, 22);
+  assert.deepEqual(newVersion.comments, []);
+  assert.deepEqual(restored.pieces.video.map(version => version.number), [1, 2, 3]);
+});
+
 test('HTTP retorna erros úteis para JSON, tipo de conteúdo, rota e identificador inválidos', async t => {
   const { base, request } = await api(t);
   assert.deepEqual((await request('/health')).data, { status: 'ok' });

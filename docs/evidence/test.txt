@@ -2,33 +2,38 @@
 > conty-revisao-video@1.0.0 test
 > node --test --test-reporter=spec
 
-✔ as 15 combinações de peças exigidas usam o dado da campanha e a versão atual (5.126291ms)
-✔ campanha só de vídeo aprova sem roteiro, capa ou legenda (0.09325ms)
-✔ erro de aprovação identifica cada peça ausente ou versão pendente (0.41675ms)
-✔ peça opcional pendente não bloqueia primeira aprovação (0.135625ms)
-✔ versão nova de peça obrigatória invalida aprovação até ser aprovada (0.231834ms)
-✔ nova versão opcional depois da aprovação exige revisão explícita (0.288791ms)
-✔ primeira inclusão de peça opcional após aprovação também suspende a aprovação (0.666458ms)
-✔ várias substituições durante suspensão exigem todas as versões atuais (0.201583ms)
-✔ versão anterior aprovada não aprova automaticamente substituta antes da primeira aprovação (0.330292ms)
-✔ aprovações repetidas são idempotentes e não duplicam histórico (0.397792ms)
-✔ comentários pertencem à versão de origem, inclusive após a substituição (0.23075ms)
-✔ segundos fracionários e limites inclusivos válidos; fora do vídeo é rejeitado (0.134709ms)
-✔ comentário valida duração da sua versão, não da versão mais recente (0.071833ms)
-✔ dados retornados e objetos recebidos não permitem mudar o estado armazenado (0.230209ms)
-✔ identificadores isolam campanhas, entregas, peças e versões (0.09375ms)
-✔ campanha exige lista não vazia, sem nomes inválidos ou duplicados (0.083417ms)
-✔ assets e durações inválidos não criam versões nem invalidam aprovação (0.229333ms)
-✔ URL é um asset aceito sem requisição externa ou upload real (0.054209ms)
-✔ comentários precisam de texto e de peça vídeo e não alteram aprovação (0.1115ms)
-✔ fluxo HTTP: peças faltantes, aprovação, substituição e comentário na versão antiga (35.890041ms)
-✔ HTTP retorna erros úteis para JSON, tipo de conteúdo, rota e identificador inválidos (11.227083ms)
-✔ HTTP limita corpo antes de criar campanha (2.084416ms)
-ℹ tests 22
+✔ as 15 combinações de peças exigidas usam o dado da campanha e a versão atual (3.9155ms)
+✔ campanha só de vídeo aprova sem roteiro, capa ou legenda (0.361ms)
+✔ erro de aprovação identifica cada peça ausente ou versão pendente (0.746833ms)
+✔ inclusão e substituição opcionais pendentes não bloqueiam antes da primeira aprovação (0.336708ms)
+✔ versão nova de peça obrigatória invalida aprovação até ser aprovada (0.302416ms)
+✔ substituição opcional depois da aprovação permanece livre e não gera invalidação (0.202084ms)
+✔ primeira inclusão de peças opcionais após aprovação não suspende a aprovação (0.256792ms)
+✔ várias substituições obrigatórias durante suspensão exigem somente suas versões atuais (0.308708ms)
+✔ mesmo estado de peças dá a mesma aprovação com opcional enviada antes ou depois (0.34175ms)
+✔ todas as combinações da campanha ignoram inclusão e substituição das peças não exigidas (1.365333ms)
+✔ vídeo opcional substituído não bloqueia e seus comentários continuam na versão de origem (0.256459ms)
+✔ versão anterior aprovada não aprova automaticamente substituta antes da primeira aprovação (0.08175ms)
+✔ aprovações repetidas são idempotentes e não duplicam histórico (0.083791ms)
+✔ comentários pertencem à versão de origem, inclusive após a substituição (0.103208ms)
+✔ segundos fracionários e limites inclusivos válidos; fora do vídeo é rejeitado (0.117167ms)
+✔ comentário valida duração da sua versão, não da versão mais recente (0.058083ms)
+✔ dados retornados e objetos recebidos não permitem mudar o estado armazenado (0.192209ms)
+✔ identificadores isolam campanhas, entregas, peças e versões (0.088042ms)
+✔ campanha exige lista não vazia, sem nomes inválidos ou duplicados (0.085583ms)
+✔ assets e durações inválidos não criam versões nem invalidam aprovação (0.22025ms)
+✔ URL é um asset aceito sem requisição externa ou upload real (0.054541ms)
+✔ comentários precisam de texto e de peça vídeo e não alteram aprovação (0.117583ms)
+✔ fluxo HTTP: peças faltantes, aprovação, substituição e comentário na versão antiga (37.543958ms)
+✔ HTTP: opcional antes ou depois da aprovação dá o mesmo estado, inclusive após substituição (20.514125ms)
+✔ HTTP: mudanças obrigatórias durante suspensão não passam a exigir opcionais nem migram comentários (11.188292ms)
+✔ HTTP retorna erros úteis para JSON, tipo de conteúdo, rota e identificador inválidos (5.759916ms)
+✔ HTTP limita corpo antes de criar campanha (1.921041ms)
+ℹ tests 27
 ℹ suites 0
-ℹ pass 22
+ℹ pass 27
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 114.379708
+ℹ duration_ms 139.12875

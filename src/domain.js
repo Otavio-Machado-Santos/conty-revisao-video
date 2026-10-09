@@ -57,18 +57,10 @@ function assetSnapshot(input, piece) {
 // A campanha é dado: uma única política cobre todas as combinações de peças.
 export function approvalBlockers(delivery, campaign) {
   const blockers = [];
-  const required = new Set(campaign.requiredPieces);
   for (const piece of campaign.requiredPieces) {
     const version = delivery.pieces[piece].at(-1);
     if (!version) blockers.push({ piece, reason: 'required_piece_missing' });
     else if (!version.approvedAt) blockers.push({ piece, reason: 'required_version_unapproved', versionId: version.id });
-  }
-  // Depois da primeira aprovação, toda substituição precisa ser revisada,
-  // incluindo uma peça opcional: é a exceção explícita descrita no README.
-  for (const piece of delivery.reviewRequiredAfterApproval) {
-    if (required.has(piece)) continue;
-    const version = delivery.pieces[piece].at(-1);
-    if (!version?.approvedAt) blockers.push({ piece, reason: 'replacement_unapproved', versionId: version?.id });
   }
   return blockers;
 }
@@ -147,7 +139,6 @@ export class ReviewService {
     const delivery = {
       id: `delivery-${this.#id()}`, campaignId, createdAt: at,
       approvalGranted: false, lastApprovedAt: null,
-      reviewRequiredAfterApproval: new Set(),
       pieces: Object.fromEntries(PIECES.map(piece => [piece, []])), history: []
     };
     this.#event(delivery, 'delivery_created', at);
@@ -189,9 +180,10 @@ export class ReviewService {
       ...(piece === 'video' ? { durationSeconds: input.durationSeconds } : {})
     };
     delivery.pieces[piece].push(version);
-    if (delivery.approvalGranted) delivery.reviewRequiredAfterApproval.add(piece);
     this.#event(delivery, 'version_submitted', at, { piece, versionId: version.id });
-    if (before === 'approved') this.#event(delivery, 'delivery_approval_invalidated', at, { piece, versionId: version.id });
+    if (before === 'approved' && this.#status(delivery) !== 'approved') {
+      this.#event(delivery, 'delivery_approval_invalidated', at, { piece, versionId: version.id });
+    }
     return copy(version);
   }
 

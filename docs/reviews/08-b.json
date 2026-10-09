@@ -1,0 +1,110 @@
+{
+  "challenge": 8,
+  "review": "B",
+  "reviewer": "/root/implementar_rastreio (Codex; independente da implementação do desafio 8)",
+  "reviewed_at": "2026-10-09T19:14:14Z",
+  "repository": "projetos/conty-revisao-video",
+  "base_sha": "a8a0bf2ad23fc947e63ad30fff3fa42e7bb4b173",
+  "candidate_sha": "7ab6ea31c6e5bd69565345dffdf7e35bd263ad21",
+  "head_unchanged_after_review": true,
+  "working_tree_clean": true,
+  "scope": "Robustez dos inputs, comentários por versão, aprovação atual, invalidação/restauração, idempotência, cópias defensivas e isolamento. Sem edição do candidato.",
+  "sources_read": [
+    "docs/enunciado.txt", "README.md", "package.json", "src/domain.js", "src/server.js",
+    "test/domain.test.js", "test/http.test.js"
+  ],
+  "environment": {
+    "runtime": "Node.js v22.23.3",
+    "network": "HTTP real em servidor de loopback com porta efêmera; sem rede externa",
+    "candidate_modifications": "Nenhuma; probes e relatórios gravados somente na pasta de coordenação revisoes."
+  },
+  "checks": [
+    {
+      "command": "npm test",
+      "cwd": "projetos/conty-revisao-video",
+      "exit_code": 0,
+      "result": "22/22 testes passaram, sem falhas, skips ou cancelamentos."
+    },
+    {
+      "command": "node --test revisoes/08-b-probes.mjs",
+      "cwd": ".",
+      "exit_code": 0,
+      "evidence": "revisoes/08-b-probes.txt",
+      "result": "5/5 probes independentes passaram. Todas as 15 políticas foram exercitadas em 12 ciclos cada (180 ciclos), com múltiplas peças substituídas, versões obsoletas e restauração. Também foram verificados comentários fracionários, cópias defensivas, isolamento, clock inválido, 16 aprovações HTTP concorrentes e limite de corpo chunked."
+    },
+    {
+      "command": "git diff --check",
+      "cwd": "projetos/conty-revisao-video",
+      "exit_code": 0,
+      "result": "Sem erros de whitespace."
+    },
+    {
+      "command": "git rev-parse HEAD && git status --short",
+      "cwd": "projetos/conty-revisao-video",
+      "exit_code": 0,
+      "result": "Candidato fixado permanece no HEAD com árvore limpa."
+    }
+  ],
+  "requirements_verified": [
+    {
+      "requirement": "A lista de peças obrigatórias é dado da campanha e aprovação pendente retorna blockers claros.",
+      "result": "pass",
+      "evidence": "src/domain.js:58-74 e 217-229; suíte e probes cobrem todas as 15 combinações não vazias."
+    },
+    {
+      "requirement": "Campanha só de vídeo não exige roteiro, capa ou legenda; opcionais pendentes não bloqueiam a primeira aprovação.",
+      "result": "pass",
+      "evidence": "Suíte de vídeo-only e opcional pendente; probe inicia todas as peças, aprovando apenas as exigidas antes da primeira aprovação."
+    },
+    {
+      "requirement": "Versão atual substitui a anterior na regra de aprovação e uma substituição invalida a entrega aprovada.",
+      "result": "pass",
+      "evidence": "src/domain.js:173-215; 180 ciclos com duas peças alteradas por ciclo confirmam production até todas as revisões necessárias."
+    },
+    {
+      "requirement": "Aprovar versão obsoleta falha sem alterar histórico; retry de aprovação é idempotente.",
+      "result": "pass",
+      "evidence": "src/domain.js:105-113, 202-229; probes comparam snapshot antes/depois do erro stale_version e de retries, incluindo 16 chamadas simultâneas HTTP."
+    },
+    {
+      "requirement": "Comentário mantém versionId e é validado pela duração da versão de origem, inclusive antiga.",
+      "result": "pass",
+      "evidence": "src/domain.js:232-245; vídeos de 22.75 s e 0.25 s, limite inclusivo, frações, fora do intervalo e tipos inválidos. Comentários antigos não migraram."
+    },
+    {
+      "requirement": "Campanhas, entregas, peças e versões são isoladas e respostas não expõem estado mutável.",
+      "result": "pass",
+      "evidence": "src/domain.js:93-113, 158-170 e 198-199; probes rejeitam referências cruzadas e tentativas de alterar comments, history, requiredPieces e currentVersionIds via cópias."
+    },
+    {
+      "requirement": "Entradas e paths inválidos não geram versões/aprovações nem falhas internas desnecessárias.",
+      "result": "pass",
+      "evidence": "Probes HTTP com escalares/arrays, requiredPieces inválido, __proto__, encoding malformado, id com slash codificado e corpo chunked acima de 64 KiB."
+    },
+    {
+      "requirement": "Clock inválido é recusado antes de mutar versões, aprovações ou comentários.",
+      "result": "pass",
+      "evidence": "Probe mantém snapshot idêntico após falha nas três operações."
+    }
+  ],
+  "findings": [],
+  "suggestions": [
+    {
+      "kind": "contract_interpretation",
+      "priority": "P3",
+      "blocking": false,
+      "file": "src/domain.js",
+      "line": 66,
+      "title": "Registrar a interpretação de peça opcional após aprovação",
+      "observation": "A implementação deixa opcionais pendentes livres antes da primeira aprovação, mas uma nova versão opcional após ela suspende e bloqueia a entrega até revisão. A regra está documentada e testada. O texto contém tanto 'peça que a campanha não pediu não bloqueia' quanto 'uma peça de uma entrega já aprovada recebe versão nova ... deixa de estar aprovada'. A opção escolhida segue a segunda regra como exceção posterior; não foi classificada como erro inequívoco nesta revisão de robustez.",
+      "reproduction": "Campanha requiredPieces=['video']; enviar/aprovar video e aprovar entrega; adicionar cover; getDelivery retorna production e blocker replacement_unapproved até aprovar cover.",
+      "recommendation": "Manter essa decisão explícita na nota ao avaliador e na revisão de requisitos; evita apresentar a exceção como se fosse uma conclusão sem ambiguidade."
+    }
+  ],
+  "limits": [
+    "A persistência, autenticação, upload real e metadados reais de duração não foram validados; são limites documentados da demonstração em memória.",
+    "npm run demo não foi repetido, pois grava evidência rastreada no candidato; os probes próprios fizeram HTTP real sem editar esse arquivo."
+  ],
+  "verdict": "approved",
+  "summary": "Nenhum bloqueador reproduzível de robustez identificado no candidato. Há uma nota não bloqueadora de interpretação contratual sobre versões opcionais posteriores à primeira aprovação."
+}

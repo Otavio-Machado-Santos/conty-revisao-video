@@ -80,4 +80,6 @@ O armazenamento é em memória e se perde ao reiniciar o processo. Não há aute
 
 ## Uso de IA e revisão
 
-Codex implementou a API, os testes, o cliente de demonstração e esta documentação. O agente verificou o contrato, executou os testes em Node.js 22 e validou requisições HTTP reais. Neste commit a revisão independente ainda está pendente e será registrada antes do envio. Nenhuma revisão humana do código foi alegada.
+Codex produziu código, testes e documentação. Dois agentes Codex independentes do implementador revisaram o commit `7ab6ea31c6e5bd69565345dffdf7e35bd263ad21` e liberaram a entrega após testes e sondagens próprias. Os pareceres completos estão em `docs/reviews/`. O coordenador conferiu a instalação e os testes em checkout isolado e registrou o fluxo HTTP real. Não foi realizada revisão humana do código. A validação usa dados sintéticos e ambiente local; limites e interpretações do contrato estão documentados.
+
+[Verificação final, revisões independentes e captura do fluxo real](docs/verificacao-final.md).

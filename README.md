@@ -1,5 +1,7 @@
 # Revisão de vídeo por versão
 
+> **Se você veio pela nota da Conty (09/10):** a nota foi registrada antes da correção [`7cf5c63`](docs/correcao-pecas-opcionais.md) e descreve a regra antiga. A regra atual é esta: peça que a campanha não exige nunca bloqueia a aprovação, nem antes nem depois dela; só uma versão nova de peça exigida suspende a aprovação até ser aprovada. A suíte tem **27 testes** (a nota cita 22). O fluxo HTTP tem **29 etapas** na captura do coordenador ([docs/evidence/coordenador-http.json](docs/evidence/coordenador-http.json)) e **16** em `npm run demo` (a nota cita 21).
+
 A API impede a aprovação da entrega enquanto alguma peça exigida pela campanha está ausente ou sua versão atual não foi aprovada. Uma substituição de peça exigida suspende a aprovação anterior. Peças opcionais não bloqueiam em nenhum momento. Comentários em segundos pertencem à versão do vídeo em que foram feitos.
 
 Comece por [a política central](src/domain.js), pelos [testes de domínio](test/domain.test.js) e pelo [contrato original](docs/enunciado.txt).
@@ -84,6 +86,8 @@ O armazenamento é em memória e se perde ao reiniciar o processo. Não há aute
 
 ## Uso de IA e revisão
 
-Implementação, testes e documentação: Codex. Dois agentes Codex independentes do implementador revisaram o commit `7cf5c6343987f501f45f760984dbc2e126adb06e` e liberaram a entrega após testes e sondagens próprias. Os pareceres completos estão em `docs/reviews/`. O coordenador conferiu a instalação e os testes em checkout isolado e registrou o fluxo HTTP real. Não foi realizada revisão humana do código. A validação usa dados sintéticos e ambiente local; limites e interpretações do contrato estão documentados.
+Implementação, testes e documentação: Codex. Dois agentes Codex independentes do implementador revisaram o commit `7cf5c6343987f501f45f760984dbc2e126adb06e` e liberaram a entrega após testes e sondagens próprias. Os pareceres completos estão em `docs/reviews/`. O coordenador conferiu a instalação e os testes em checkout isolado e registrou o fluxo HTTP real. Uma revisão adicional com Claude Opus 5.5 pediu a correção das peças opcionais e aprovou o commit corrigido; ela está registrada em docs/verificacao-final.md. Não foi realizada revisão humana do código. A validação usa dados sintéticos e ambiente local; limites e interpretações do contrato estão documentados.
+
+Atualização após o registro na Conty (10/10/2026): o aviso sobre a nota, no topo deste README, foi escrito por Claude Code (modelo `claude-opus-5-5`) a pedido do autor, depois de uma auditoria independente feita com o mesmo modelo. Essa atualização não altera código nem testes.
 
 [Verificação da correção e histórico das revisões, capturas e recibo](docs/verificacao-final.md).
